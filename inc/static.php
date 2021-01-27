@@ -7,6 +7,7 @@
  * Enqueue scripts
  */
 function sermone_enqueue_scripts() {
+  wp_enqueue_style( 'sermone-style', SERMONE_URI . '/dist/sermone.css', false, SERMONE_VER );
   wp_enqueue_script( 'sermone-script', SERMONE_URI . '/dist/sermone.frontend.bundle.js', [ 'jquery' ], SERMONE_VER, true );
   wp_localize_script( 'sermone-script', 'PHP_DATA', [
     'ajax_url' => admin_url( 'admin-ajax.php' ),
@@ -15,3 +16,19 @@ function sermone_enqueue_scripts() {
 }
 
 add_action( 'wp_enqueue_scripts', 'sermone_enqueue_scripts' );
+
+/**
+ * Custom style inline
+ * 
+ */
+function sermone_style_inline() {
+  ob_start();
+  $container_width = get_field( 'sermone_container_width', 'option' );
+  ?>
+  .sermone-container { width: <?= $container_width ? $container_width : '1120px' ?>; }
+  <?php
+  $style = ob_get_clean(); 
+  wp_add_inline_style( 'sermone-style', $style );
+}
+
+add_action( 'wp_enqueue_scripts', 'sermone_style_inline' );

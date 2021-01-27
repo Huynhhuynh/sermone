@@ -1,6 +1,6 @@
 <?php 
 /**
- * Plugin Name:       Sermone - WordPress for Church
+ * Plugin Name:       Sermone - a WordPress Plugin for Church
  * Plugin URI:        #
  * Description:       ...
  * Version:           1.0.0
@@ -17,6 +17,7 @@
 {
   /**
    * Defines
+   * 
    */
   define( 'SERMONE_VER', '1.0.0' );
   define( 'SERMONE_DIR', plugin_dir_path( __FILE__ ) );
@@ -26,12 +27,13 @@
 {
   /**
    * Includes
+   * 
    */
   require( SERMONE_DIR . '/inc/static.php' );
   require( SERMONE_DIR . '/inc/helpers.php' );
+  require( SERMONE_DIR . '/inc/hooks.php' );
   require( SERMONE_DIR . '/inc/ajax.php' );
   require( SERMONE_DIR . '/inc/options.php' );
-  
   require( SERMONE_DIR . '/inc/register-post-type.php' );
   require( SERMONE_DIR . '/inc/register-tax.php' );
 }
