@@ -44,7 +44,7 @@ function sermone_register_preacher_tax() {
 add_action( 'init', 'sermone_register_preacher_tax', 22 );
 
 /**
- * Register sirmone preacher
+ * Register sirmone series
  * 
  */
 function sermone_register_series_tax() {
@@ -81,3 +81,42 @@ function sermone_register_series_tax() {
 }
 
 add_action( 'init', 'sermone_register_series_tax', 24 );
+
+/**
+ * Register sirmone topics
+ * 
+ */
+function sermone_register_topics_tax() {
+  $labels = [
+    'name' => _x( 'Topics', 'taxonomy general name', 'sermone' ),
+    'singular_name' => _x( 'Topic', 'taxonomy singular name', 'sermone' ),
+    'search_items' => __( 'Search Topics', 'sermone' ),
+    'popular_items' => __( 'Popular Topics', 'sermone' ),
+    'all_items' => __( 'All Topics', 'sermone' ),
+    'parent_item' => null,
+    'parent_item_colon' => null,
+    'edit_item' => __( 'Edit Topic', 'sermone' ),
+    'update_item' => __( 'Update Topic', 'sermone' ),
+    'add_new_item' => __( 'Add New Topic', 'sermone' ),
+    'new_item_name' => __( 'New Topic Name', 'sermone' ),
+    'separate_items_with_commas' => __( 'Separate Topics with commas', 'sermone' ),
+    'add_or_remove_items' => __( 'Add or remove Topicss', 'sermone' ),
+    'choose_from_most_used' => __( 'Choose from the most used Topics', 'sermone' ),
+    'not_found' => __( 'No Topics found.', 'sermone' ),
+    'menu_name' => __( 'Topics', 'sermone' ),
+  ];
+
+  $args = [
+    'hierarchical' => true,
+    'labels' => $labels,
+    'show_ui' => true,
+    'show_admin_column' => true,
+    'update_count_callback' => '_update_post_term_count',
+    'query_var' => true,
+    'rewrite' => [ 'slug' => 'sermone_topics' ],
+  ];
+
+  register_taxonomy( 'sermone_topics', 'sermone', $args );
+}
+
+add_action( 'init', 'sermone_register_topics_tax', 26 );

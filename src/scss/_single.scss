@@ -1,0 +1,166 @@
+.sermone-single {
+
+  .sermone-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 65px;
+
+    .sermone-thumb,
+    .sermone-detail {
+      width: 45%;
+    }
+
+    .sermone-thumb {
+      border: solid 1px #eee;
+      border-radius: 3px;
+      background: white;
+      padding: 6px;
+
+      img {
+        width: 100%;
+        border-radius: 3px;
+      }
+    }
+
+    .sermone-detail {
+
+      .in-scripture, 
+      .in-series {
+        font-size: 14px;
+      }
+
+      .in-scripture {
+        margin-bottom: 6px;
+      }
+
+      .post-title {
+        margin-top: 16px;
+      }
+    }
+  }
+
+  .sermone-content-summary {
+    width: 768px;
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+}
+
+.sermone--preacher-list {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 22px;
+
+  li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    transition: .3s ease;
+    -webkit-transition: .3s ease;
+  }
+
+  li.preacher-item {
+    --preacher-item-size: 56px;
+    width: var(--preacher-item-size);
+
+    .__avatar {
+      display: block;
+      width: 100%;
+      border-radius: var(--preacher-item-size);
+      border: solid 3px #f5f5f5;
+      box-sizing: border-box;
+      line-height: 0;
+      background: white;
+
+      img {
+        width: 100%;
+        border-radius: var(--preacher-item-size);
+      }
+    }
+
+    + .preacher-item {
+      margin-left: calc( var(--preacher-item-size) / 1.7 * -1 );
+    }
+  }
+
+  &:hover {
+
+    li.preacher-item {
+      margin-left: 0;
+      margin-right: 5px;
+    }
+  }
+}
+
+.sermone--date-and-share {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-size: 14px;
+
+  .date-preached {
+    display: flex;
+    align-items: center;
+
+    .__icon {
+      display: inline-block;
+      width: 18px;
+      min-width: 18px;
+      margin-right: 6px;
+
+      svg {
+        width: 100%;
+      }
+    }
+  }
+} 
+
+.sermone--share {
+
+}
+
+.sermone-share-container {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+
+  li {
+    list-style: none;
+    margin: 0;
+
+    a {
+      display: block;
+      line-height: 0;
+    }
+
+    &:not(:last-child) {
+      margin-right: 12px;
+    }
+
+    .__icon {
+      display: inline-block;
+      width: 18px;
+
+      svg {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.sermone-heading-sidebar {
+  font-style: 16px;
+  line-height: 1.5em;
+  margin-top: 0;
+  margin-bottom: 16px;
+}

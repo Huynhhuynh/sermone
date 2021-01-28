@@ -26,6 +26,7 @@ function sermone_single_override_template( $single_template ) {
   global $post;
   $post_type = $post->post_type;
   if( $post_type !== 'sermone' ) return $single_template;
+
   return sermone_template_path( 'single.php' );
 }
 
