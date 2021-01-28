@@ -16,11 +16,11 @@ get_header();
       </div>
       <div class="sermone-detail">
         <div class="in-scripture">
-          <?= __( 'Scripture', 'sermone' ) ?> 
+          <?= __( 'Bible Passage', 'sermone' ) ?> 
           <?= sermone_get_scripture_by_sirmone_html( get_the_ID() ) ?>
         </div>
-        <div class="in-series">
-          <?= get_the_term_list( get_the_ID(), 'sermone_series', __( 'This content is part of a series ', 'sermone' ), ', ' ) ?>
+        <div class="in-tax">
+          <? sermone_post_in_tax_html( get_the_ID() ) ?>
         </div>
         <h2 class="post-title"><?= the_title() ?></h2>
         <div class="detail-meta">

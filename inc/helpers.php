@@ -177,12 +177,53 @@ function sermone_share_post_html( $post_id ) {
 }
 
 /**
- * Sermone in series 
+ * Sermone in tax 
  * 
  * @param Int $post_id 
  * 
  * @return Html
  */
-function sermone_post_in_series_html( $post_id ) {
-  
+function sermone_post_in_tax_html( $post_id ) {
+  $in = [];
+  $separators = [ '', ', in ', ' & ' ];
+
+  # Series
+  $term_series = wp_get_post_terms( $post_id, 'sermone_series' );
+  if( $term_series ) {
+    array_push( $in, sprintf( 
+      '%s %s', 
+      __( 'This content is part of a series', 'sermone' ),
+      implode( ', ', array_map( function( $item ) {
+        return '<a href="" target="_blank">'. $item->name .'</a>';
+      }, $term_series ) ) ) 
+    );
+  }
+
+  # Topics
+  $term_topics = wp_get_post_terms( $post_id, 'sermone_topics' );
+  if( $term_topics ) {
+    array_push( $in, sprintf( 
+      '%s %s', 
+      _n( 'topic', 'topics', count( $term_topics ), 'sermone' ),
+      implode( ', ', array_map( function( $item ) {
+        return '<a href="" target="_blank">'. $item->name .'</a>';
+      }, $term_topics ) ) ) 
+    );
+  }
+
+  # Books
+  $term_books = wp_get_post_terms( $post_id, 'sermone_books' );
+  if( $term_books ) {
+    array_push( $in, sprintf( 
+      '%s %s', 
+      _n( 'book', 'books', count( $term_books ), 'sermone' ),
+      implode( ', ', array_map( function( $item ) {
+        return '<a href="" target="_blank">'. $item->name .'</a>';
+      }, $term_books ) ) ) 
+    );
+  }
+
+  echo implode( '', array_map( function( $item, $index ) use ( $separators ) {
+    return $separators[ $index ] . $item;
+  }, $in, array_keys( $in ) ) );
 }

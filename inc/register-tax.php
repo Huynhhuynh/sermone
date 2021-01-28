@@ -120,3 +120,42 @@ function sermone_register_topics_tax() {
 }
 
 add_action( 'init', 'sermone_register_topics_tax', 26 );
+
+/**
+ * Register sirmone books
+ * 
+ */
+function sermone_register_books_tax() {
+  $labels = [
+    'name' => _x( 'Books', 'taxonomy general name', 'sermone' ),
+    'singular_name' => _x( 'Book', 'taxonomy singular name', 'sermone' ),
+    'search_items' => __( 'Search Books', 'sermone' ),
+    'popular_items' => __( 'Popular Books', 'sermone' ),
+    'all_items' => __( 'All Books', 'sermone' ),
+    'parent_item' => null,
+    'parent_item_colon' => null,
+    'edit_item' => __( 'Edit Book', 'sermone' ),
+    'update_item' => __( 'Update Book', 'sermone' ),
+    'add_new_item' => __( 'Add New Book', 'sermone' ),
+    'new_item_name' => __( 'New Book Name', 'sermone' ),
+    'separate_items_with_commas' => __( 'Separate Books with commas', 'sermone' ),
+    'add_or_remove_items' => __( 'Add or remove Books', 'sermone' ),
+    'choose_from_most_used' => __( 'Choose from the most used Books', 'sermone' ),
+    'not_found' => __( 'No Books found.', 'sermone' ),
+    'menu_name' => __( 'Books', 'sermone' ),
+  ];
+
+  $args = [
+    'hierarchical' => true,
+    'labels' => $labels,
+    'show_ui' => true,
+    'show_admin_column' => true,
+    'update_count_callback' => '_update_post_term_count',
+    'query_var' => true,
+    'rewrite' => [ 'slug' => 'sermone_books' ],
+  ];
+
+  register_taxonomy( 'sermone_books', 'sermone', $args );
+}
+
+add_action( 'init', 'sermone_register_books_tax', 28 );

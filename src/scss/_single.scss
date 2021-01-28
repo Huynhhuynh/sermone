@@ -9,7 +9,7 @@
 
     .sermone-thumb,
     .sermone-detail {
-      width: 45%;
+      width: 47%;
     }
 
     .sermone-thumb {
@@ -27,7 +27,7 @@
     .sermone-detail {
 
       .in-scripture, 
-      .in-series {
+      .in-tax {
         font-size: 14px;
       }
 
@@ -128,7 +128,7 @@
 
 }
 
-.sermone-share-container {
+.sermone--share-container {
   margin: 0;
   padding: 0;
   display: flex;
@@ -156,11 +156,4 @@
       }
     }
   }
-}
-
-.sermone-heading-sidebar {
-  font-style: 16px;
-  line-height: 1.5em;
-  margin-top: 0;
-  margin-bottom: 16px;
 }
