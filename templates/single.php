@@ -33,8 +33,8 @@ get_header();
 
         <div class="sermone--date-and-share">
           <div class="date-preached" title="<?= __( 'Date preached', 'sermone' ) ?>">
-            <span class="__icon"><?= sermone_svg( 'calendar' ) ?></span>
-            <span class="__text"><?= get_field( 'sermon_date_preached', get_the_ID() ) ?></span>
+            <!-- <span class="__icon"><?= sermone_svg( 'calendar' ) ?></span> -->
+            <span class="__text"><?= __( 'Date preached', 'sermone' ) ?> <u><?= get_field( 'sermon_date_preached', get_the_ID() ) ?></u></span>
           </div>
           <div class="sermone--share">
             <? sermone_share_post_html( get_the_ID() ) ?>
@@ -44,11 +44,23 @@ get_header();
     </div> <!-- .sermone-header -->
 
     <div class="sermone-content-summary">
-      <? do_action( 'sermone_single_before_content' ) ?>
+      <? 
+      /**
+       * sermone_single_before_content hook
+       *
+       */
+      do_action( 'sermone_single_before_content' ) 
+      ?>
       <div class="sermone-content">
         <? the_content(); ?>
       </div>
-      <? do_action( 'sermone_single_after_content' ) ?>
+      <?
+      /**
+       * sermone_single_after_content hook
+       *
+       */ 
+      do_action( 'sermone_single_after_content' ) 
+      ?>
     </div> <!-- .sermone-content-summary -->
   </div>
 </div> <!-- .sermone-single -->

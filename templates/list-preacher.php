@@ -3,7 +3,6 @@
  * Sermone list preacher
  */
 
-// print_r( $preachers );
 ?>
 <ul class="sermone--preacher-list">
   <? foreach( $preachers as $index => $item ) : ?>

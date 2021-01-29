@@ -227,3 +227,55 @@ function sermone_post_in_tax_html( $post_id ) {
     return $separators[ $index ] . $item;
   }, $in, array_keys( $in ) ) );
 }
+
+/**
+ * Media nav data
+ */
+function sermone_media_nav_data() {
+  global $post; 
+
+  $navs = [
+    [
+      'type' => 'tab',
+      'id' => 'sermone-video',
+      'name' => __( 'Watch video', 'sermone' ),
+      'icon' => sermone_svg( 'video_file' ),
+      'data' => [
+        'type' => '',
+        'content' => '',
+      ]
+    ],
+    [
+      'type' => 'tab',
+      'id' => 'sermone-audio',
+      'name' => __( 'Listen audio', 'sermone' ),
+      'icon' => sermone_svg( 'audio_file' ),
+      'data' => [
+        'type' => '',
+        'content' => '',
+      ]
+    ],
+    [
+      'type' => 'download',
+      'id' => 'sermone-notes',
+      'name' => __( 'Download notes', 'sermone' ),
+      'icon' => sermone_svg( 'document_file' ),
+      'data' => [
+        'type' => '',
+        'content' => '',
+      ]
+    ],
+    [
+      'type' => 'download',
+      'id' => 'sermone-bulletin',
+      'name' => __( 'Download bulletin', 'sermone' ),
+      'icon' => sermone_svg( 'document_file' ),
+      'data' => [
+        'type' => '',
+        'content' => '',
+      ]
+    ],
+  ];
+
+  return apply_filters( 'sermone_hook_media_nav_data', $navs );
+}

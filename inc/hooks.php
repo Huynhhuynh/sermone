@@ -31,3 +31,31 @@ function sermone_single_override_template( $single_template ) {
 }
 
 add_filter( 'single_template', 'sermone_single_override_template' );
+
+/**
+ * Add bookmark
+ */
+function sermone_social_item_bookmark() {
+  ob_start();
+  ?>
+  <li class="sermone--bookmark-item">
+    <a href="#" title="<?= __( 'Bookmark', 'sermone' ) ?>">
+      <span class="__icon"><?= sermone_svg( 'bookmark' ) ?></span>
+    </a>
+  </li>
+  <?php 
+  echo ob_get_clean();
+}
+
+add_action( 'sermone_social_item_end', 'sermone_social_item_bookmark' );
+
+/**
+ * Media nav
+ * 
+ */
+function sermone_single_media_nav() {
+  set_query_var( 'nav_data', sermone_media_nav_data() );
+  load_template( sermone_template_path( 'media-nav.php' ), false );
+}
+
+add_action( 'sermone_single_before_content', 'sermone_single_media_nav' );

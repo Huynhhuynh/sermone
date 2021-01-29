@@ -157,3 +157,45 @@
     }
   }
 }
+
+.sermone--media-nav-container {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 45px;
+
+  &:before,
+  &:after {
+    content: "";
+    border-bottom: solid 1px #333;
+    width: 100%;
+  }
+
+  li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    &:not(:last-child) {
+      // margin-right: 30px;
+    }
+
+    a {
+      line-height: 0;
+      display: block;
+      padding: 10px;
+    }
+
+    span.__icon {
+      display: block;
+      width: 32px;
+
+      svg {
+        width: 100%;
+      }
+    }
+  }
+}
