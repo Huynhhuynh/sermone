@@ -9,7 +9,8 @@
   <? foreach( $nav_data as $index => $item ) : ?> 
   <li class="media-item">
     <a href="#" title="<?= $item[ 'name' ] ?>" data-nav-type="<?= $item[ 'type' ] ?>" data-nav-key="<?= $item[ 'id' ] ?>">
-      <span class="__icon"><?= $item[ 'icon' ] ?></span>
+      <span class="__name"><?= $item[ 'name' ] ?></span>
+      <span class="__icon"><?= $item[ 'icon' ] ?></span> 
     </a>
   </li>
   <? endforeach; ?>
@@ -18,7 +19,9 @@
 <div class="sermone--media-tab-container">
   <? foreach( $nav_data as $index => $item ) : if( $item[ 'type' ] != 'tab' ) continue; ?> 
     <div class="__tab-item __tab-<?= $item[ 'id' ] ?>" data-tab-key="<?= $item[ 'id' ] ?>">
-
+      <div class="sermone--media-content-type" data-media-source="<?= $item[ 'data' ][ 'source' ] ?>">
+        <?= $item[ 'data' ][ 'content' ] ?>
+      </div>
     </div>
   <? endforeach; ?>
 </div> <!-- .sermone--media-tab-container -->

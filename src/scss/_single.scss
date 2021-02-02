@@ -162,40 +162,87 @@
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: center;
   align-items: center;
   width: 100%;
-  margin-bottom: 45px;
-
-  &:before,
-  &:after {
-    content: "";
-    border-bottom: solid 1px #333;
-    width: 100%;
-  }
+  margin-bottom: 35px;
 
   li {
     list-style: none;
     margin: 0;
     padding: 0;
-
-    &:not(:last-child) {
-      // margin-right: 30px;
-    }
-
-    a {
-      line-height: 0;
-      display: block;
-      padding: 10px;
-    }
+    width: calc(100% / 4);
 
     span.__icon {
       display: block;
-      width: 32px;
+      width: 18px;
 
       svg {
         width: 100%;
       }
+    }
+
+    a {
+      width: 100%;
+      border: solid 1px #eee;
+      border-width: 1px 0 1px 1px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      font-size: 14px;
+      line-height: 18px;
+      text-decoration: none;
+      text-align: center;
+      padding: 14px;
+      line-height: normal;
+      color: black;
+      transition: .3s ease;
+      -webkit-transition: .3s ease;
+
+      &:hover {
+        background: #eee;
+      }
+    }
+
+    &:last-child {
+      
+      a {
+        border-right-width: 1px;
+      }
+    }
+
+    &.__active {
+      
+      > a {
+        color: white;
+        background: black;
+      }
+
+      svg {
+        fill: white;
+      }
+    }
+  }
+}
+
+.sermone--media-tab-container {
+  width: 100%;
+  margin-bottom: 35px;
+
+  .__tab-item {
+    width: 100%;
+    display: none;
+
+    .sermone--media-content-type {
+      width: 100%; 
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      overflow: hidden;
+      border-radius: 3px;
+    }
+
+    &.__active {
+      display: block;
     }
   }
 }

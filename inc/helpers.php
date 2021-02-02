@@ -11,7 +11,7 @@
  */
 function sermone_svg( $name ) {
   $icons = require( SERMONE_DIR . '/inc/svg.php' );
-  return $icons[ $name ] ? $icons[ $name ] : '';
+  return isset( $icons[ $name ] ) ? $icons[ $name ] : '';
 }
 
 /**
@@ -229,6 +229,41 @@ function sermone_post_in_tax_html( $post_id ) {
 }
 
 /**
+ * Get sermone video 
+ * 
+ * @param Int $post_id
+ * @return Array
+ */
+function sermone_get_video_item( $post_id ) {
+  $sermone_video = get_field( 'sermone_video', $post_id );
+  $source = $sermone_video[ 'video_source' ];
+  $data = $sermone_video[ $source ];
+
+  return [
+    'source' => $source,
+    'content' => $data
+  ];
+}
+
+/**
+ * Get sermone audio 
+ * 
+ * @param Int $post_id
+ * @return Array
+ */
+function sermone_get_audio_item( $post_id ) {
+  $sermone_audio = get_field( 'sermone_audio', $post_id );
+  $source = $sermone_audio[ 'audio_source' ];
+  $data = $sermone_audio[ $source ];
+
+  return [
+    'source' => $source,
+    'content' => $data,
+    'duration' => $sermone_audio[ 'mp3_duration' ]
+  ];
+}
+
+/**
  * Media nav data
  */
 function sermone_media_nav_data() {
@@ -239,40 +274,32 @@ function sermone_media_nav_data() {
       'type' => 'tab',
       'id' => 'sermone-video',
       'name' => __( 'Watch video', 'sermone' ),
-      'icon' => sermone_svg( 'video_file' ),
-      'data' => [
-        'type' => '',
-        'content' => '',
-      ]
+      'icon' => sermone_svg( 'play_button' ),
+      'data' => sermone_get_video_item( $post->ID ),
     ],
     [
       'type' => 'tab',
       'id' => 'sermone-audio',
       'name' => __( 'Listen audio', 'sermone' ),
-      'icon' => sermone_svg( 'audio_file' ),
-      'data' => [
-        'type' => '',
-        'content' => '',
-      ]
+      'icon' => sermone_svg( 'audio' ),
+      'data' => sermone_get_audio_item( $post->ID )
     ],
     [
       'type' => 'download',
       'id' => 'sermone-notes',
       'name' => __( 'Download notes', 'sermone' ),
-      'icon' => sermone_svg( 'document_file' ),
+      'icon' => sermone_svg( 'download' ),
       'data' => [
-        'type' => '',
-        'content' => '',
+        'content' => get_field( 'sermone_notes', $post->ID ),
       ]
     ],
     [
       'type' => 'download',
       'id' => 'sermone-bulletin',
       'name' => __( 'Download bulletin', 'sermone' ),
-      'icon' => sermone_svg( 'document_file' ),
+      'icon' => sermone_svg( 'download' ),
       'data' => [
-        'type' => '',
-        'content' => '',
+        'content' => get_field( 'sermone_bulletin', $post->ID ),
       ]
     ],
   ];
