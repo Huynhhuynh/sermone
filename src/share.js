@@ -13,7 +13,7 @@
       let link = $( this ).attr( 'href' )
       let title = $( this ).attr( 'title' )
 
-      w.open( link, title, "width=400,height=350" )
+      w.open( link, title, `width=400,height=350` )
     } )
   }
 

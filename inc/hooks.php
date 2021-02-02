@@ -21,6 +21,7 @@ if( function_exists( 'acf_add_options_page' ) ) {
 /**
  * Single override template
  * 
+ * @param String $single_template
  */
 function sermone_single_override_template( $single_template ) {
   global $post;
@@ -31,6 +32,20 @@ function sermone_single_override_template( $single_template ) {
 }
 
 add_filter( 'single_template', 'sermone_single_override_template' );
+
+/**
+ * Archive archive template
+ * 
+ * @param String $archive_template
+ */
+function sermone_archive_override_template( $archive_template ) {
+  global $post;
+  if ( ! is_post_type_archive ( 'sermone' ) ) return $archive_template;
+
+  return sermone_template_path( 'archive.php' );
+}
+
+add_filter( 'archive_template', 'sermone_archive_override_template' ) ;
 
 /**
  * Add bookmark
@@ -59,3 +74,13 @@ function sermone_single_media_nav() {
 }
 
 add_action( 'sermone_single_before_content', 'sermone_single_media_nav' );
+
+/**
+ * Sermone post item loop
+ * 
+ */
+function sermone_archive_post_item_loop() {
+  load_template( sermone_template_path( 'preview.php' ), false );
+}
+
+add_action( 'sermone_archive_post_item_loop', 'sermone_archive_post_item_loop' );

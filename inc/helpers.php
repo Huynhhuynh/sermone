@@ -65,8 +65,8 @@ function sermone_classes_hook( $classes, $hook_name = '' ) {
  * @param Int $post_id 
  * @return Html
  */
-function sermone_get_post_thumb_html( $post_id ) {
-  $thumb_tag = get_the_post_thumbnail( $post_id, 'large', [ 'class' => 'sermone-post-thumbnail' ] );
+function sermone_get_post_thumb_html( $post_id, $size = 'large' ) {
+  $thumb_tag = get_the_post_thumbnail( $post_id, $size, [ 'class' => 'sermone-post-thumbnail' ] );
   if( $thumb_tag ) { echo $thumb_tag; return; }
 
   $global_thumb_default = get_field( 'sermone_image_default', 'option' );
@@ -200,7 +200,7 @@ function sermone_post_in_tax_html( $post_id ) {
       '%s %s', 
       __( 'This content is part of a series', 'sermone' ),
       implode( ', ', array_map( function( $item ) {
-        return '<a href="" target="_blank">'. $item->name .'</a>';
+        return '<a href="'. get_term_link( $item ) .'" target="_blank">'. $item->name .'</a>';
       }, $term_series ) ) ) 
     );
   }
@@ -212,7 +212,7 @@ function sermone_post_in_tax_html( $post_id ) {
       '%s %s', 
       _n( 'topic', 'topics', count( $term_topics ), 'sermone' ),
       implode( ', ', array_map( function( $item ) {
-        return '<a href="" target="_blank">'. $item->name .'</a>';
+        return '<a href="'. get_term_link( $item ) .'" target="_blank">'. $item->name .'</a>';
       }, $term_topics ) ) ) 
     );
   }
@@ -224,13 +224,15 @@ function sermone_post_in_tax_html( $post_id ) {
       '%s %s', 
       _n( 'book', 'books', count( $term_books ), 'sermone' ),
       implode( ', ', array_map( function( $item ) {
-        return '<a href="" target="_blank">'. $item->name .'</a>';
+        return '<a href="'. get_term_link( $item ) .'" target="_blank">'. $item->name .'</a>';
       }, $term_books ) ) ) 
     );
   }
 
+  if( count( $in ) ) array_push( $in, '.' );
+
   echo implode( '', array_map( function( $item, $index ) use ( $separators ) {
-    return $separators[ $index ] . $item;
+    return (isset( $separators[ $index ] ) ? $separators[ $index ] : '') . $item;
   }, $in, array_keys( $in ) ) );
 }
 
@@ -311,4 +313,15 @@ function sermone_media_nav_data() {
   ];
 
   return apply_filters( 'sermone_hook_media_nav_data', $navs );
+}
+
+/**
+ * Archive posts classes 
+ * 
+ */
+function sermone_archive_posts_classes() {
+  return apply_filters( 
+    'sermone_archive_posts_classes', 
+    implode( ' ', [ 'sermone-archive-posts', 'sermone-archive-style-' . get_field( 'sermone_archive_layout', 'option' ) ] ) 
+  );
 }
