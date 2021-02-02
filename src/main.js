@@ -5,15 +5,15 @@
  */
 
 import './scss/main.scss' 
+
+/**
+ * Single
+ */
 import './nav-tab'
+import './share'
 
 ;( ( w, $ ) => {
   'use strict';
-
-  
-  const MediaTabFunc = () => {
-    
-  }
 
   /**
    * Ready 

@@ -154,21 +154,27 @@ function sermone_share_post_html( $post_id ) {
   $share = get_field( 'single_sharing', 'option' );
   if( $share != true ) return;
 
+  $replace_data = [
+    '%%SHARE_URL%%' => get_the_permalink( $post_id ),
+    '%%TITLE%%' => get_the_title( $post_id ),
+    '%%DESC%%' => get_the_excerpt( $post_id ),
+  ];
+
   $share_data = [
     'twitter' => [
       'icon' => sermone_svg( 'twitter' ),
       'name' => __( 'Twitter', 'sermone' ),
-      'link' => '#',
+      'link' => str_replace( array_keys( $replace_data ), array_values( $replace_data ), 'https://twitter.com/intent/tweet?url=%%SHARE_URL%%&text=%%TITLE%%' ),
     ],
     'linkedin' => [
       'icon' => sermone_svg( 'linkedin' ),
       'name' => __( 'Linkedin', 'sermone' ),
-      'link' => '#',
+      'link' => str_replace( array_keys( $replace_data ), array_values( $replace_data ), 'https://www.linkedin.com/sharing/share-offsite/?url=%%SHARE_URL%%' ),
     ],
     'facebook' => [
       'icon' => sermone_svg( 'facebook' ),
       'name' => __( 'Facebook', 'sermone' ),
-      'link' => '#'
+      'link' => str_replace( array_keys( $replace_data ), array_values( $replace_data ), 'https://www.facebook.com/sharer.php?u=%%SHARE_URL%%' ),
     ],
   ];
 
