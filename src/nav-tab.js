@@ -5,8 +5,6 @@
 ( ( w, $ ) => {
   'use strict'
 
-  let TabNav, TabContent
-
   /**
    * Media tab nav single sermone
    * 
@@ -16,7 +14,7 @@
    * @return void
    */
   const NavTabFunc = () => {
-    TabNav.on( 'click', 'a[data-nav-type=tab]', function( e ) {
+    $( 'body' ).on( 'click', '.sermone--media-nav-container a[data-nav-type=tab]', function( e ) {
       e.preventDefault();
       let TabName = $( this ).data( 'nav-key' )
 
@@ -28,7 +26,7 @@
         .removeClass( '__active' )
 
       // Tab content
-      TabContent
+      $( '.sermone--media-tab-container' )
         .find( `.__tab-item[data-tab-key=${ TabName }]` )
         .addClass( '__active' )
         .siblings()
@@ -40,9 +38,6 @@
    * DOM Ready
    */
   $( () => {
-    TabNav = $( '.sermone--media-nav-container' )
-    TabContent = $( '.sermone--media-tab-container' )
-
     NavTabFunc()
   } )
 

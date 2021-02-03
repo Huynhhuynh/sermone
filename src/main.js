@@ -11,6 +11,7 @@ import './scss/main.scss'
  */
 import './nav-tab'
 import './share'
+import './quickview-modal'
 
 ;( ( w, $ ) => {
   'use strict';

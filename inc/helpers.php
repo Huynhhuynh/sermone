@@ -274,8 +274,7 @@ function sermone_get_audio_item( $post_id ) {
 /**
  * Media nav data
  */
-function sermone_media_nav_data() {
-  global $post; 
+function sermone_media_nav_data( $post_id ) {
 
   $navs = [
     [
@@ -283,14 +282,14 @@ function sermone_media_nav_data() {
       'id' => 'sermone-video',
       'name' => __( 'Watch video', 'sermone' ),
       'icon' => sermone_svg( 'play_button' ),
-      'data' => sermone_get_video_item( $post->ID ),
+      'data' => sermone_get_video_item( $post_id ),
     ],
     [
       'type' => 'tab',
       'id' => 'sermone-audio',
       'name' => __( 'Listen audio', 'sermone' ),
       'icon' => sermone_svg( 'audio' ),
-      'data' => sermone_get_audio_item( $post->ID )
+      'data' => sermone_get_audio_item( $post_id )
     ],
     [
       'type' => 'download',
@@ -298,7 +297,7 @@ function sermone_media_nav_data() {
       'name' => __( 'Download notes', 'sermone' ),
       'icon' => sermone_svg( 'download' ),
       'data' => [
-        'content' => get_field( 'sermone_notes', $post->ID ),
+        'content' => get_field( 'sermone_notes', $post_id ),
       ]
     ],
     [
@@ -307,10 +306,16 @@ function sermone_media_nav_data() {
       'name' => __( 'Download bulletin', 'sermone' ),
       'icon' => sermone_svg( 'download' ),
       'data' => [
-        'content' => get_field( 'sermone_bulletin', $post->ID ),
+        'content' => get_field( 'sermone_bulletin', $post_id ),
       ]
     ],
   ];
+
+  if( $navs[0]['data']['content'] ) {
+    $navs[0]['active'] = true;
+  } else if( $navs[1]['data']['content'] ) {
+    $navs[1]['active'] = true;
+  }
 
   return apply_filters( 'sermone_hook_media_nav_data', $navs );
 }
@@ -324,4 +329,22 @@ function sermone_archive_posts_classes() {
     'sermone_archive_posts_classes', 
     implode( ' ', [ 'sermone-archive-posts', 'sermone-archive-style-' . get_field( 'sermone_archive_layout', 'option' ) ] ) 
   );
+}
+
+/**
+ * Load quickview template 
+ * 
+ * @param Int $post_id
+ * @return Html
+ */
+function sermone_quickview_html( $post_id ) {
+  set_query_var( 'post_id', $post_id );
+  set_query_var( 'post', get_post( $post_id ) );
+
+  load_template( sermone_template_path( 'quickview-detail.php' ), false );
+}
+
+function sermone_single_media_nav_html( $post_id ) {
+  set_query_var( 'nav_data', sermone_media_nav_data( $post_id ) );
+  load_template( sermone_template_path( 'media-nav.php' ), false );
 }

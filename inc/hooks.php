@@ -69,8 +69,8 @@ add_action( 'sermone_social_item_end', 'sermone_social_item_bookmark' );
  * 
  */
 function sermone_single_media_nav() {
-  set_query_var( 'nav_data', sermone_media_nav_data() );
-  load_template( sermone_template_path( 'media-nav.php' ), false );
+  global $post;
+  sermone_single_media_nav_html( $post->ID );
 }
 
 add_action( 'sermone_single_before_content', 'sermone_single_media_nav' );
@@ -84,3 +84,12 @@ function sermone_archive_post_item_loop() {
 }
 
 add_action( 'sermone_archive_post_item_loop', 'sermone_archive_post_item_loop' );
+
+/**
+ * Sermone modal template
+ */
+function sermone_quickview_modal_template() {
+  load_template( sermone_template_path( 'quickview-modal.php' ), false );
+}
+
+add_action( 'wp_footer', 'sermone_quickview_modal_template' );

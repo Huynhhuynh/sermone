@@ -1,0 +1,111 @@
+.sermone-modal-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(1,1,1,.6);
+  z-index: 999;
+  visibility: hidden;
+  opacity: 0;
+  overflow: auto;
+  transition: .3s ease;
+  -webkit-transition: .3s ease;
+
+  .sermone-modal-content {
+    width: 700px;
+    max-width: calc(100% - 40px);
+    margin: 10vh auto;
+    box-sizing: border-box;
+    background: white;
+    opacity: 0;
+    transition: .3s ease;
+    -webkit-transition: .3s ease;
+  }
+
+  &.__is-loading {
+
+    .sermone-modal-content {
+      visibility: hidden;
+      opacity: 0;
+    }
+  }
+}
+
+body.__sermone-quickview-modal-open {
+  overflow: hidden;
+
+  .sermone-modal-container {
+    visibility: visible;
+    opacity: 1;
+
+    .sermone-modal-content {
+      opacity: 1;
+    }
+  }
+}
+
+.sermone-quickview-detail-container {
+
+  .sermone-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 30px;
+    border-bottom: solid 1px #e2e2e2;
+    background: #fafafa;
+
+    @media(max-width: 600px) {
+      padding: 15px;
+    }
+
+    .sermone-thumb {
+
+      @media(max-width: 600px) {
+        margin-bottom: 15px;
+      }
+
+      img {
+        width: 150px;
+      }
+    }
+
+    .sermone-info {
+      width: calc(100% - 180px);
+
+      @media(max-width: 600px) {
+        width: 100%;
+      }
+  
+      .more-info, 
+      .in-tax {
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+  
+      .sermone-title {
+        margin: 0;
+      }
+    }
+  }
+
+  .sermone-content {
+    padding: 30px;
+
+    @media(max-width: 600px) {
+      padding: 15px;
+    }
+  }
+
+  .sermone--media-tab-container {
+    padding: 0 30px;
+
+    @media(max-width: 600px) {
+      padding: 0 15px;;
+    }
+
+    .__tab-item {
+      margin-bottom: 0;
+    }
+  }
+}
