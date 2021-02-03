@@ -344,7 +344,21 @@ function sermone_quickview_html( $post_id ) {
   load_template( sermone_template_path( 'quickview-detail.php' ), false );
 }
 
+/**
+ * Media nav template 
+ * 
+ * @param Int $post_id
+ * @return Html
+ */
 function sermone_single_media_nav_html( $post_id ) {
   set_query_var( 'nav_data', sermone_media_nav_data( $post_id ) );
   load_template( sermone_template_path( 'media-nav.php' ), false );
+}
+
+/**
+ * Filter bar template 
+ * 
+ */
+function sermone_filter_bar_html() {
+  load_template( sermone_template_path( 'filter-bar.php' ), false );
 }

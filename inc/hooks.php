@@ -93,3 +93,12 @@ function sermone_quickview_modal_template() {
 }
 
 add_action( 'wp_footer', 'sermone_quickview_modal_template' );
+
+/**
+ * Sermone filter bar 
+ */
+function sermone_filter_bar() {
+  sermone_filter_bar_html();
+}
+
+add_action( 'sermone_archive_post_list_before', 'sermone_filter_bar' );
