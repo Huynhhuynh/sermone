@@ -172,6 +172,7 @@
   width: 100%;
   margin-bottom: 35px;
   overflow: auto;
+  background: white;
 
   li {
     list-style: none;
@@ -273,6 +274,8 @@
       overflow: hidden;
       border-radius: 3px;
       position: relative;
+      background: url( ../../images/coding.svg ) no-repeat center center, #eee;
+      background-size: 100px;
 
       iframe {
         position: absolute;
@@ -280,6 +283,7 @@
         top: 0;
         width: 100% !important;
         height: 100% !important;
+        max-height: none !important;
       }
     }
 
@@ -301,5 +305,22 @@
     &.__active {
       display: block;
     }
+  }
+}
+
+.sermone-back-to-archive-page-link {
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 35px;
+  text-decoration: none;
+  border-bottom: solid 1px;
+  color: #000;
+  padding: 10px 0;
+
+  span.__icon {
+    width: 18px;
+    margin-right: 8px;
+    fill: black;
   }
 }

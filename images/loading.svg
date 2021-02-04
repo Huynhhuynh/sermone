@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin:auto;background:transparent;display:block;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+<defs><radialGradient id="ldio-i1vcmyogkh8-gradient" cx="0.5" cy="0.5" fx="0" fy="0" r="2">
+<stop offset="0%" stop-color="#ffffff"></stop>
+<stop offset="100%" stop-color="rgba(NaN, NaN, NaN, 0)"></stop>
+</radialGradient></defs>
+<g>
+<circle cx="50" cy="50" r="30" stroke="rgba(NaN, NaN, NaN, 0)" stroke-width="12" fill="none" stroke-opacity="0.7"></circle>
+<circle cx="50" cy="50" r="30" stroke="url(#ldio-i1vcmyogkh8-gradient)" stroke-width="10" fill="none"></circle>
+<animateTransform attributeName="transform" type="rotate" values="0 50 50;360 50 50" times="0;1" dur="1s" repeatCount="indefinite"></animateTransform>
+</g>
+</svg>

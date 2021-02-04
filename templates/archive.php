@@ -11,17 +11,23 @@ get_header();
 <div class="<?= sermone_classes_hook( 'sermone-archive-container', 'sermone_archive' ) ?>">
   <div class="sermone-container">
     <? 
-    if ( have_posts() ) : 
+    $query = sermone_get_posts();
 
-      /**
-       * sermone_archive_post_list_before hook.
-       * 
-       */
+    /**
+     * sermone_archive_top hook.
+     * 
+     * @see sermone_archive_heading - 16
+     * @see sermone_filter_bar - 20
+     */
+    do_action( 'sermone_archive_top' );
+    
+    if ( $query->have_posts() ) : 
+
       do_action( 'sermone_archive_post_list_before' );
 
       $sermone_posts_classes = sermone_archive_posts_classes();
       echo '<div id="sermone-archive-post-list" class="'. $sermone_posts_classes .'">';
-      while ( have_posts() ) : the_post(); 
+      while ( $query->have_posts() ) : $query->the_post(); 
         do_action( 'sermone_archive_post_item_loop', get_the_ID() );
       endwhile;
       echo '</div>';

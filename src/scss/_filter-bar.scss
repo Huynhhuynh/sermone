@@ -1,3 +1,32 @@
 .sermone-filter-bar-container {
   margin-bottom: 65px;
 }
+
+#sermone-filter-form {
+  display: flex;
+  flex-wrap: wrap;
+  background: #ffffff;
+  border-radius: 1px;
+  padding: 20px 0 10px;
+  border: solid 1px #eee;
+  
+  .sermone-field-container {
+    width: 25%;
+    padding: 0 20px;
+  }
+
+  .__keywords-container {
+    width: 75%;
+  }
+
+  .form-action {
+    padding: 0 20px; 
+    margin-left: auto;
+    width: 25%;
+
+    .__button-submit {
+      width: 100%;
+      margin-top: 16px;
+    }
+  }
+}

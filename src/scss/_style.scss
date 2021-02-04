@@ -9,3 +9,17 @@
   border-bottom: solid 1px #eee;
   margin-bottom: 15px;
 }
+
+.sermone-button {
+  border-radius: 1px;
+  padding: 16px 20px;
+  width: 200px;
+  background: black;
+  text-decoration: none;
+  color: white;
+  border-color: black;
+
+  &.__button-submit {
+
+  }
+}

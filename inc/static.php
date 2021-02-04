@@ -8,7 +8,7 @@
  */
 function sermone_enqueue_scripts() {
   wp_enqueue_style( 'sermone-style', SERMONE_URI . '/dist/sermone.css', false, SERMONE_VER );
-  wp_enqueue_script( 'sermone-script', SERMONE_URI . '/dist/sermone.frontend.bundle.js', [ 'jquery' ], SERMONE_VER, true );
+  wp_enqueue_script( 'sermone-script', SERMONE_URI . '/dist/sermone.frontend.bundle.js', [ 'jquery' ], SERMONE_VER, apply_filters( 'sermone_enqueue_script_footer', false ) );
   wp_localize_script( 'sermone-script', 'PHP_DATA', [
     'ajax_url' => admin_url( 'admin-ajax.php' ),
     'lang' => []

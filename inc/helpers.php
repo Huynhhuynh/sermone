@@ -70,7 +70,7 @@ function sermone_get_post_thumb_html( $post_id, $size = 'large' ) {
   if( $thumb_tag ) { echo $thumb_tag; return; }
 
   $global_thumb_default = get_field( 'sermone_image_default', 'option' );
-  $default = ! empty( $global_thumb_default ) ? $global_thumb_default[ 'sizes' ][ 'large' ] : '';
+  $default = ! empty( $global_thumb_default ) ? $global_thumb_default[ 'sizes' ][ $size ] : SERMONE_URI . '/images/oh-no.jpg';
   echo '<img src="'. $default .'" alt="'. get_the_title( $post_id ) .'" class="sermone-post-thumbnail" />';
 }
 
@@ -356,9 +356,136 @@ function sermone_single_media_nav_html( $post_id ) {
 }
 
 /**
+ * List term options
+ * 
+ * @param String $taxonomy_slug
+ * @return Array
+ */
+function sermone_list_term_options_filter_form( $taxonomy_slug = '', $default = [ '' => '...' ] ) {
+  $options = $default;
+  $terms = get_terms( $taxonomy_slug );
+  if( empty( $terms ) ) return $options;
+
+  foreach( $terms as $index => $term ) :
+    $options[ $term->slug ] = $term->name;
+  endforeach;
+
+  return $options;
+}
+
+/**
  * Filter bar template 
  * 
  */
 function sermone_filter_bar_html() {
+  $filter_fields = [
+    [
+      'name' => 'keywords',
+      'label' => __( 'Keywords', 'sermone' ),
+      'field_type' => 'text',
+      'placeholder' => __( '...' ),
+      'classes' => 'item-field-keywords',
+      'value' => isset( $_GET[ 'keywords' ] ) ? $_GET[ 'keywords' ] : '',
+    ],
+    [
+      'name' => 'preachers',
+      'label' => __( 'Select Preachers', 'sermone' ),
+      'field_type' => 'select',
+      'options' => sermone_list_term_options_filter_form( 'sermone_preacher', [ '' => __( 'All Preachers', 'sermone' ) ] ),
+      'value' => isset( $_GET[ 'preachers' ] ) ? $_GET[ 'preachers' ] : '',
+      'classes' => 'item-field-preachers',
+    ],
+    [
+      'name' => 'series',
+      'label' => __( 'Select Series', 'sermone' ),
+      'field_type' => 'select',
+      'options' => sermone_list_term_options_filter_form( 'sermone_series', [ '' => __( 'All Series', 'sermone' ) ] ),
+      'value' => isset( $_GET[ 'series' ] ) ? $_GET[ 'series' ] : '',
+      'classes' => 'item-field-series',
+    ],
+    [
+      'name' => 'topics',
+      'label' => __( 'Select Topics', 'sermone' ),
+      'field_type' => 'select',
+      'options' => sermone_list_term_options_filter_form( 'sermone_topics', [ '' => __( 'All Topics', 'sermone' ) ] ),
+      'value' => isset( $_GET[ 'topics' ] ) ? $_GET[ 'topics' ] : '',
+      'classes' => 'item-field-topics',
+    ],
+    [
+      'name' => 'books',
+      'label' => __( 'Select Books', 'sermone' ),
+      'field_type' => 'select',
+      'options' => sermone_list_term_options_filter_form( 'sermone_books', [ '' => __( 'All Books', 'sermone' ) ] ),
+      'value' => isset( $_GET[ 'books' ] ) ? $_GET[ 'books' ] : '',
+      'classes' => 'item-field-books',
+    ],
+  ]; 
+
+  set_query_var( 'filter_fields', apply_filters( 'sermone_hook_filter_fields_data', $filter_fields ) );
   load_template( sermone_template_path( 'filter-bar.php' ), false );
+}
+
+/**
+ * Form fields render 
+ * 
+ * @param Array $fields 
+ * @return Html
+ */
+function sermone_form_fields_html( $fields = [] ) {
+  if( count( $fields ) <= 0 ) return; 
+
+  $output = '';
+  $mockup_html = apply_filters( 'sermone_hook_fields_mockup', '
+  <div class="sermone-field-container __%%FIELD_NAME%%-container">
+    <label>
+      <span class="__label">%%LABEL%%</span>
+      <div class="field-item __field-%%FIELD_NAME%% __field-type-%%FIELD_TYPE%%">
+        %%FIELD%%
+      </div>
+    </label>
+  </div>' );
+
+  foreach( $fields as $index => $field ) :
+    ob_start();
+    set_query_var( 'field_data', $field );
+    load_template( sermone_template_path( 'form-fields/' . $field[ 'field_type' ] . '.php' ), false );
+    $field_html = ob_get_clean();
+
+    $replace_data = [
+      '%%LABEL%%' => $field[ 'label' ],
+      '%%FIELD%%' => $field_html,
+      '%%FIELD_NAME%%' => $field[ 'name' ],
+      '%%FIELD_TYPE%%' => $field[ 'field_type' ],
+    ];
+
+    $output .= str_replace( array_keys( $replace_data ), array_values( $replace_data ), $mockup_html );
+  endforeach;
+
+  echo $output;
+}
+
+/**
+ * Get posts
+ * 
+ * @return WP_Query
+ */
+function sermone_get_posts() {
+  $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+
+  $args = [
+    'post_type' => 'sermone',
+    'paged' => $paged,
+  ];
+
+  /**
+   * sermone_hook_query_args hook.
+   * 
+   * @see sermone_query_args_by_keywords - 20
+   * @see sermone_query_args_by_tax_preachers - 22
+   * @see sermone_query_args_by_tax_series - 24
+   * @see sermone_query_args_by_tax_topics - 26
+   */
+  $_args = apply_filters( 'sermone_hook_query_args', $args );
+
+  return new WP_Query( $_args );
 }

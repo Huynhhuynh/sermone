@@ -95,10 +95,122 @@ function sermone_quickview_modal_template() {
 add_action( 'wp_footer', 'sermone_quickview_modal_template' );
 
 /**
+ * Archive page heading template 
+ * 
+ */
+function sermone_archive_heading_template() {
+  load_template( sermone_template_path( 'archive-heading.php' ), false );
+}
+
+add_action( 'sermone_archive_top', 'sermone_archive_heading_template', 16 );
+
+/**
  * Sermone filter bar 
  */
 function sermone_filter_bar() {
   sermone_filter_bar_html();
 }
 
-add_action( 'sermone_archive_post_list_before', 'sermone_filter_bar' );
+add_action( 'sermone_archive_top', 'sermone_filter_bar', 20 );
+
+/**
+ * Custom query by keywords
+ */
+function sermone_query_args_by_keywords( $args = [] ) {
+
+  if( isset( $_GET[ 'keywords' ] ) && ! empty( $_GET[ 'keywords' ] ) ) {
+    $args[ 's' ] = trim( $_GET[ 'keywords' ] );
+  }
+
+  return $args;
+}
+
+add_filter( 'sermone_hook_query_args', 'sermone_query_args_by_keywords', 20 );
+
+/**
+ * Custom query by tax preachers
+ * 
+ */
+function sermone_query_args_by_tax_preachers( $args = [] ) {
+
+  $tax_query = isset( $args[ 'tax_query' ] ) ? $args[ 'tax_query' ] : [];
+
+  if( isset( $_GET[ 'preachers' ] ) && ! empty( $_GET[ 'preachers' ] ) ) {
+    array_push( $tax_query, [
+      'taxonomy' => 'sermone_preacher',
+      'field' => 'slug',
+      'terms' => trim( $_GET[ 'preachers' ] ),
+    ] );
+    $args[ 'tax_query' ] = $tax_query;
+  }
+
+  return $args;
+}
+
+add_filter( 'sermone_hook_query_args', 'sermone_query_args_by_tax_preachers', 22 );
+
+/**
+ * Custom query by tax series 
+ * 
+ */
+function sermone_query_args_by_tax_series( $args = [] ) {
+
+  $tax_query = isset( $args[ 'tax_query' ] ) ? $args[ 'tax_query' ] : [];
+
+  if( isset( $_GET[ 'series' ] ) && ! empty( $_GET[ 'series' ] ) ) {
+    array_push( $tax_query, [
+      'taxonomy' => 'sermone_series',
+      'field' => 'slug',
+      'terms' => trim( $_GET[ 'series' ] ),
+    ] );
+    $args[ 'tax_query' ] = $tax_query;
+  }
+
+  return $args;
+}
+
+add_filter( 'sermone_hook_query_args', 'sermone_query_args_by_tax_series', 24 );
+
+/**
+ * Custom query by tax topics 
+ * 
+ */
+function sermone_query_args_by_tax_topics( $args = [] ) {
+
+  $tax_query = isset( $args[ 'tax_query' ] ) ? $args[ 'tax_query' ] : [];
+
+  if( isset( $_GET[ 'topics' ] ) && ! empty( $_GET[ 'topics' ] ) ) {
+    array_push( $tax_query, [
+      'taxonomy' => 'sermone_topics',
+      'field' => 'slug',
+      'terms' => trim( $_GET[ 'topics' ] ),
+    ] );
+    $args[ 'tax_query' ] = $tax_query;
+  }
+
+  return $args;
+}
+
+add_filter( 'sermone_hook_query_args', 'sermone_query_args_by_tax_topics', 26 );
+
+/**
+ * Custom query by tax books 
+ * 
+ */
+function sermone_query_args_by_tax_books( $args = [] ) {
+
+  $tax_query = isset( $args[ 'tax_query' ] ) ? $args[ 'tax_query' ] : [];
+
+  if( isset( $_GET[ 'books' ] ) && ! empty( $_GET[ 'books' ] ) ) {
+    array_push( $tax_query, [
+      'taxonomy' => 'sermone_books',
+      'field' => 'slug',
+      'terms' => trim( $_GET[ 'books' ] ),
+    ] );
+    $args[ 'tax_query' ] = $tax_query;
+  }
+
+  return $args;
+}
+
+add_filter( 'sermone_hook_query_args', 'sermone_query_args_by_tax_books', 26 );

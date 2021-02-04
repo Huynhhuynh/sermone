@@ -1,0 +1,35 @@
+form.sermone-form {
+  margin: 20px 0;
+
+  input[type=text],
+  input[type=password],
+  input[type=tell],
+  input[type=number],
+  input[type=search],
+  select {
+    padding: 10px 0;
+    border-width: 0 0 1px 0;
+    border-radius: 0;
+    font-size: 14px;
+    width: 100%;
+    border-color: black;
+    color: black;
+    outline: none;
+    box-shadow: none;
+    margin-bottom: 15px;
+    height: 40px;
+  }
+
+  .sermone-field-container {
+
+    label {
+      font-weight: normal;
+      color: #616161;
+    }
+
+    span.__label {
+      display: block;
+      margin-bottom: 6px;
+    }
+  }
+}

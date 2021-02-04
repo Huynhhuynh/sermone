@@ -10,6 +10,12 @@ get_header();
 ?>
 <div class="<?= sermone_classes_hook( 'sermone-single sermone-entry-summary', 'sermone_single' ) ?>">
   <div class="sermone-container">
+
+    <a class="sermone-back-to-archive-page-link" href="<?= get_post_type_archive_link( 'sermone' ) ?>">
+      <span class="__icon"><?= sermone_svg( 'back_arrow' ) ?></span>
+      <?= __( 'Back to archive page', 'sermone' ) ?>
+    </a>
+
     <div class="sermone-header">
       <div class="sermone-thumb">
         <? sermone_get_post_thumb_html( get_the_ID() ) ?>
