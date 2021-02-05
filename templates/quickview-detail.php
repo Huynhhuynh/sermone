@@ -10,7 +10,7 @@
 <div class="<?= sermone_classes_hook( 'sermone-quickview-detail-container', 'sermone_quickview_detail' ) ?>">
   <div class="sermone-header">
     <div class="sermone-thumb">
-      <? sermone_get_post_thumb_html( $post_id, 'thumbnail' ) ?>
+      <? sermone_get_post_thumb_html( $post_id, apply_filters( 'sermone_quickview_post_image_size', 'thumbnail' ) ) ?>
     </div>
     <div class="sermone-info">
       <div class="more-info">

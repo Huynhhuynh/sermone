@@ -11,7 +11,7 @@
   <div class="sermone-post-inner">
     <div class="sermone-thumb">
       <a href="<? the_permalink() ?>">
-        <? sermone_get_post_thumb_html( get_the_ID(), 'thumbnail' ) ?>
+        <? sermone_get_post_thumb_html( get_the_ID(), apply_filters( 'sermone_archive_post_image_size', 'thumbnail' ) ) ?>
       </a>
     </div>
     <div class="sermone-entry">
