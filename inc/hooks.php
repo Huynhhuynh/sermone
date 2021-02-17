@@ -253,3 +253,40 @@ function sermone_post_in_series() {
 }
 
 add_action( 'sermone_single_after_content', 'sermone_post_in_series', 22 );
+
+/**
+ * 
+ */
+function sermone_check_tax_redirect_page() {
+  $root_archive_link = get_post_type_archive_link( 'sermone' );
+
+  if( is_tax( 'sermone_preacher' ) ) {
+    $term = get_queried_object();
+    $direct_url = sprintf( '%s?preachers=%s', $root_archive_link, $term->slug );
+    wp_redirect( $direct_url );
+    exit();
+  }
+
+  if( is_tax( 'sermone_series' ) ) {
+    $term = get_queried_object();
+    $direct_url = sprintf( '%s?series=%s', $root_archive_link, $term->slug );
+    wp_redirect( $direct_url );
+    exit();
+  }
+
+  if( is_tax( 'sermone_topics' ) ) {
+    $term = get_queried_object();
+    $direct_url = sprintf( '%s?topics=%s', $root_archive_link, $term->slug );
+    wp_redirect( $direct_url );
+    exit();
+  }
+
+  if( is_tax( 'sermone_books' ) ) {
+    $term = get_queried_object();
+    $direct_url = sprintf( '%s?books=%s', $root_archive_link, $term->slug );
+    wp_redirect( $direct_url );
+    exit();
+  }
+}
+
+add_action( 'pre_get_posts', 'sermone_check_tax_redirect_page' );

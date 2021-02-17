@@ -546,6 +546,12 @@ function sermone_post_in_series_html( $post_id ) {
   if( empty( $term_series ) || count( $term_series ) == 0 ) return;
 
   $first_series = $term_series[ 0 ];
-  $posts = sermone_get_all_post_by_series( $first_series->slug );
-  var_dump( $posts );
+  $_posts = sermone_get_all_post_by_series( $first_series->slug );
+
+  if( count( $_posts ) <= 0 ) return;
+
+  set_query_var( 'series', $first_series );
+  set_query_var( 'current_post_id', $post_id );
+  set_query_var( '_posts', $_posts );
+  load_template( sermone_template_path( 'post-in-series.php' ), false );
 }

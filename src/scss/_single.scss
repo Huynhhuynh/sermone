@@ -335,7 +335,8 @@
   }
 }
 
-.sermone-single-post-nav-link {
+.sermone-single-post-nav-link,
+.sermone-post-in-series {
 
   ul {
     margin: 0;
@@ -355,7 +356,6 @@
     text-decoration: none;
     padding: 10px 0;
     display: inline-flex;
-    flex-wrap: wrap;
     align-items: center;
 
     .__icon {
@@ -377,6 +377,29 @@
         transform: translate(5px, -5px);
         -webkit-transform: translate(5px, -5px);
       }
+    }
+  }
+}
+
+.sermone-post-in-series {
+  display: block;
+  width: 100%;
+  margin-bottom: 45px;
+
+  .post-in-series-title {
+
+    i {
+      border-bottom: solid 1px;
+    }
+  }
+}
+
+.sermone-post-in-series-list {
+
+  li.__current-item {
+
+    a {
+      text-decoration: line-through;
     }
   }
 }
