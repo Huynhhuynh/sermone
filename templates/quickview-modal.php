@@ -9,6 +9,6 @@
 ?>
 <div id="sermone-modal" class="sermone-modal-container">
   <div class="sermone-modal-content">
-    
+    <!-- Content ajax load -->
   </div>
 </div> <!-- #sermone-modal -->

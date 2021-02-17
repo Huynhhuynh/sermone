@@ -108,6 +108,9 @@ add_action( 'sermone_archive_top', 'sermone_archive_heading_template', 16 );
  * Sermone filter bar 
  */
 function sermone_filter_bar() {
+  $filter_enable = apply_filters( 'sermone_hook_archive_filter_enable', get_field( 'sermone_archive_filtering', 'option' ) );
+
+  if( true != $filter_enable ) return;
   sermone_filter_bar_html();
 }
 
@@ -214,3 +217,39 @@ function sermone_query_args_by_tax_books( $args = [] ) {
 }
 
 add_filter( 'sermone_hook_query_args', 'sermone_query_args_by_tax_books', 26 );
+
+/**
+ * Archive pagination
+ */
+function sermone_archive_pagination( $query ) {
+  sermone_pagination_html( $query );
+}
+
+add_action( 'sermone_archive_post_list_after', 'sermone_archive_pagination' );
+
+/**
+ * Single post nav link
+ */
+function sermone_single_post_nav_html() {
+  $icon = sprintf( '<span class="__icon">%s</span>', sermone_svg( 'diagonal_arrow_up_right' ) );
+  ?>
+  <div class="sermone-single-post-nav-link">
+    <ul>
+      <li><? previous_post_link( '%link', 'Previous: %title ' . $icon ) ?></li>
+      <li><? next_post_link( '%link', __( 'Next: %title ' . $icon ) ) ?></li>
+    </ul>
+  </div>
+  <?php 
+}
+
+add_action( 'sermone_single_after_content', 'sermone_single_post_nav_html', 20 );
+
+/**
+ * Post in series 
+ */
+function sermone_post_in_series() {
+  global $post;
+  sermone_post_in_series_html( $post->ID );
+}
+
+add_action( 'sermone_single_after_content', 'sermone_post_in_series', 22 );

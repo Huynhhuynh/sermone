@@ -1,0 +1,26 @@
+.sermone-pagination-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 45px;
+
+  .page-numbers {
+    margin: 0 5px;
+    padding: 10px;
+    display: inline-block;
+    text-decoration: none;
+    color: #999;
+    transition: .3s ease;
+    -webkit-transition: .3s ease;
+
+    &:hover {
+      color: black;
+    }
+
+    &.current {
+      border-bottom: solid 1px;
+      color: black;
+    }
+  }
+}

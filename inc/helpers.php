@@ -489,3 +489,63 @@ function sermone_get_posts() {
 
   return new WP_Query( $_args );
 }
+
+/**
+ * Pagination 
+ * 
+ * @param WP_Query $query
+ * @return Html
+ */
+function sermone_pagination_html( $query ) {
+  $big = 999999999;
+  $args = [
+    'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+    'format' => '?paged=%#%',
+    'current' => max( 1, get_query_var( 'paged' ) ),
+    'total' => $query->max_num_pages,
+    'prev_text' => __( 'Previous', 'sermone' ),
+    'next_text' => __( 'Next', 'sermone' ),
+  ];
+
+  ?>
+  <div class="sermone-pagination-container">
+    <?= paginate_links( apply_filters( 'sermone_hook_paginate_args', $args, $query ) ) ?>
+  </div> <!-- .sermone-pagination-container -->
+  <?php 
+}
+
+/**
+ * Get all sermone by series 
+ * 
+ * @param String $series_name
+ * @return Array
+ */
+function sermone_get_all_post_by_series( $series_name = '' ) {
+  return get_posts( [
+    'post_type' => 'sermone',
+    'numberposts' => -1,
+    'post_status' => 'publish',
+    'tax_query' => [
+      [
+        'taxonomy' => 'sermone_series',
+        'field' => 'slug',
+        'terms' => $series_name
+      ]
+    ]
+  ] );
+}
+
+/**
+ * Sermone in series 
+ * 
+ * @param Int $post_id
+ * @return Html
+ */
+function sermone_post_in_series_html( $post_id ) {
+  $term_series = wp_get_post_terms( $post_id, 'sermone_series' );
+  if( empty( $term_series ) || count( $term_series ) == 0 ) return;
+
+  $first_series = $term_series[ 0 ];
+  $posts = sermone_get_all_post_by_series( $first_series->slug );
+  var_dump( $posts );
+}

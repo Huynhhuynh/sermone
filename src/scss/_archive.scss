@@ -1,3 +1,7 @@
+.sermone-archive-container {
+  overflow: hidden;
+}
+
 .sermone-archive-posts {
 
 }
@@ -86,6 +90,94 @@
 
               svg {
                 width: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.sermone-archive-style-grid {
+  display: flex;
+  flex-wrap: wrap; 
+  margin: 0 -20px;
+
+  .sermone-item-preview {
+    padding: 0 20px;
+    margin-bottom: 60px;
+    box-sizing: border-box;
+    width: calc(100% / 2);
+
+    @media(max-width: 545px) {
+      width: 100%;
+    }
+
+    .sermone-post-inner {
+      padding: 20px 0 0 0;
+      border-top: solid 1px;
+
+      .sermone-thumb {
+        margin-bottom: 25px;
+        float: left;
+        margin-right: 25px;
+        margin-top: 5px;
+
+        @media(max-width: 768px) {
+          float: none;
+        }
+      }
+
+      .sermone-entry {
+
+        .sermone-info {
+
+          .sermone-title {
+            margin-top: 0;
+          }
+
+          .in-tax,
+          .more-info {
+            font-size: 14px;
+            margin-bottom: 10px;
+          }
+
+        }
+
+        .sermone-actions {
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          
+          a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: solid 1px black;
+            color: black;
+            padding: 10px 0;
+            margin-right: 20px;
+            text-decoration: none;
+
+            .__icon {
+              display: inline-bock;
+              width: 18px;
+              min-width: 18px;
+              margin-left: 6px;
+              transition: .3s ease;
+              -webkit-transition: .3s ease;
+
+              svg {
+                width: 100%;
+              }
+            }
+
+            &:hover {
+
+              .__icon {
+                transform: translate(5px, -5px);
+                -webkit-transform: translate(5px, -5px);
               }
             }
           }

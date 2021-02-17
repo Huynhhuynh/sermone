@@ -29,4 +29,28 @@
       margin-top: 16px;
     }
   }
+
+  @media(max-width: 768px) {
+
+    .sermone-field-container,
+    .form-action {
+      width: 50%;
+    }
+  }
+
+  @media(max-width: 425px) {
+
+    .__keywords-container,
+    .form-action {
+      width: 100%;
+    }
+  }
+
+  @media(max-width: 375px) {
+    
+    .sermone-field-container,
+    .form-action {
+      width: 100%;
+    }
+  }
 }

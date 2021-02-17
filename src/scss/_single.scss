@@ -322,5 +322,61 @@
     width: 18px;
     margin-right: 8px;
     fill: black;
+    transition: .3s ease;
+    -webkit-transition: .3s ease;
+  }
+
+  &:hover {
+    
+    span.__icon {
+      transform: translateX(-5px);
+      -webkit-transform: translateX(-5px);
+    }
+  }
+}
+
+.sermone-single-post-nav-link {
+
+  ul {
+    margin: 0;
+    padding: 0;
+
+    li {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      margin-bottom: 10px;
+    }
+  }
+  
+  a {
+    border-bottom: solid 1px;
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px 0;
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    .__icon {
+      width: 18px;
+      min-width: 18px;
+      display: inline-block;
+      margin-left: 10px;
+      transition: .3s ease;
+      -webkit-transition: .3s ease;
+
+      svg {
+        width: 100%;
+      }
+    }
+
+    &:hover {
+
+      .__icon {
+        transform: translate(5px, -5px);
+        -webkit-transform: translate(5px, -5px);
+      }
+    }
   }
 }

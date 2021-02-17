@@ -19,11 +19,11 @@ get_header();
      * @see sermone_archive_heading - 16
      * @see sermone_filter_bar - 20
      */
-    do_action( 'sermone_archive_top' );
+    do_action( 'sermone_archive_top', $query );
     
     if ( $query->have_posts() ) : 
 
-      do_action( 'sermone_archive_post_list_before' );
+      do_action( 'sermone_archive_post_list_before', $query );
 
       $sermone_posts_classes = sermone_archive_posts_classes();
       echo '<div id="sermone-archive-post-list" class="'. $sermone_posts_classes .'">';
@@ -35,8 +35,9 @@ get_header();
       /**
        * sermone_archive_post_list_after hook.
        * 
+       * @see sermone_archive_pagination - 20
        */
-      do_action( 'sermone_archive_post_list_after' );
+      do_action( 'sermone_archive_post_list_after', $query );
 
     else :
 
