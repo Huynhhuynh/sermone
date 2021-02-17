@@ -87,9 +87,19 @@
               width: 18px;
               min-width: 18px;
               margin-left: 6px;
+              transition: .3s ease;
+              -webkit-transition: .3s ease;
 
               svg {
                 width: 100%;
+              }
+            }
+
+            &:hover {
+
+              .__icon {
+                transform: translate(5px, -5px);
+                -webkit-transform: translate(5px, -5px);
               }
             }
           }
