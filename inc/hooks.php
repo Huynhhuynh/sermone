@@ -73,7 +73,7 @@ function sermone_single_media_nav() {
   sermone_single_media_nav_html( $post->ID );
 }
 
-add_action( 'sermone_single_before_content', 'sermone_single_media_nav' );
+add_action( 'sermone_single_before_content', 'sermone_single_media_nav', 20 );
 
 /**
  * Sermone post item loop
@@ -83,7 +83,7 @@ function sermone_archive_post_item_loop() {
   load_template( sermone_template_path( 'preview.php' ), false );
 }
 
-add_action( 'sermone_archive_post_item_loop', 'sermone_archive_post_item_loop' );
+add_action( 'sermone_archive_post_item_loop', 'sermone_archive_post_item_loop', 20 );
 
 /**
  * Sermone modal template
@@ -255,9 +255,11 @@ function sermone_post_in_series() {
 add_action( 'sermone_single_after_content', 'sermone_post_in_series', 22 );
 
 /**
- * 
+ * Check sermone custom tax redirect page
  */
 function sermone_check_tax_redirect_page() {
+  if( is_admin() ) return;
+
   $root_archive_link = get_post_type_archive_link( 'sermone' );
 
   if( is_tax( 'sermone_preacher' ) ) {

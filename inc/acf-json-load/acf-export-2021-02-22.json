@@ -1,0 +1,699 @@
+[
+    {
+        "key": "group_601102d1cefd0",
+        "title": "Preacher Detail",
+        "fields": [
+            {
+                "key": "field_60110309f846d",
+                "label": "Avatar",
+                "name": "preacher_avatar",
+                "type": "image",
+                "instructions": "Select avatar for preacher",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "array",
+                "preview_size": "medium",
+                "library": "all",
+                "min_width": "",
+                "min_height": "",
+                "min_size": "",
+                "max_width": "",
+                "max_height": "",
+                "max_size": "",
+                "mime_types": ""
+            },
+            {
+                "key": "field_60110353c6b3d",
+                "label": "Contact",
+                "name": "preacher_contact",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_6011039ac6b3e",
+                        "label": "Facebook",
+                        "name": "facebook",
+                        "type": "url",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_601103aec6b3f",
+                        "label": "Twitter",
+                        "name": "twitter",
+                        "type": "url",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_601103b8c6b40",
+                        "label": "Email",
+                        "name": "email",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_601103c1c6b41",
+                        "label": "Phone",
+                        "name": "phone",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    }
+                ]
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "taxonomy",
+                    "operator": "==",
+                    "value": "sermone_preacher"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "left",
+        "instruction_placement": "field",
+        "hide_on_screen": "",
+        "active": true,
+        "description": ""
+    },
+    {
+        "key": "group_6010e1df82595",
+        "title": "Sermone Detail",
+        "fields": [
+            {
+                "key": "field_6010e24dfa065",
+                "label": "Date Preached",
+                "name": "sermon_date_preached",
+                "type": "date_picker",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "display_format": "d\/m\/Y",
+                "return_format": "F j, Y",
+                "first_day": 1
+            },
+            {
+                "key": "field_6010e272fa066",
+                "label": "Main Bible Passage",
+                "name": "sermone_main_bible_passage",
+                "type": "text",
+                "instructions": "Enter the Bible passage with the full book names, e.g. John 3:16-18\r\nOr multiple books like John 3:16-18, Luke 2:1-3",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_601238f04e38c",
+                "label": "Audio",
+                "name": "sermone_audio",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_601239034e38d",
+                        "label": "Audio Source",
+                        "name": "audio_source",
+                        "type": "select",
+                        "instructions": "Choose type audio (default: WP Media)",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "choices": {
+                            "embed_code": "Embed Code",
+                            "audio_link": "Audio Link (Soundcloud)",
+                            "wp_media": "WP Media"
+                        },
+                        "default_value": "wp_media",
+                        "allow_null": 0,
+                        "multiple": 0,
+                        "ui": 0,
+                        "return_format": "value",
+                        "ajax": 0,
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_601239b44e38e",
+                        "label": "Embed Code",
+                        "name": "embed_code",
+                        "type": "textarea",
+                        "instructions": "Enter embed code here!",
+                        "required": 0,
+                        "conditional_logic": [
+                            [
+                                {
+                                    "field": "field_601239034e38d",
+                                    "operator": "==",
+                                    "value": "embed_code"
+                                }
+                            ]
+                        ],
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "maxlength": "",
+                        "rows": "",
+                        "new_lines": ""
+                    },
+                    {
+                        "key": "field_601239eb4e38f",
+                        "label": "Audio Link (Soundcloud, etc.)",
+                        "name": "audio_link",
+                        "type": "oembed",
+                        "instructions": "Enter audio link (Exam: https:\/\/mydomain.com\/audio.mp3)",
+                        "required": 0,
+                        "conditional_logic": [
+                            [
+                                {
+                                    "field": "field_601239034e38d",
+                                    "operator": "==",
+                                    "value": "audio_link"
+                                }
+                            ]
+                        ],
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "width": "",
+                        "height": ""
+                    },
+                    {
+                        "key": "field_60123a364e390",
+                        "label": "Select Audio MP3",
+                        "name": "wp_media",
+                        "type": "file",
+                        "instructions": "Select audio MP3",
+                        "required": 0,
+                        "conditional_logic": [
+                            [
+                                {
+                                    "field": "field_601239034e38d",
+                                    "operator": "==",
+                                    "value": "wp_media"
+                                }
+                            ]
+                        ],
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "return_format": "array",
+                        "library": "all",
+                        "min_size": "",
+                        "max_size": "",
+                        "mime_types": ""
+                    },
+                    {
+                        "key": "field_60123acfd0bd3",
+                        "label": "MP3 Duration",
+                        "name": "mp3_duration",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "16:20 mins",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_6010e31cfa069",
+                "label": "Video",
+                "name": "sermone_video",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_6010e32cfa06a",
+                        "label": "Video Source",
+                        "name": "video_source",
+                        "type": "select",
+                        "instructions": "Select video type",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "choices": {
+                            "embed_code": "Embed Code",
+                            "video_link": "Video Link (Youtube, Vimeo, etc.)",
+                            "wp_media": "WordPress Media"
+                        },
+                        "default_value": "wp_media",
+                        "allow_null": 0,
+                        "multiple": 0,
+                        "ui": 0,
+                        "return_format": "value",
+                        "ajax": 0,
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_6010e3d9fa06b",
+                        "label": "Embed Code",
+                        "name": "embed_code",
+                        "type": "textarea",
+                        "instructions": "Paste your embed code for Vimeo, Youtube, Facebook, or direct video file here",
+                        "required": 0,
+                        "conditional_logic": [
+                            [
+                                {
+                                    "field": "field_6010e32cfa06a",
+                                    "operator": "==",
+                                    "value": "embed_code"
+                                }
+                            ]
+                        ],
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "maxlength": "",
+                        "rows": "",
+                        "new_lines": ""
+                    },
+                    {
+                        "key": "field_6010e409fa06c",
+                        "label": "Video Link (Youtube, Vimeo)",
+                        "name": "video_link",
+                        "type": "oembed",
+                        "instructions": "Paste your link for Vimeo, Youtube...",
+                        "required": 0,
+                        "conditional_logic": [
+                            [
+                                {
+                                    "field": "field_6010e32cfa06a",
+                                    "operator": "==",
+                                    "value": "video_link"
+                                }
+                            ]
+                        ],
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "width": "",
+                        "height": ""
+                    },
+                    {
+                        "key": "field_6010e421fa06d",
+                        "label": "Select Video",
+                        "name": "wp_media",
+                        "type": "file",
+                        "instructions": "Upload or select video from WP Media",
+                        "required": 0,
+                        "conditional_logic": [
+                            [
+                                {
+                                    "field": "field_6010e32cfa06a",
+                                    "operator": "==",
+                                    "value": "wp_media"
+                                }
+                            ]
+                        ],
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "return_format": "array",
+                        "library": "all",
+                        "min_size": "",
+                        "max_size": "",
+                        "mime_types": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_601104a6a185c",
+                "label": "Sermone Notes",
+                "name": "sermone_notes",
+                "type": "file",
+                "instructions": "Upload a pdf file",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "url",
+                "library": "all",
+                "min_size": "",
+                "max_size": "",
+                "mime_types": ""
+            },
+            {
+                "key": "field_6011052fa185d",
+                "label": "Bulletin",
+                "name": "sermone_bulletin",
+                "type": "file",
+                "instructions": "Upload a pdf file",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "url",
+                "library": "all",
+                "min_size": "",
+                "max_size": "",
+                "mime_types": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "sermone"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "left",
+        "instruction_placement": "field",
+        "hide_on_screen": "",
+        "active": true,
+        "description": ""
+    },
+    {
+        "key": "group_6010c7455c37c",
+        "title": "Sermone Settings",
+        "fields": [
+            {
+                "key": "field_6010cb060ee78",
+                "label": "General",
+                "name": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_60112bf49ef80",
+                "label": "Container Width",
+                "name": "sermone_container_width",
+                "type": "text",
+                "instructions": "Enter container width for .sermone-container (default: 1120px)",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "1120px",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_6010cb140ee79",
+                "label": "Audio & Video Player",
+                "name": "sermone_audio_video_player",
+                "type": "select",
+                "instructions": "Select which player to use for playing Sermones.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "plyr": "Plyr",
+                    "html5": "Browser Html 5"
+                },
+                "default_value": "plyr",
+                "allow_null": 0,
+                "multiple": 0,
+                "ui": 0,
+                "return_format": "value",
+                "ajax": 0,
+                "placeholder": ""
+            },
+            {
+                "key": "field_6010cd503d6d3",
+                "label": "Archive Page Slug",
+                "name": "sermone_archive_page_slug",
+                "type": "text",
+                "instructions": "This controls the page where sermones will be located, which includes single sermones.",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "sermone",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_6010d2bf2d391",
+                "label": "Display",
+                "name": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_6010d2d571a2e",
+                "label": "Image Default",
+                "name": "sermone_image_default",
+                "type": "image",
+                "instructions": "Sets the default sermone image that would show up if there is no sermone or series (if applicable) image is set.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "array",
+                "preview_size": "medium",
+                "library": "all",
+                "min_width": "",
+                "min_height": "",
+                "min_size": "",
+                "max_width": "",
+                "max_height": "",
+                "max_size": "",
+                "mime_types": ""
+            },
+            {
+                "key": "field_6010d724f472c",
+                "label": "Archive Filtering",
+                "name": "sermone_archive_filtering",
+                "type": "true_false",
+                "instructions": "Enable \/ Disable filter on archive page",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "",
+                "default_value": 1,
+                "ui": 1,
+                "ui_on_text": "On",
+                "ui_off_text": "Off"
+            },
+            {
+                "key": "field_6010d5815afec",
+                "label": "Archive Layout",
+                "name": "sermone_archive_layout",
+                "type": "select",
+                "instructions": "Choose a sermone archive layout",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "list": "List",
+                    "grid": "Grid (2 columns)"
+                },
+                "default_value": "list",
+                "allow_null": 0,
+                "multiple": 0,
+                "ui": 0,
+                "return_format": "value",
+                "ajax": 0,
+                "placeholder": ""
+            },
+            {
+                "key": "field_6010d671ca2b6",
+                "label": "Single Sharing",
+                "name": "single_sharing",
+                "type": "true_false",
+                "instructions": "Enable \/ Disable sharing on sermone single page",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "",
+                "default_value": 1,
+                "ui": 1,
+                "ui_on_text": "On",
+                "ui_off_text": "Off"
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "options_page",
+                    "operator": "==",
+                    "value": "sermone-settings"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "left",
+        "instruction_placement": "field",
+        "hide_on_screen": "",
+        "active": true,
+        "description": ""
+    }
+]

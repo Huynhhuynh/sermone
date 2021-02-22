@@ -18,7 +18,7 @@ get_header();
 
     <div class="sermone-header">
       <div class="sermone-thumb">
-        <? sermone_get_post_thumb_html( get_the_ID() ) ?>
+        <? sermone_get_post_thumb_html( get_the_ID(), apply_filters( 'sermone_hook_single_image_preview_size', 'large' ) ) ?>
       </div>
       <div class="sermone-detail">
         <div class="in-scripture">
@@ -53,6 +53,7 @@ get_header();
       /**
        * sermone_single_before_content hook
        *
+       * @see sermone_single_media_nav - 20
        */
       do_action( 'sermone_single_before_content' ) 
       ?>

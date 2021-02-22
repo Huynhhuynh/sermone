@@ -28,6 +28,11 @@ get_header();
       $sermone_posts_classes = sermone_archive_posts_classes();
       echo '<div id="sermone-archive-post-list" class="'. $sermone_posts_classes .'">';
       while ( $query->have_posts() ) : $query->the_post(); 
+        /**
+         * sermone_archive_post_item_loop hook.
+         *
+         * @see sermone_archive_post_item_loop - 20
+         */
         do_action( 'sermone_archive_post_item_loop', get_the_ID() );
       endwhile;
       echo '</div>';

@@ -26,6 +26,12 @@
 
 {
   /**
+   * ACF loaded 
+   * 
+   */
+  require( SERMONE_DIR . 'acf-loaded.php' );
+  
+  /**
    * Includes
    * 
    */
