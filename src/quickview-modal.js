@@ -7,6 +7,52 @@
 
   let Modal = null
   let Cache = {}
+  let UrlLoadedInit = w.location.href
+  let TitleLoadInit = $( 'title' ).text()
+
+  const ModalOpenHandle = ( ID ) => {
+    Modal.trigger( '__open:sermone' ) // Open modal 
+    Modal.trigger( '__loading:sermone', [ true ] ) // Enable loading effect
+
+    Modal.trigger( '__loadContent:sermone', [ ID, ( data ) => {
+      Modal.trigger( '__loading:sermone', [ false ] ) // Disable loading effect 
+      Modal.trigger( '__pushContent:sermone', [ data.content ] )
+
+      /**
+       * Update browser url
+       */
+      UpdateBrowserUrl( { 
+        ID: data.meta_data.post_id, 
+        Title: data.meta_data.post_title, 
+        Url: data.meta_data.post_url 
+      } )
+
+    } ] )
+  }
+
+  const UpdateBrowserUrl = ( { ID, Title, Url } ) => {
+    window.history.pushState( { SermoneID: ID }, Title, Url );
+  }
+
+  w.onpopstate = ( event ) => {
+    let { SermoneID } = event.state
+    if( SermoneID == 0 || SermoneID == undefined ) {
+      Modal.trigger( '__close:sermone' )
+
+      /**
+       * Update browser url
+       */
+      UpdateBrowserUrl( { 
+        ID: 0,
+        Title: TitleLoadInit, 
+        Url: UrlLoadedInit
+      } )
+      
+      return;
+    }
+
+    ModalOpenHandle( SermoneID )
+  }
 
   /**
    * Quick view modal func 
@@ -62,18 +108,22 @@
       e.preventDefault();
       let ID = $( this ).data( 'sermone-quickview' )
 
-      Modal.trigger( '__open:sermone' ) // Open modal 
-      Modal.trigger( '__loading:sermone', [ true ] ) // Enable loading effect
-
-      Modal.trigger( '__loadContent:sermone', [ ID, ( data ) => {
-        Modal.trigger( '__loading:sermone', [ false ] ) // Disable loading effect 
-        Modal.trigger( '__pushContent:sermone', [ data.content ] )
-      } ] )
+      // Modal open handle
+      ModalOpenHandle( ID )
     } )
 
     $( 'body' ).on( 'click', function( e ) {
       if( $( e.target ).hasClass( 'sermone-modal-container' ) ) {
         Modal.trigger( '__close:sermone' )
+
+        /**
+         * Update browser url
+         */
+        UpdateBrowserUrl( { 
+          ID: 0,
+          Title: TitleLoadInit, 
+          Url: UrlLoadedInit
+        } )
       }
     } )
   }

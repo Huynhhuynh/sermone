@@ -5,12 +5,19 @@
 
 function sermone_ajax_quickview_template() { 
   ob_start();
-  sermone_quickview_html( (int) $_POST[ 'post_id' ] );
+  $post_id = (int) $_POST[ 'post_id' ];
+
+  sermone_quickview_html( $post_id );
   $content = ob_get_clean();
   
   wp_send_json( [
     'success' => true,
     'content' => $content,
+    'meta_data' => [
+      'post_id' => $post_id,
+      'post_url' => get_the_permalink( $post_id ),
+      'post_title' => get_the_title( $post_id )
+    ]
   ] );
 }
 
