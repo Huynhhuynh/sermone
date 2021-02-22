@@ -35,8 +35,9 @@
   }
 
   w.onpopstate = ( event ) => {
-    let { SermoneID } = event.state
-    if( SermoneID == 0 || SermoneID == undefined ) {
+    let SermoneID = event.state ? event.state.SermoneID : 0
+
+    if( ! SermoneID || SermoneID == 0 || SermoneID == undefined ) {
       Modal.trigger( '__close:sermone' )
 
       /**
@@ -47,7 +48,7 @@
         Title: TitleLoadInit, 
         Url: UrlLoadedInit
       } )
-      
+
       return;
     }
 

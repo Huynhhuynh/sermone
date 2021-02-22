@@ -555,3 +555,10 @@ function sermone_post_in_series_html( $post_id ) {
   set_query_var( '_posts', $_posts );
   load_template( sermone_template_path( 'post-in-series.php' ), false );
 }
+
+/**
+ * Enable favorite
+ */
+function sermone_favorite_enable() {
+  return apply_filters( 'sermone_hook_enable_favorite', true );
+}

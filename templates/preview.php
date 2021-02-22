@@ -29,6 +29,7 @@
         <div class="sermone-excerpt"><? the_excerpt() ?></div>
       </div>
       <div class="sermone-actions">
+        <? do_action( 'sermone_hook_loop_item_action_top' ) ?>
         <a href="<? the_permalink() ?>" class="sermone-quickview" data-sermone-quickview="<? the_ID() ?>">
           <?= __( 'Quick View', 'sermone' ) ?>
           <span class="__icon"><?= sermone_svg( 'diagonal_arrow_up_right' ) ?></span>
@@ -37,10 +38,14 @@
           <?= __( 'Read More', 'sermone' ) ?>
           <span class="__icon"><?= sermone_svg( 'diagonal_arrow_up_right' ) ?></span>
         </a>
-        <a href="<? the_permalink() ?>" class="sermone-bookmark">
-          <?= __( 'Bookmark', 'sermone' ) ?>
-          <span class="__icon"><?= sermone_svg( 'bookmark' ) ?></span>
-        </a>
+        <? 
+        /**
+         * sermone_hook_loop_item_action_bottom hook.
+         * 
+         * @see sermone_archive_loop_item_action_button_favorite - 20
+         */
+        do_action( 'sermone_hook_loop_item_action_bottom' ) 
+        ?>
       </div>
     </div>
   </div>

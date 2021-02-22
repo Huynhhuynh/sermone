@@ -48,23 +48,6 @@ function sermone_archive_override_template( $archive_template ) {
 add_filter( 'archive_template', 'sermone_archive_override_template' ) ;
 
 /**
- * Add bookmark
- */
-function sermone_social_item_bookmark() {
-  ob_start();
-  ?>
-  <li class="sermone--bookmark-item">
-    <a href="#" title="<?= __( 'Bookmark', 'sermone' ) ?>">
-      <span class="__icon"><?= sermone_svg( 'bookmark' ) ?></span>
-    </a>
-  </li>
-  <?php 
-  echo ob_get_clean();
-}
-
-add_action( 'sermone_social_item_end', 'sermone_social_item_bookmark' );
-
-/**
  * Media nav
  * 
  */
@@ -292,3 +275,38 @@ function sermone_check_tax_redirect_page() {
 }
 
 add_action( 'pre_get_posts', 'sermone_check_tax_redirect_page' );
+
+/**
+ * Add favorite
+ */
+function sermone_social_item_favorite() {
+  if( true != sermone_favorite_enable() ) return;
+
+  ob_start();
+  ?>
+  <li class="sermone--bookmark-item">
+    <a href="#" title="<?= __( 'Favorite', 'sermone' ) ?>" data-sermone-fav="<? the_ID() ?>">
+      <span class="__icon"><?= sermone_svg( 'star' ) ?></span>
+    </a>
+  </li>
+  <?php 
+  echo ob_get_clean();
+}
+
+add_action( 'sermone_social_item_end', 'sermone_social_item_favorite' );
+
+/**
+ * Button favorite archive loop item
+ */
+function sermone_archive_loop_item_action_button_favorite() {
+  if( true != sermone_favorite_enable() ) return;
+
+  ?>
+  <a href="<? the_permalink() ?>" class="sermone-bookmark" data-sermone-fav="<? the_ID() ?>">
+    <?= __( 'Favorite', 'sermone' ) ?>
+    <span class="__icon"><?= sermone_svg( 'star' ) ?></span>
+  </a>
+  <?php 
+}
+
+add_action( 'sermone_hook_loop_item_action_bottom', 'sermone_archive_loop_item_action_button_favorite' );
