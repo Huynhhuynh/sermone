@@ -4,21 +4,6 @@
  */
 
 /**
- * ACF register page options
- *
- */
-if( function_exists( 'acf_add_options_page' ) ) {
-  acf_add_options_page( [
-    'page_title' => __( 'Sermone Settings', 'sermone' ),
-		'menu_title' => __( 'Settings', 'sermone' ),
-		'menu_slug' => 'sermone-settings',
-		'capability' => 'edit_posts',
-    'redirect' => false,
-    'parent_slug' => 'edit.php?post_type=sermone',
-  ] );
-}
-
-/**
  * Single override template
  * 
  * @param String $single_template

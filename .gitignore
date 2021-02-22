@@ -1,3 +1,5 @@
 node_modules
 .DS_Store
 *.lock
+inc/acf-json/*
+!inc/acf-json/.gitkeep

@@ -1,0 +1,206 @@
+{
+    "key": "group_6010c7455c37c",
+    "title": "Sermone Settings",
+    "fields": [
+        {
+            "key": "field_6010cb060ee78",
+            "label": "General",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_60112bf49ef80",
+            "label": "Container Width",
+            "name": "sermone_container_width",
+            "type": "text",
+            "instructions": "Enter container width for .sermone-container (default: 1120px)",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "1120px",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_6010cb140ee79",
+            "label": "Audio & Video Player",
+            "name": "sermone_audio_video_player",
+            "type": "select",
+            "instructions": "Select which player to use for playing Sermones.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "plyr": "Plyr",
+                "html5": "Browser Html 5"
+            },
+            "default_value": "plyr",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_6010cd503d6d3",
+            "label": "Archive Page Slug",
+            "name": "sermone_archive_page_slug",
+            "type": "text",
+            "instructions": "This controls the page where sermones will be located, which includes single sermones.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "sermone",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_6010d2bf2d391",
+            "label": "Display",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_6010d2d571a2e",
+            "label": "Image Default",
+            "name": "sermone_image_default",
+            "type": "image",
+            "instructions": "Sets the default sermone image that would show up if there is no sermone or series (if applicable) image is set.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_6010d724f472c",
+            "label": "Archive Filtering",
+            "name": "sermone_archive_filtering",
+            "type": "true_false",
+            "instructions": "Enable \/ Disable filter on archive page",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "On",
+            "ui_off_text": "Off"
+        },
+        {
+            "key": "field_6010d5815afec",
+            "label": "Archive Layout",
+            "name": "sermone_archive_layout",
+            "type": "select",
+            "instructions": "Choose a sermone archive layout",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "list": "List",
+                "grid": "Grid (2 columns)"
+            },
+            "default_value": "list",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_6010d671ca2b6",
+            "label": "Single Sharing",
+            "name": "single_sharing",
+            "type": "true_false",
+            "instructions": "Enable \/ Disable sharing on sermone single page",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "On",
+            "ui_off_text": "Off"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "sermone-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "left",
+    "instruction_placement": "field",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "modified": 1614013962
+}
