@@ -22,7 +22,7 @@
   /**
    * sermone_social_item_end hook 
    * 
-   * @see sermone_social_item_bookmark - 20
+   * @see sermone_social_item_favorite - 20
    */ 
   do_action( 'sermone_social_item_end' ) 
   ?>
