@@ -164,6 +164,7 @@ function sermone_get_scripture_by_sirmone_html( $post_id ) {
  */
 function sermone_share_post_html( $post_id ) {
   $share = get_field( 'single_sharing', 'option' );
+  $share = $share === null ? true : $share;
   if( $share != true ) return;
 
   $replace_data = [
