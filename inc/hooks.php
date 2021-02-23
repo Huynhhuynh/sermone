@@ -76,7 +76,8 @@ add_action( 'sermone_archive_top', 'sermone_archive_heading_template', 16 );
  * Sermone filter bar 
  */
 function sermone_filter_bar() {
-  $filter_enable = apply_filters( 'sermone_hook_archive_filter_enable', get_field( 'sermone_archive_filtering', 'option' ) );
+  $sermone_archive_filtering = get_field( 'sermone_archive_filtering', 'option' ); 
+  $filter_enable = apply_filters( 'sermone_hook_archive_filter_enable', $sermone_archive_filtering );
 
   if( true != $filter_enable ) return;
   sermone_filter_bar_html();
