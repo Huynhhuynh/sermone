@@ -41,10 +41,11 @@
      * Create JSON save point
      */
     function sermone_acf_json_save_point( $path ) {
-      $path = SERMONE_DIR . 'inc/acf-json';
+      $path = SERMONE_DIR . 'inc/acf-json/';
       return $path;
     }
     add_filter( 'acf/settings/save_json', 'sermone_acf_json_save_point' );
+
 
     /**
      * Create JSON load point
@@ -72,11 +73,27 @@
    */
   function sermone_acf_json_load_point( $paths = [] ) {
     // remove original path (optional)
-    // unset( $paths[ 0 ] );
+    unset( $paths[ 0 ] );
     
     // append path
-    $paths[] = SERMONE_DIR . 'inc/acf-json-load';
-
+    $paths[] = SERMONE_DIR . 'inc/acf-json-load/';
+    
     return $paths;
   }
+
+  /**
+   * ACF register page options
+   *
+   */
+  if( function_exists( 'acf_add_options_page' ) ) {
+    acf_add_options_page( [
+      'page_title' => __( 'Sermone Settings', 'sermone' ),
+      'menu_title' => __( 'Settings', 'sermone' ),
+      'menu_slug' => 'sermone-settings',
+      'capability' => 'edit_posts',
+      'redirect' => false,
+      'parent_slug' => 'edit.php?post_type=sermone',
+    ] );
+  }
 }
+
