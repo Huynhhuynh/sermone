@@ -326,9 +326,10 @@ function sermone_media_nav_data( $post_id ) {
  */
 function sermone_archive_posts_classes() {
   $sermone_archive_layout = get_field( 'sermone_archive_layout', 'option' );
+  $sermone_archive_layout_class = empty( $sermone_archive_layout ) ? 'sermone-archive-style-list' : 'sermone-archive-style-' . $sermone_archive_layout;
   return apply_filters( 
     'sermone_archive_posts_classes', 
-    implode( ' ', [ 'sermone-archive-posts', 'sermone-archive-style-' . $sermone_archive_layout ? $sermone_archive_layout : 'list' ] ) 
+    implode( ' ', [ 'sermone-archive-posts', $sermone_archive_layout_class ] ) 
   );
 }
 
