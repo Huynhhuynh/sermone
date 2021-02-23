@@ -564,3 +564,11 @@ function sermone_post_in_series_html( $post_id ) {
 function sermone_favorite_enable() {
   return apply_filters( 'sermone_hook_enable_favorite', true );
 }
+
+/**
+ * Get media player
+ */
+function sermone_media_player() {
+  $player = get_field( 'sermone_audio_video_player', 'options' );
+  return $player ? $player : 'plyr';
+}

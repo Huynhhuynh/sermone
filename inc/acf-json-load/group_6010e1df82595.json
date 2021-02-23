@@ -151,7 +151,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "return_format": "array",
+                    "return_format": "url",
                     "library": "all",
                     "min_size": "",
                     "max_size": "",
@@ -272,7 +272,7 @@
                 },
                 {
                     "key": "field_6010e421fa06d",
-                    "label": "Select Video",
+                    "label": "Select Video MP4",
                     "name": "wp_media",
                     "type": "file",
                     "instructions": "Upload or select video from WP Media",
@@ -291,7 +291,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "return_format": "array",
+                    "return_format": "url",
                     "library": "all",
                     "min_size": "",
                     "max_size": "",
@@ -355,5 +355,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1614013941
+    "modified": 1614068969
 }

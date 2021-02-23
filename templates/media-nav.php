@@ -3,6 +3,7 @@
  * Sermine media nav (video, audio, note, etc.)
  * 
  */
+// echo '<pre>'; print_r( $nav_data ); echo '</pre>';
 ?>
 <ul class="sermone--media-nav-container">
   <? foreach( $nav_data as $index => $item ) : ?> 
@@ -24,8 +25,13 @@
 <div class="sermone--media-tab-container">
   <? foreach( $nav_data as $index => $item ) : if( $item[ 'type' ] != 'tab' ) continue; ?> 
     <div class="__tab-item __tab-<?= $item[ 'id' ] ?> <?= isset( $item[ 'active' ] ) ? '__active' : '' ?>" data-tab-key="<?= $item[ 'id' ] ?>">
-      <div class="sermone--media-content-type" data-media-source="<?= $item[ 'data' ][ 'source' ] ?>">
-        <?= $item[ 'data' ][ 'content' ] ?>
+      <div 
+        class="sermone--media-content-type" 
+        data-media-type="<?= $item[ 'id' ] ?>"
+        data-media-player="<?= sermone_media_player() ?>"
+        data-media-source="<?= $item[ 'data' ][ 'source' ] ?>" 
+        data-media-content='<?= $item[ 'data' ][ 'content' ] ?>'>
+        <!-- Content render by javascript -->
       </div>
     </div>
   <? endforeach; ?>

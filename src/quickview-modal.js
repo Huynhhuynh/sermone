@@ -2,6 +2,8 @@
  * Sermone quickview modal 
  */
 
+import { NavMediaContentRender } from './helpers'
+
 ! ( ( w, $ ) => {
   'use strict'
 
@@ -17,6 +19,10 @@
     Modal.trigger( '__loadContent:sermone', [ ID, ( data ) => {
       Modal.trigger( '__loading:sermone', [ false ] ) // Disable loading effect 
       Modal.trigger( '__pushContent:sermone', [ data.content ] )
+      
+      $( '.sermone--media-content-type:not(.__is-render)' ).each( function() {
+        NavMediaContentRender( $( this ) )
+      } )
 
       /**
        * Update browser url

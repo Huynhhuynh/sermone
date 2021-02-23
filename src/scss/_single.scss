@@ -271,11 +271,17 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      overflow: hidden;
-      border-radius: 3px;
+      // overflow: hidden;
+      // border-radius: 3px;
       position: relative;
       background: url( ../../images/coding.svg ) no-repeat center center, #eee;
       background-size: 100px;
+      transition: .3s ease;
+      -webkit-transition: .3s ease;
+
+      > * {
+        border-radius: 4px;
+      }
 
       iframe {
         position: absolute;
@@ -285,12 +291,27 @@
         height: 100% !important;
         max-height: none !important;
       }
+
+      video, audio, .plyr {
+        width: 100%;
+      }
+
+      .plyr {
+        border: solid 1px #eee;
+      }
     }
 
     &.__tab-sermone-video {
 
       .sermone--media-content-type {
         padding-bottom: 60%;
+
+        &.__is-render {
+
+          &[data-media-source=wp_media] {
+            padding-bottom: 0;
+          }
+        }
       }
     }
 
@@ -299,6 +320,15 @@
       .sermone--media-content-type {
         padding-bottom: 15%;
         min-height: 150px;
+
+        &.__is-render {
+
+          &[data-media-source=wp_media] {
+            padding-bottom: 0;
+            min-height: auto;
+            background: transparent;
+          }
+        }
       }
     }
 

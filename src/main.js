@@ -5,10 +5,12 @@
  */
 
 import './scss/main.scss' 
+import 'plyr/src/sass/plyr.scss'
 
 /**
  * Single
  */
+import { NavMediaContentRender } from './helpers'
 import './nav-tab'
 import './share'
 import './quickview-modal'
@@ -16,11 +18,17 @@ import './quickview-modal'
 ;( ( w, $ ) => {
   'use strict';
 
+  const NavMediaRender = () => {
+    $( '.sermone--media-content-type' ).each( function() {
+      NavMediaContentRender( $( this ) )
+    } )
+  }
+
   /**
    * Ready 
    */
   const Ready = () => {
-
+    
   }
 
   /**
@@ -31,6 +39,8 @@ import './quickview-modal'
   /**
    * Browser load completed
    */
-  $( w ).on( 'load', () => {} )
+  $( w ).on( 'load', () => {
+    NavMediaRender()
+  } )
 
 } )( window, jQuery )
