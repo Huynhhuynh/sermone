@@ -15,6 +15,18 @@ function sermone_svg( $name ) {
 }
 
 /**
+ * Tempalte path apply filter 
+ * 
+ * @param String $full_path 
+ * @param String $path 
+ * 
+ * @return String
+ */
+function sermone_template_path_apply_filter( $full_path = '', $path = '' ) {
+  return apply_filters( 'sermone_hook_template_path__' . $path, $full_path );
+}
+
+/**
  * Template path 
  * 
  * @param String $path 
@@ -29,17 +41,17 @@ function sermone_template_path( $path ) {
 
   # In child theme
   if( file_exists( $root_childtheme_template . $path ) ) {
-    return $root_theme_template . $path;
+    return sermone_template_path_apply_filter( $root_childtheme_template . $path, $path );
   }
 
   # In parent theme
   if( file_exists( $root_theme_template . $path ) ) {
-    return $root_theme_template . $path;
+    return sermone_template_path_apply_filter( $root_theme_template . $path, $path );
   }
 
   # In plugin
   if( file_exists( $root_template . $path ) ) {
-    return $root_template . $path;
+    return sermone_template_path_apply_filter( $root_template . $path, $path );
   }
 
   # Template not exits!
