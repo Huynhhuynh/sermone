@@ -82,6 +82,52 @@
             "maxlength": ""
         },
         {
+            "key": "field_6036061f981fa",
+            "label": "Add to Favorite",
+            "name": "sermone_add_to_favorite",
+            "type": "true_false",
+            "instructions": "Enable \/ Disable add to favorite feature (require user logged)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "Enable",
+            "ui_off_text": "Disable"
+        },
+        {
+            "key": "field_60360707c0be0",
+            "label": "User login URL",
+            "name": "sermone_user_login_url",
+            "type": "text",
+            "instructions": "Type user login redirect url.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6036061f981fa",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_6010d2bf2d391",
             "label": "Display",
             "name": "",
@@ -202,5 +248,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1614013962
+    "modified": 1614153564
 }

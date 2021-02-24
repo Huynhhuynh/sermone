@@ -3,6 +3,10 @@
  * Sermone ajax 
  */
 
+/**
+ * Get Quickview template 
+ * 
+ */
 function sermone_ajax_quickview_template() { 
   ob_start();
   $post_id = (int) $_POST[ 'post_id' ];
@@ -23,3 +27,14 @@ function sermone_ajax_quickview_template() {
 
 add_action( 'wp_ajax_sermone_ajax_quickview_template', 'sermone_ajax_quickview_template' );
 add_action( 'wp_ajax_nopriv_sermone_ajax_quickview_template', 'sermone_ajax_quickview_template' );
+
+/**
+ * Add to favorite
+ * 
+ */
+function sermone_ajax_add_to_favorite() {
+  wp_send_json( $_POST );
+}
+
+add_action( 'wp_ajax_sermone_ajax_add_to_favorite', 'sermone_ajax_add_to_favorite' );
+add_action( 'wp_ajax_nopriv_sermone_ajax_add_to_favorite', 'sermone_ajax_add_to_favorite' );

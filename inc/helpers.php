@@ -577,7 +577,9 @@ function sermone_post_in_series_html( $post_id ) {
  * Enable favorite
  */
 function sermone_favorite_enable() {
-  return apply_filters( 'sermone_hook_enable_favorite', true );
+  $fav_enable = get_field( 'sermone_add_to_favorite', 'option' );
+  $fav_enable = $fav_enable == null ? false : $fav_enable;
+  return apply_filters( 'sermone_hook_enable_favorite', $fav_enable );
 }
 
 /**
@@ -586,4 +588,16 @@ function sermone_favorite_enable() {
 function sermone_media_player() {
   $player = get_field( 'sermone_audio_video_player', 'options' );
   return $player ? $player : 'plyr';
+}
+
+/**
+ * User add to favorite 
+ * 
+ * @param Int $user_id 
+ * @param Int $sermone_id 
+ */
+function sermone_user_add_to_favorite( $user_id = null, $sermone_id = null, $remove_if_exists = true ) {
+  if( empty( $user_id ) || empty( $sermone_id ) ) return;
+
+  
 }

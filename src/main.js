@@ -18,6 +18,7 @@ import { NavMediaContentRender, TippyTooltip } from './helpers'
 import './nav-tab'
 import './share'
 import './quickview-modal'
+import './favorite'
 
 ;( ( w, $ ) => {
   'use strict';
