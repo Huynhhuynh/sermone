@@ -13,7 +13,12 @@
   ?>
   <? foreach( $share_data as $share_name => $item ) : ?>
   <li class="share-item __share-<?= $share_name ?>">
-    <a href="<?= $item[ 'link' ] ?>" target="_blank" title="<?= sprintf( '%s %s', __( 'Share post on', 'sermone' ), $item[ 'name' ] ) ?>">
+    <a 
+      href="<?= $item[ 'link' ] ?>" 
+      target="_blank" 
+      data-tippy-content="<?= sprintf( '%s %s', __( 'Share on', 'sermone' ), $item[ 'name' ] ) ?>"
+      data-tippy-placement="bottom"
+      title="<?= sprintf( '%s %s', __( 'Share post on', 'sermone' ), $item[ 'name' ] ) ?>">
       <span class="__icon"><?= $item[ 'icon' ] ?></span>
     </a>
   </li> <!-- .__share-<?= $share_name ?> -->

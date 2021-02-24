@@ -152,8 +152,10 @@ function sermone_get_scripture_by_sirmone_html( $post_id ) {
   $scripture = get_field( 'sermone_main_bible_passage', get_the_ID() );
   if( empty( $scripture ) ) return; 
 
-  $scripture_arr = array_map( function( $item ) {
-    return sprintf( '<a href="#" data-bible="%1$s">%1$s</a>', trim( $item ) );
+  $bible_root_url = 'https://www.biblegateway.com';
+
+  $scripture_arr = array_map( function( $item ) use ( $bible_root_url ) {
+    return sprintf( '<a href="%2$s/passage/?search=%1$s" data-bible="%1$s" target="_blank">%1$s</a>', trim( $item ), $bible_root_url );
   }, explode( ',', $scripture ) );
 
   echo implode( ', ', $scripture_arr );

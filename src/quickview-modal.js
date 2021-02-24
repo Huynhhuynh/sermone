@@ -140,7 +140,7 @@ import { NavMediaContentRender } from './helpers'
    */
   $( () => {
     Modal = $( '#sermone-modal' )
-    QuickviewModalFunc()
+    QuickviewModalFunc() 
   } )
 
 } ) ( window, jQuery )

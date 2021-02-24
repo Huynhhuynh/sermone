@@ -4,13 +4,17 @@
  * @since 1.0.0
  */
 
+/**
+ * Style
+ */
 import './scss/main.scss' 
 import 'plyr/src/sass/plyr.scss'
+import 'tippy.js/dist/tippy.css' // optional for styling
 
 /**
- * Single
+ * Modules
  */
-import { NavMediaContentRender } from './helpers'
+import { NavMediaContentRender, TippyTooltip } from './helpers'
 import './nav-tab'
 import './share'
 import './quickview-modal'
@@ -41,6 +45,11 @@ import './quickview-modal'
    */
   $( w ).on( 'load', () => {
     NavMediaRender()
+
+    /**
+     * Tippy JS (tooltip)
+     */
+    TippyTooltip( '[data-tippy-content]' ) 
   } )
 
 } )( window, jQuery )

@@ -13,7 +13,7 @@ get_header();
 
     <a class="sermone-back-to-archive-page-link" href="<?= get_post_type_archive_link( 'sermone' ) ?>">
       <span class="__icon"><?= sermone_svg( 'back_arrow' ) ?></span>
-      <?= __( 'Back to archive page', 'sermone' ) ?>
+      <?= __( 'All Sermons', 'sermone' ) ?>
     </a>
 
     <div class="sermone-header">

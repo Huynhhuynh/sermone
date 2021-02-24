@@ -1,4 +1,5 @@
-import Plyr from 'plyr'; 
+import Plyr from 'plyr'
+import tippy, { followCursor } from 'tippy.js'
 
 export const NavMediaContentRender = ( $el ) => {
   let MediaType = $el.data( 'media-type' )
@@ -38,4 +39,18 @@ export const NavMediaContentRender = ( $el ) => {
   }
 
   $el.addClass( '__is-render' )
+}
+
+export const TippyTooltip = ( Selector, opts ) => {
+  let _opts = $.extend( {
+    allowHTML: true,
+    followCursor: true, 
+    plugins: [ followCursor ],
+    offset: [0, 25],
+    maxWidth: 320,
+    theme: 'sermone',
+  }, opts )
+
+  tippy( Selector, _opts )
+  $( Selector ).removeAttr( 'title' )
 }

@@ -272,7 +272,12 @@ function sermone_social_item_favorite() {
   ob_start();
   ?>
   <li class="sermone--bookmark-item">
-    <a href="#" title="<?= __( 'Favorite', 'sermone' ) ?>" data-sermone-fav="<? the_ID() ?>">
+    <a 
+      href="#" 
+      data-tippy-content="<?= __( 'Favorite', 'sermone' ) ?>"
+      data-tippy-placement="bottom"
+      title="<?= __( 'Favorite', 'sermone' ) ?>" 
+      data-sermone-fav="<? the_ID() ?>">
       <span class="__icon"><?= sermone_svg( 'star' ) ?></span>
     </a>
   </li>
