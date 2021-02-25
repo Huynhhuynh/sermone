@@ -49,9 +49,9 @@
     "location": [
         [
             {
-                "param": "current_user",
+                "param": "user_form",
                 "operator": "==",
-                "value": "logged_in"
+                "value": "all"
             }
         ]
     ],
@@ -63,5 +63,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1614158766
+    "modified": 1614246041
 }

@@ -44,4 +44,5 @@
   require( SERMONE_DIR . '/inc/options.php' );
   require( SERMONE_DIR . '/inc/register-post-type.php' );
   require( SERMONE_DIR . '/inc/register-tax.php' );
+  require( SERMONE_DIR . '/inc/shortcode.php' );
 }

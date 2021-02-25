@@ -31,7 +31,6 @@ import NoticeBox from './notice-box'
     $( document.body ).on( {
       async 'sermone:addToFavorite' ( e, ID ) {
         const Result = await sendData( ID )
-        console.log( Result )
         
         N.setContent( Result.data.message )
         N.show()

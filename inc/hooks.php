@@ -52,6 +52,7 @@ function sermone_archive_post_item_loop() {
 }
 
 add_action( 'sermone_archive_post_item_loop', 'sermone_archive_post_item_loop', 20 );
+add_action( 'sermone_shortcode_post_item_loop', 'sermone_archive_post_item_loop', 20 );
 
 /**
  * Sermone modal template
@@ -278,7 +279,7 @@ function sermone_social_item_favorite() {
       data-tippy-content="<?= __( 'Favorite', 'sermone' ) ?>"
       data-tippy-placement="bottom"
       title="<?= __( 'Favorite', 'sermone' ) ?>" 
-      data-sermone-fav="<? the_ID() ?>">
+      data-sermone-fav=<? the_ID() ?>>
       <span class="__icon"><?= sermone_svg( 'star' ) ?></span>
       <span class="__icon __is-bold"><?= sermone_svg( 'star_bold' ) ?></span>
     </a>
@@ -299,7 +300,7 @@ function sermone_archive_loop_item_action_button_favorite() {
   <a 
     href="<? the_permalink() ?>" 
     class="sermone-favorite <?= $in_fav ? '__in-fav' : '' ?>" 
-    data-sermone-fav="<? the_ID() ?>">
+    data-sermone-fav=<? the_ID() ?>>
     <?= __( 'Favorite', 'sermone' ) ?>
     <span class="__icon"><?= sermone_svg( 'star' ) ?></span>
     <span class="__icon __is-bold"><?= sermone_svg( 'star_bold' ) ?></span>

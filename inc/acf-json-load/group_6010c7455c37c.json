@@ -86,7 +86,7 @@
             "label": "Add to Favorite",
             "name": "sermone_add_to_favorite",
             "type": "true_false",
-            "instructions": "Enable \/ Disable add to favorite feature (require user logged)",
+            "instructions": "Enable \/ Disable add to favorite feature (require user logged). <br \/>\r\nWe provide a shortcode you can use anywhere to display a user's favorites list <strong>[sermone_favorite heading_text=\"My Favorite\"]<\/strong>",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -248,5 +248,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1614153564
+    "modified": 1614245723
 }
