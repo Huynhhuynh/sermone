@@ -268,17 +268,19 @@ add_action( 'pre_get_posts', 'sermone_check_tax_redirect_page' );
  */
 function sermone_social_item_favorite() {
   if( true != sermone_favorite_enable() ) return;
-
+  $in_fav = sermone_in_user_favorite( get_the_ID() );
   ob_start();
   ?>
   <li class="sermone--bookmark-item">
     <a 
+      class="<?= $in_fav ? '__in-fav' : '' ?>"
       href="#" 
       data-tippy-content="<?= __( 'Favorite', 'sermone' ) ?>"
       data-tippy-placement="bottom"
       title="<?= __( 'Favorite', 'sermone' ) ?>" 
       data-sermone-fav="<? the_ID() ?>">
       <span class="__icon"><?= sermone_svg( 'star' ) ?></span>
+      <span class="__icon __is-bold"><?= sermone_svg( 'star_bold' ) ?></span>
     </a>
   </li>
   <?php 
@@ -292,11 +294,15 @@ add_action( 'sermone_social_item_end', 'sermone_social_item_favorite' );
  */
 function sermone_archive_loop_item_action_button_favorite() {
   if( true != sermone_favorite_enable() ) return;
-
+  $in_fav = sermone_in_user_favorite( get_the_ID() );
   ?>
-  <a href="<? the_permalink() ?>" class="sermone-bookmark" data-sermone-fav="<? the_ID() ?>">
+  <a 
+    href="<? the_permalink() ?>" 
+    class="sermone-favorite <?= $in_fav ? '__in-fav' : '' ?>" 
+    data-sermone-fav="<? the_ID() ?>">
     <?= __( 'Favorite', 'sermone' ) ?>
     <span class="__icon"><?= sermone_svg( 'star' ) ?></span>
+    <span class="__icon __is-bold"><?= sermone_svg( 'star_bold' ) ?></span>
   </a>
   <?php 
 }

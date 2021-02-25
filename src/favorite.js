@@ -4,10 +4,14 @@
  * @package sermone
  */
 
+import NoticeBox from './notice-box'
+
 ; ( ( w, $ ) => {
   'use strict'
 
   const FavoriteHandle = () => {
+
+    let N = new NoticeBox()
     
     const sendData = async ( ID ) => {
       return await $.ajax( {
@@ -28,14 +32,23 @@
       async 'sermone:addToFavorite' ( e, ID ) {
         const Result = await sendData( ID )
         console.log( Result )
-      }
+        
+        N.setContent( Result.data.message )
+        N.show()
+
+        if( Result.data.fav.includes( ID ) ) {
+          $( `[data-sermone-fav=${ ID }]` ).addClass( '__in-fav' )
+        } else {
+          $( `[data-sermone-fav=${ ID }]` ).removeClass( '__in-fav' )
+        }
+      } 
     } )
 
     $( 'body' ).on( 'click', '[data-sermone-fav]', function( e ) {
       e.preventDefault();
       let ID = $( this ).data( 'sermone-fav' )
 
-      $( document.body ).trigger( 'sermone:addToFavorite', [ ID ] )
+      $( document.body ).trigger( 'sermone:addToFavorite', [ parseInt( ID ) ] )
     } )
   }  
 

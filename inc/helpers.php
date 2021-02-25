@@ -599,5 +599,64 @@ function sermone_media_player() {
 function sermone_user_add_to_favorite( $user_id = null, $sermone_id = null, $remove_if_exists = true ) {
   if( empty( $user_id ) || empty( $sermone_id ) ) return;
 
+  $favorites = sermone_get_favorite_by_user( $user_id );
+  $_favorites = [];
+
+  if( count( $favorites ) > 0 ) {
+    $_favorites = array_map( function( $item ) {
+      return $item[ 'item' ]->ID;
+    }, $favorites );
+    
+    if( in_array( $sermone_id, $_favorites ) ) {
+      if( $remove_if_exists == true ) {
+        foreach( array_keys( $_favorites, $sermone_id ) as $key) {
+          unset( $_favorites[ $key ] );
+        }
+      }
+    } else {
+      array_push( $_favorites, $sermone_id );
+    }
+  } else {
+    array_push( $_favorites, $sermone_id );
+  }
   
+  $updateFavorites = count( $_favorites ) ? array_map( function( $id ) { return [ 'item' => $id ]; }, $_favorites ) : []; 
+  update_field( 'sermone_user_favorite', $updateFavorites, 'user_' . $user_id );
+
+  return $_favorites;
+}
+
+/**
+ * Get favorite by user 
+ * 
+ * @param Int $user_id
+ * @return Array
+ */
+function sermone_get_favorite_by_user( $user_id = 0 ) {
+  $favorites = get_field( 'sermone_user_favorite', 'user_' . $user_id );
+  return empty( $favorites ) ? [] : $favorites;
+}
+
+/**
+ * Check sermon in favorite 
+ * 
+ * @param Int $sermone_id
+ */
+function sermone_in_user_favorite( $sermone_id = 0, $user_id = null ) {
+  $current_user_id = get_current_user_id();
+
+  if( $user_id !== null ) {
+    $current_user_id = $user_id;
+  } 
+
+  if( $current_user_id == 0 ) return;
+ 
+  # Get favorite by user id
+  $favorites = sermone_get_favorite_by_user( $current_user_id );
+  
+  # Fav empty
+  if( count( $favorites ) == 0 ) return;
+
+  $fav_ids = array_map( function( $item ) { return (int) $item[ 'item' ]->ID; }, $favorites );
+  return in_array( $sermone_id, $fav_ids );
 }

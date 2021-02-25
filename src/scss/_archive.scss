@@ -196,3 +196,21 @@
     }
   }
 }
+
+*[data-sermone-fav] {
+
+  .__icon.__is-bold {
+    display: none;
+  }
+
+  &.__in-fav {
+
+    .__icon {
+      display: none;
+    }
+    
+    .__icon.__is-bold {
+      display: block;
+    }
+  }
+}

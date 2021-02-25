@@ -1,0 +1,17 @@
+.notice-box-container {
+
+  .notice-box--content {
+    position: fixed;
+    bottom: -20px;
+    border-radius: 4px;
+    max-width: calc(100% - 30px);
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    text-align: center;
+    background: white;
+    font-size: 13px;
+    padding: 15px 20px;
+    border: solid 1px #ddd;
+  }
+}

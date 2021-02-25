@@ -33,7 +33,37 @@ add_action( 'wp_ajax_nopriv_sermone_ajax_quickview_template', 'sermone_ajax_quic
  * 
  */
 function sermone_ajax_add_to_favorite() {
-  wp_send_json( $_POST );
+  // wp_send_json( $_POST );
+
+  /**
+   * User non login
+   */
+  if( ! is_user_logged_in() ) {
+    wp_send_json( [
+      'success' => true,
+      'data' => [
+        'message' => sprintf( 
+          '%1$s <a href="%2$s">%3$s</a>', 
+          __( 'Please login first to use this feature.', 'sermone' ),
+          get_field( 'sermone_user_login_url', 'option' ),
+          __( 'Login here.', 'sermone' ) ),
+        'status' => false,
+      ]
+    ] );
+  }
+
+  /**
+   * User logged in
+   */
+  $result = sermone_user_add_to_favorite( get_current_user_id(), (int) $_POST[ 'id' ] );
+  wp_send_json( [
+    'success' => true,
+    'data' => [
+      'message' => __( 'Update favorite successful.', 'sermone' ),
+      'status' => true,
+      'fav' => $result,
+    ]
+  ] );
 }
 
 add_action( 'wp_ajax_sermone_ajax_add_to_favorite', 'sermone_ajax_add_to_favorite' );
