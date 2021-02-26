@@ -5,33 +5,33 @@
  */
 
 function sermone_register_sermon_cpt() {
-  $icon = '<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 370 370" style="enable-background:new 0 0 370 370;" xml:space="preserve" fill="#000"> <path d="M87.357,300.867l231.484-0.21c7.433-0.008,13.454-6.034,13.454-13.468V40.406C332.296,18.124,314.172,0,291.893,0H78.106 C55.828,0,37.704,18.124,37.704,40.41l0.078,280.204c0,27.23,22.235,49.386,49.565,49.386h231.48 c7.439,0,13.468-6.029,13.468-13.468v-7.13c0-7.437-6.028-13.465-13.464-13.467l-231.486-0.057c-8.416,0-15.265-6.845-15.265-15.262 v-4.484C72.081,307.716,78.931,300.867,87.357,300.867z"/> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> </svg>';
+  $icon = '<svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="139.000000pt" height="135.000000pt" viewBox="0 0 139.000000 135.000000" preserveAspectRatio="xMidYMid meet"> <g transform="translate(0.000000,135.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none"> <path d="M25 1325 l-25 -24 0 -626 0 -626 25 -24 24 -25 646 0 646 0 24 25 25 24 0 626 0 626 -25 24 -24 25 -646 0 -646 0 -24 -25z m1213 -260 c1 -87 0 -165 -2 -172 -6 -15 -24 -7 -352 150 -227 109 -274 127 -274 108 0 -18 57 -80 347 -371 l283 -286 -2 -179 -3 -180 -545 0 -545 0 -3 160 c-1 87 0 165 2 172 6 15 24 7 352 -150 228 -109 274 -127 274 -108 0 19 -116 143 -374 401 l-256 255 0 176 c0 97 3 179 7 182 3 4 250 6 547 5 l541 -3 3 -160z"/> </g> </svg>';
 
   $labels = [
-    'name' => _x( 'Sermones', 'Post type general name', 'sermone' ),
-    'singular_name' => _x( 'Sermone', 'Post type singular name', 'sermone' ),
-    'menu_name' => _x( 'Sermones', 'Admin Menu text', 'sermone' ),
-    'name_admin_bar' => _x( 'Sermone', 'Add New on Toolbar', 'sermone' ),
+    'name' => _x( 'Sermone\'s', 'Post type general name', 'sermone' ),
+    'singular_name' => _x( 'Sermon\'e', 'Post type singular name', 'sermone' ),
+    'menu_name' => _x( 'Sermone\'s', 'Admin Menu text', 'sermone' ),
+    'name_admin_bar' => _x( 'Sermon\'e', 'Add New on Toolbar', 'sermone' ),
     'add_new' => __( 'Add New', 'sermone' ),
-    'add_new_item' => __( 'Add New Sermone', 'sermone' ),
-    'new_item' => __( 'New Sermone', 'sermone' ),
-    'edit_item' => __( 'Edit Sermone', 'sermone' ),
-    'view_item' => __( 'View Sermone', 'sermone' ),
-    'all_items' => __( 'All Sermones', 'sermone' ),
-    'search_items' => __( 'Search Sermones', 'sermone' ),
-    'parent_item_colon' => __( 'Parent Sermones:', 'sermone' ),
-    'not_found' => __( 'No Sermones found.', 'sermone' ),
-    'not_found_in_trash' => __( 'No Sermones found in Trash.', 'sermone' ),
+    'add_new_item' => __( 'Add New Sermon', 'sermone' ),
+    'new_item' => __( 'New Sermon', 'sermone' ),
+    'edit_item' => __( 'Edit Sermon', 'sermone' ),
+    'view_item' => __( 'View Sermon', 'sermone' ),
+    'all_items' => __( 'All Sermon', 'sermone' ),
+    'search_items' => __( 'Search Sermon', 'sermone' ),
+    'parent_item_colon' => __( 'Parent Sermone:', 'sermone' ),
+    'not_found' => __( 'No Sermone found.', 'sermone' ),
+    'not_found_in_trash' => __( 'No Sermone found in Trash.', 'sermone' ),
     'featured_image' => _x( 'Sermone Cover Image', 'Overrides the “Featured Image” phrase for this post type. Added in 4.3', 'sermone' ),
     'set_featured_image' => _x( 'Set cover image', 'Overrides the “Set featured image” phrase for this post type. Added in 4.3', 'sermone' ),
     'remove_featured_image' => _x( 'Remove cover image', 'Overrides the “Remove featured image” phrase for this post type. Added in 4.3', 'sermone' ),
     'use_featured_image' => _x( 'Use as cover image', 'Overrides the “Use as featured image” phrase for this post type. Added in 4.3', 'sermone' ),
-    'archives' => _x( 'Sermone archives', 'The post type archive label used in nav menus. Default “Post Archives”. Added in 4.4', 'sermone' ),
-    'insert_into_item' => _x( 'Insert into Sermone', 'Overrides the “Insert into post”/”Insert into page” phrase (used when inserting media into a post). Added in 4.4', 'sermone' ),
-    'uploaded_to_this_item' => _x( 'Uploaded to this Sermone', 'Overrides the “Uploaded to this post”/”Uploaded to this page” phrase (used when viewing media attached to a post). Added in 4.4', 'sermone' ),
-    'filter_items_list' => _x( 'Filter Sermones list', 'Screen reader text for the filter links heading on the post type listing screen. Default “Filter posts list”/”Filter pages list”. Added in 4.4', 'sermone' ),
-    'items_list_navigation' => _x( 'Sermones list navigation', 'Screen reader text for the pagination heading on the post type listing screen. Default “Posts list navigation”/”Pages list navigation”. Added in 4.4', 'sermone' ),
-    'items_list' => _x( 'Sermones list', 'Screen reader text for the items list heading on the post type listing screen. Default “Posts list”/”Pages list”. Added in 4.4', 'sermone' ),
+    'archives' => _x( 'Sermon archives', 'The post type archive label used in nav menus. Default “Post Archives”. Added in 4.4', 'sermone' ),
+    'insert_into_item' => _x( 'Insert into Sermon', 'Overrides the “Insert into post”/”Insert into page” phrase (used when inserting media into a post). Added in 4.4', 'sermone' ),
+    'uploaded_to_this_item' => _x( 'Uploaded to this Sermon', 'Overrides the “Uploaded to this post”/”Uploaded to this page” phrase (used when viewing media attached to a post). Added in 4.4', 'sermone' ),
+    'filter_items_list' => _x( 'Filter Sermons list', 'Screen reader text for the filter links heading on the post type listing screen. Default “Filter posts list”/”Filter pages list”. Added in 4.4', 'sermone' ),
+    'items_list_navigation' => _x( 'Sermons list navigation', 'Screen reader text for the pagination heading on the post type listing screen. Default “Posts list navigation”/”Pages list navigation”. Added in 4.4', 'sermone' ),
+    'items_list' => _x( 'Sermons list', 'Screen reader text for the items list heading on the post type listing screen. Default “Posts list”/”Pages list”. Added in 4.4', 'sermone' ),
   ];
 
   $args = [
