@@ -486,7 +486,7 @@ function sermone_form_fields_html( $fields = [] ) {
  * 
  * @return WP_Query
  */
-function sermone_get_posts() {
+function sermone_get_posts_archive() {
   $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 
   $args = [
@@ -495,16 +495,75 @@ function sermone_get_posts() {
   ];
 
   /**
-   * sermone_hook_query_args hook.
+   * sermone_hook_query_args_archive hook.
    * 
    * @see sermone_query_args_by_keywords - 20
    * @see sermone_query_args_by_tax_preachers - 22
    * @see sermone_query_args_by_tax_series - 24
    * @see sermone_query_args_by_tax_topics - 26
    */
-  $_args = apply_filters( 'sermone_hook_query_args', $args );
+  $_args = apply_filters( 'sermone_hook_query_args_archive', $args );
 
   return new WP_Query( $_args );
+}
+
+/**
+ * Get sermon posts 
+ * 
+ * @param Array $params 
+ * 
+ * @return WP_Query
+ */
+function sermone_get_posts( $params = [] ) {
+  $params = wp_parse_args( $params, [
+    'number' => 4,
+    'preachers' => '',
+    'series' => '',
+    'topics' => '',
+    'books' => '',
+  ] );
+
+  $args = [
+    'post_type' => 'sermone',
+    'paged' => 1,
+    'posts_per_page' => (int) $params[ 'number' ],
+    'tax_query' => [],
+  ];
+
+  # Filter by preachers
+  if( ! empty( $params[ 'preachers' ] ) ) {
+    array_push( $args[ 'tax_query' ], [
+      'taxonomy' => 'sermone_preacher',
+      'field' => 'slug',
+      'terms' => explode( ',', trim( $params[ 'preachers' ] ) ),
+    ] );
+  }
+
+  if( ! empty( $params[ 'series' ] ) ) {
+    array_push( $args[ 'tax_query' ], [
+      'taxonomy' => 'sermone_series',
+      'field' => 'slug',
+      'terms' => explode( ',', trim( $params[ 'series' ] ) ),
+    ] );
+  }
+
+  if( ! empty( $params[ 'topics' ] ) ) {
+    array_push( $args[ 'tax_query' ], [
+      'taxonomy' => 'sermone_topics',
+      'field' => 'slug',
+      'terms' => explode( ',', trim( $params[ 'topics' ] ) ),
+    ] );
+  }
+
+  if( ! empty( $params[ 'books' ] ) ) {
+    array_push( $args[ 'tax_query' ], [
+      'taxonomy' => 'sermone_books',
+      'field' => 'slug',
+      'terms' => explode( ',', trim( $params[ 'books' ] ) ),
+    ] );
+  }
+
+  return new WP_Query( $args );
 }
 
 /**

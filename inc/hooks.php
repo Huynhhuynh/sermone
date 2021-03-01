@@ -99,7 +99,7 @@ function sermone_query_args_by_keywords( $args = [] ) {
   return $args;
 }
 
-add_filter( 'sermone_hook_query_args', 'sermone_query_args_by_keywords', 20 );
+add_filter( 'sermone_hook_query_args_archive', 'sermone_query_args_by_keywords', 20 );
 
 /**
  * Custom query by tax preachers
@@ -121,7 +121,7 @@ function sermone_query_args_by_tax_preachers( $args = [] ) {
   return $args;
 }
 
-add_filter( 'sermone_hook_query_args', 'sermone_query_args_by_tax_preachers', 22 );
+add_filter( 'sermone_hook_query_args_archive', 'sermone_query_args_by_tax_preachers', 22 );
 
 /**
  * Custom query by tax series 
@@ -143,7 +143,7 @@ function sermone_query_args_by_tax_series( $args = [] ) {
   return $args;
 }
 
-add_filter( 'sermone_hook_query_args', 'sermone_query_args_by_tax_series', 24 );
+add_filter( 'sermone_hook_query_args_archive', 'sermone_query_args_by_tax_series', 24 );
 
 /**
  * Custom query by tax topics 
@@ -165,7 +165,7 @@ function sermone_query_args_by_tax_topics( $args = [] ) {
   return $args;
 }
 
-add_filter( 'sermone_hook_query_args', 'sermone_query_args_by_tax_topics', 26 );
+add_filter( 'sermone_hook_query_args_archive', 'sermone_query_args_by_tax_topics', 26 );
 
 /**
  * Custom query by tax books 
@@ -187,7 +187,7 @@ function sermone_query_args_by_tax_books( $args = [] ) {
   return $args;
 }
 
-add_filter( 'sermone_hook_query_args', 'sermone_query_args_by_tax_books', 26 );
+add_filter( 'sermone_hook_query_args_archive', 'sermone_query_args_by_tax_books', 26 );
 
 /**
  * Archive pagination

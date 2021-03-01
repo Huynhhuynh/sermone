@@ -44,28 +44,50 @@ function sermone_shortcode_user_favorite( $atts = [], $content = '' ) {
   ];  
 
   $query = new WP_Query( $args );
+  set_query_var( 'atts', $atts );
+  set_query_var( 'query', $query );
+  
   ob_start();
-  ?>
-  <div class="sermone-favorite-container <?= $atts[ 'classes' ] ?>">
-    <? if( ! empty( $atts[ 'heading_text' ] ) ) : ?>
-    <h4 class="sermone-fav-heading"><?= $atts[ 'heading_text' ] ?> <sup>(<?= $query->post_count ?>)</sup></h4>
-    <? endif; ?>
-    <? if ( $query->have_posts() ) :
-      $sermone_posts_classes = sermone_archive_posts_classes();
-      echo '<div id="sermone-post-list" class="'. $sermone_posts_classes .'">';
-      while ( $query->have_posts() ) : $query->the_post(); 
-        /**
-         * sermone_archive_post_item_loop hook.
-         *
-         * @see sermone_archive_post_item_loop - 20
-         */
-        do_action( 'sermone_shortcode_post_item_loop', get_the_ID() );
-      endwhile;
-      echo '</div>';
-    endif; ?>
-  </div> <!-- .sermone-favorite-container -->
-  <?php
+  load_template( sermone_template_path( 'shortcode/user-favorite.php' ), false );
   return ob_get_clean();
 }
 
 add_shortcode( 'sermone_favorite', 'sermone_shortcode_user_favorite' );
+
+/**
+ * Shortcode [sermone]
+ * 
+ * @param Array $atts 
+ * @param String $content 
+ * 
+ * @return Html
+ */
+function sermone_shortcode_list_view( $atts = [] , $content = '' ) {
+  $atts = shortcode_atts( [
+    'heading_text' => __( 'My Sermons', 'sermone' ),
+    'layout' => 'list', 
+    'number' => 4,
+    'preachers' => '',
+    'series' => '',
+    'topics' => '',
+    'books' => '',
+    'classes' => '', 
+  ], $atts );
+
+  $query = sermone_get_posts( [
+    'number' => $atts[ 'number' ],
+    'preachers' => $atts[ 'preachers' ],
+    'series' => $atts[ 'series' ],
+    'topics' => $atts[ 'topics' ],
+    'books' => $atts[ 'books' ],
+  ] );
+
+  set_query_var( 'atts', $atts );
+  set_query_var( 'query', $query );
+
+  ob_start();
+  load_template( sermone_template_path( 'shortcode/sermone-list.php' ), false );
+  return ob_get_clean();
+}
+
+add_shortcode( 'sermone', 'sermone_shortcode_list_view' );
