@@ -33,7 +33,6 @@ add_action( 'wp_ajax_nopriv_sermone_ajax_quickview_template', 'sermone_ajax_quic
  * 
  */
 function sermone_ajax_add_to_favorite() {
-  // wp_send_json( $_POST );
 
   /**
    * User non login
@@ -59,7 +58,7 @@ function sermone_ajax_add_to_favorite() {
   wp_send_json( [
     'success' => true,
     'data' => [
-      'message' => __( 'Update favorite successful.', 'sermone' ),
+      'message' => apply_filters( 'sermone_hook_updated_favorite_successful_text', __( 'Updated favorite successful.', 'sermone' ) ),
       'status' => true,
       'fav' => $result,
     ]
