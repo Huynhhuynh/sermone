@@ -11,6 +11,7 @@
  */
 function sermone_svg( $name ) {
   $icons = require( SERMONE_DIR . '/inc/svg.php' );
+  $icons = apply_filters( 'sermone_hook_svg_icon', $icons );
   return isset( $icons[ $name ] ) ? $icons[ $name ] : '';
 }
 
