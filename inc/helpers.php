@@ -332,7 +332,7 @@ function sermone_media_nav_data( $post_id ) {
     $navs[1]['active'] = true;
   }
 
-  return apply_filters( 'sermone_hook_media_nav_data', $navs );
+  return apply_filters( 'sermone_hook_media_nav_data', $navs, $post_id );
 }
 
 /**

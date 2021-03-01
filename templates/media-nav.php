@@ -10,7 +10,7 @@
   <li class="media-item <?= isset( $item[ 'active' ] ) ? '__active' : '' ?>">
     <a 
       class="<?= empty( $item[ 'data' ][ 'content' ] ) ? '__item-disable' : '' ?>"
-      href="<?= ( $item[ 'type' ] == 'download' ) ? $item[ 'data' ][ 'content' ] : '#' ?>" 
+      href="<?= in_array( $item[ 'type' ], [ 'download', 'link' ] ) ? $item[ 'data' ][ 'content' ] : '#' ?>" 
       title="<?= $item[ 'name' ] ?>" 
       data-nav-type="<?= $item[ 'type' ] ?>" 
       data-nav-key="<?= $item[ 'id' ] ?>" 
