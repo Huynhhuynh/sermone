@@ -41,7 +41,6 @@
   require( SERMONE_DIR . '/inc/helpers.php' );
   require( SERMONE_DIR . '/inc/hooks.php' );
   require( SERMONE_DIR . '/inc/ajax.php' );
-  require( SERMONE_DIR . '/inc/options.php' );
   require( SERMONE_DIR . '/inc/register-post-type.php' );
   require( SERMONE_DIR . '/inc/register-tax.php' );
   require( SERMONE_DIR . '/inc/shortcode.php' );

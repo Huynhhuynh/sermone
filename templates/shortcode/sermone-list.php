@@ -7,7 +7,7 @@
  */
 
 ?>
-<div class="sermone-favorite-container <?= $atts[ 'classes' ] ?>">
+<div class="sermone-list-container <?= $atts[ 'classes' ] ?>">
   <? if( ! empty( $atts[ 'heading_text' ] ) ) : ?>
   <h4 class="sermone-heading"><?= $atts[ 'heading_text' ] ?></h4>
   <? endif; ?>
