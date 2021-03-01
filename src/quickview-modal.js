@@ -75,6 +75,9 @@ import { NavMediaContentRender } from './helpers'
       },
       '__close:sermone' ( e ) {
         $( 'body' ).removeClass( '__sermone-quickview-modal-open' )
+
+        // Remove content
+        $( this ).trigger( '__pushContent:sermone', [ '' ] )
       },
       '__loading:sermone' ( e, status = false ) {
         if( status == true ) {
