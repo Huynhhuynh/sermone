@@ -1,8 +1,8 @@
 <?php 
 /**
- * Plugin Name:       Sermone - a WordPress Plugin for Church
+ * Plugin Name:       Sermon'e - a WordPress Plugin for Sermones
  * Plugin URI:        #
- * Description:       ...
+ * Description:       Sermon'e is designed to help churches easily publish sermons online. is a new beautiful, modern sermon plugin that integrates seamlessly with any WordPress theme.
  * Version:           1.0.0
  * Requires at least: 5.3
  * Requires PHP:      7.2
@@ -11,7 +11,7 @@
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       sermone
- * Domain Path:       /languages
+ * Domain Path:       /language
  */
 
 {
