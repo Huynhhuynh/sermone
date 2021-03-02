@@ -1,6 +1,6 @@
 <?php 
 /**
- * Plugin Name:       Sermon'e - a WordPress Plugin for Sermones
+ * Plugin Name:       Sermon'e - Sermons online
  * Plugin URI:        #
  * Description:       Sermon'e is designed to help churches easily publish sermons online. is a new beautiful, modern sermon plugin that integrates seamlessly with any WordPress theme.
  * Version:           1.0.0
