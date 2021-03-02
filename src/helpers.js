@@ -42,7 +42,7 @@ export const NavMediaContentRender = ( $el ) => {
 }
 
 export const TippyTooltip = ( Selector, opts ) => {
-  let _opts = $.extend( {
+  let _opts = window.jQuery.extend( {
     allowHTML: true,
     followCursor: true, 
     plugins: [ followCursor ],
@@ -52,5 +52,5 @@ export const TippyTooltip = ( Selector, opts ) => {
   }, opts )
 
   tippy( Selector, _opts )
-  $( Selector ).removeAttr( 'title' )
-}
+  window.jQuery( Selector ).removeAttr( 'title' )
+} 

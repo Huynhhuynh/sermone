@@ -8,7 +8,7 @@
 export default class NoticeBox {
 
   constructor ( options ) {
-    this.opts = $.extend( {
+    this.opts = window.jQuery.extend( {
       content: '',
       autoClose: true,
       autoCloseTimer: 5000
@@ -26,7 +26,7 @@ export default class NoticeBox {
         ${ content }
       </div>
     </div>`
-    return $( html )
+    return window.jQuery( html )
   }
 
   setContent ( newContent ) {
