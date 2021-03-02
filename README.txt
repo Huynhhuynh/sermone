@@ -1,4 +1,4 @@
-=== Sermon'e - a WordPress Plugin for Sermones ===
+=== Sermon'e - Sermons Online ===
 Tags: bible, church, ministry, sermons
 Requires at least: 5.1
 Tested up to: 5.2
