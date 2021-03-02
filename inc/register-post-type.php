@@ -8,9 +8,9 @@ function sermone_register_sermon_cpt() {
   $icon = '<svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="139.000000pt" height="135.000000pt" viewBox="0 0 139.000000 135.000000" preserveAspectRatio="xMidYMid meet"> <g transform="translate(0.000000,135.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none"> <path d="M25 1325 l-25 -24 0 -626 0 -626 25 -24 24 -25 646 0 646 0 24 25 25 24 0 626 0 626 -25 24 -24 25 -646 0 -646 0 -24 -25z m1213 -260 c1 -87 0 -165 -2 -172 -6 -15 -24 -7 -352 150 -227 109 -274 127 -274 108 0 -18 57 -80 347 -371 l283 -286 -2 -179 -3 -180 -545 0 -545 0 -3 160 c-1 87 0 165 2 172 6 15 24 7 352 -150 228 -109 274 -127 274 -108 0 19 -116 143 -374 401 l-256 255 0 176 c0 97 3 179 7 182 3 4 250 6 547 5 l541 -3 3 -160z"/> </g> </svg>';
 
   $labels = [
-    'name' => _x( 'Sermone\'s', 'Post type general name', 'sermone' ),
+    'name' => _x( 'Sermon\'e', 'Post type general name', 'sermone' ),
     'singular_name' => _x( 'Sermon\'e', 'Post type singular name', 'sermone' ),
-    'menu_name' => _x( 'Sermone\'s', 'Admin Menu text', 'sermone' ),
+    'menu_name' => _x( 'Sermon\'e', 'Admin Menu text', 'sermone' ),
     'name_admin_bar' => _x( 'Sermon\'e', 'Add New on Toolbar', 'sermone' ),
     'add_new' => __( 'Add New', 'sermone' ),
     'add_new_item' => __( 'Add New Sermon', 'sermone' ),
