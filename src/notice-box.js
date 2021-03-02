@@ -29,7 +29,7 @@ export default class NoticeBox {
     return window.jQuery( html )
   }
 
-  setContent ( newContent ) {
+  setContent ( newContent ) { console.log( newContent )
     this.opts.content = newContent
     if( this.$box ) this.$box.find( '.notice-box--content' ).html( this.opts.content )
   }
@@ -49,7 +49,7 @@ export default class NoticeBox {
 
     this.$box = this.template( this.opts.content )
 
-    $( 'body' ).append( this.$box )
+    window.jQuery( 'body' ).append( this.$box )
     this.$box.find( '.notice-box--content' ).animate( {
       bottom: 20,
     }, 'slow' )

@@ -9,9 +9,9 @@ import NoticeBox from './notice-box'
 ; ( ( w, $ ) => {
   'use strict'
 
-  const FavoriteHandle = () => {
+  let N = new NoticeBox()
 
-    let N = new NoticeBox()
+  const FavoriteHandle = () => {
     
     const sendData = async ( ID ) => {
       return await $.ajax( {
