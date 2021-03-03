@@ -4,6 +4,33 @@
  */
 
 /**
+ * Get field
+ * 
+ * @param String $field_name 
+ * @param String $type 
+ * 
+ * @return 
+ */
+function sermone_get_field( $fiel_name = '', $type = 'option' ) {
+  if( is_numeric( $type ) ) {
+    return carbon_get_post_meta( $type, $fiel_name );
+  } else if( 'option' == $type ) {
+    return carbon_get_theme_option( $fiel_name );
+  } else {
+    $segments = explode( '_', $type );
+
+    $id = (int) implode( '_', array_slice( $segments, -1, 1 ) );
+    $_type = implode( '_', array_slice( $segments, 0, count( $segments ) - 1 ) );
+
+    if( 'user' == $_type ) {
+      return carbon_get_user_meta( $id, $fiel_name );
+    }
+    
+    return carbon_get_term_meta( $id, $fiel_name );
+  }
+}
+
+/**
  * Get icon svg 
  * 
  * @param String $name 
@@ -586,7 +613,7 @@ function sermone_pagination_html( $query ) {
 
   ?>
   <div class="sermone-pagination-container">
-    <?= paginate_links( apply_filters( 'sermone_hook_paginate_args', $args, $query ) ) ?>
+    <?php echo paginate_links( apply_filters( 'sermone_hook_paginate_args', $args, $query ) ) ?>
   </div> <!-- .sermone-pagination-container -->
   <?php 
 }

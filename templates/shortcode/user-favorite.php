@@ -7,9 +7,9 @@
  */
 
 ?>
-<div class="sermone-favorite-container <?= $atts[ 'classes' ] ?>">
+<div class="sermone-favorite-container <?php echo $atts[ 'classes' ] ?>">
   <? if( ! empty( $atts[ 'heading_text' ] ) ) : ?>
-  <h4 class="sermone-heading"><?= $atts[ 'heading_text' ] ?> <sup>(<?= $query->post_count ?>)</sup></h4>
+  <h4 class="sermone-heading"><?php echo $atts[ 'heading_text' ] ?> <sup>(<?php echo $query->post_count ?>)</sup></h4>
   <? endif; ?>
   <? if ( $query->have_posts() ) :
     $sermone_posts_classes = sermone_archive_posts_classes();

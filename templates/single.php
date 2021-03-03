@@ -8,12 +8,12 @@
 
 get_header();
 ?>
-<div class="<?= sermone_classes_hook( 'sermone-single sermone-entry-summary', 'sermone_single' ) ?>">
+<div class="<?php echo sermone_classes_hook( 'sermone-single sermone-entry-summary', 'sermone_single' ) ?>">
   <div class="sermone-container">
 
-    <a class="sermone-back-to-archive-page-link" href="<?= get_post_type_archive_link( 'sermone' ) ?>">
-      <span class="__icon"><?= sermone_svg( 'back_arrow' ) ?></span>
-      <?= __( 'All Sermons', 'sermone' ) ?>
+    <a class="sermone-back-to-archive-page-link" href="<?php echo get_post_type_archive_link( 'sermone' ) ?>">
+      <span class="__icon"><?php echo sermone_svg( 'back_arrow' ) ?></span>
+      <?php echo __( 'All Sermons', 'sermone' ) ?>
     </a>
 
     <div class="sermone-header">
@@ -22,13 +22,13 @@ get_header();
       </div>
       <div class="sermone-detail">
         <div class="in-scripture">
-          <?= __( 'Bible Passage', 'sermone' ) ?> 
-          <?= sermone_get_scripture_by_sirmone_html( get_the_ID() ) ?>
+          <?php echo __( 'Bible Passage', 'sermone' ) ?> 
+          <?php echo sermone_get_scripture_by_sirmone_html( get_the_ID() ) ?>
         </div>
         <div class="in-tax">
           <? sermone_post_in_tax_html( get_the_ID() ) ?>
         </div>
-        <h2 class="post-title"><?= the_title() ?></h2>
+        <h2 class="post-title"><?php echo the_title() ?></h2>
         <div class="detail-meta">
           <div class="sermone-by">
             <? sermone_get_list_preacher_html( get_the_ID() ) ?>
@@ -38,8 +38,8 @@ get_header();
         <span class="sermone-seperate"></span>
 
         <div class="sermone--date-and-share">
-          <div class="date-preached" title="<?= __( 'Date preached', 'sermone' ) ?>">
-            <span class="__text"><?= __( 'Date preached', 'sermone' ) ?> <u><?= get_field( 'sermon_date_preached', get_the_ID() ) ?></u></span>
+          <div class="date-preached" title="<?php echo __( 'Date preached', 'sermone' ) ?>">
+            <span class="__text"><?php echo __( 'Date preached', 'sermone' ) ?> <u><?php echo get_field( 'sermon_date_preached', get_the_ID() ) ?></u></span>
           </div>
           <div class="sermone--share">
             <? sermone_share_post_html( get_the_ID() ) ?>

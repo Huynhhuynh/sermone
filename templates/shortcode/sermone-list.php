@@ -7,9 +7,9 @@
  */
 
 ?>
-<div class="sermone-list-container <?= $atts[ 'classes' ] ?>">
+<div class="sermone-list-container <?php echo $atts[ 'classes' ] ?>">
   <? if( ! empty( $atts[ 'heading_text' ] ) ) : ?>
-  <h4 class="sermone-heading"><?= $atts[ 'heading_text' ] ?></h4>
+  <h4 class="sermone-heading"><?php echo $atts[ 'heading_text' ] ?></h4>
   <? endif; ?>
   <? if ( $query->have_posts() ) :
     $sermone_posts_classes = 'sermone-archive-style-' . $atts[ 'layout' ];

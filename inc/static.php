@@ -25,7 +25,7 @@ function sermone_style_inline() {
   ob_start();
   $container_width = get_field( 'sermone_container_width', 'option' );
   ?>
-  .sermone-container { width: <?= $container_width ? $container_width : '1120px' ?>; }
+  .sermone-container { width: <?php echo $container_width ? $container_width : '1120px' ?>; }
   <?php
   $style = ob_get_clean(); 
   wp_add_inline_style( 'sermone-style', $style );

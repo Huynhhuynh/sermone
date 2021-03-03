@@ -9,10 +9,10 @@
   <li class="preacher-item">
     <span class="__avatar">
       <img 
-        src="<?= $item->preacher_avatar ?>" 
-        alt="<?= $item->name ?>" 
-        title="<?= $item->name ?>"
-        data-tippy-content="<?= $item->name ?>" 
+        src="<?php echo $item->preacher_avatar ?>" 
+        alt="<?php echo $item->name ?>" 
+        title="<?php echo $item->name ?>"
+        data-tippy-content="<?php echo $item->name ?>" 
         data-tippy-placement="bottom" >
     </span>
   </li>

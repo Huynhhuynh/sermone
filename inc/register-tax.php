@@ -41,7 +41,7 @@ function sermone_register_preacher_tax() {
   register_taxonomy( 'sermone_preacher', 'sermone', $args );
 }
 
-add_action( 'init', 'sermone_register_preacher_tax', 22 );
+add_action( 'init', 'sermone_register_preacher_tax', 2 );
 
 /**
  * Register sirmone series
@@ -80,7 +80,7 @@ function sermone_register_series_tax() {
   register_taxonomy( 'sermone_series', 'sermone', $args );
 }
 
-add_action( 'init', 'sermone_register_series_tax', 24 );
+add_action( 'init', 'sermone_register_series_tax', 3 );
 
 /**
  * Register sirmone topics
@@ -119,7 +119,7 @@ function sermone_register_topics_tax() {
   register_taxonomy( 'sermone_topics', 'sermone', $args );
 }
 
-add_action( 'init', 'sermone_register_topics_tax', 26 );
+add_action( 'init', 'sermone_register_topics_tax', 4 );
 
 /**
  * Register sirmone books
@@ -158,4 +158,4 @@ function sermone_register_books_tax() {
   register_taxonomy( 'sermone_books', 'sermone', $args );
 }
 
-add_action( 'init', 'sermone_register_books_tax', 28 );
+add_action( 'init', 'sermone_register_books_tax', 5 );

@@ -17,8 +17,8 @@
     <div class="sermone-entry">
       <div class="sermone-info">
         <div class="more-info">
-          <?= __( 'on', 'sermone' ) ?> <u><?= get_field( 'sermon_date_preached', get_the_ID() ) ?></u> 
-          <?= get_the_term_list( get_the_ID(), 'sermone_preacher', __( '— by ', 'sermone' ), ', ', '.' ) ?>
+          <?php echo __( 'on', 'sermone' ) ?> <u><?php echo get_field( 'sermon_date_preached', get_the_ID() ) ?></u> 
+          <?php echo get_the_term_list( get_the_ID(), 'sermone_preacher', __( '— by ', 'sermone' ), ', ', '.' ) ?>
         </div>
         <div class="in-tax">
           <? sermone_post_in_tax_html( get_the_ID() ) ?>
@@ -31,12 +31,12 @@
       <div class="sermone-actions">
         <? do_action( 'sermone_hook_loop_item_action_top' ) ?>
         <a href="<? the_permalink() ?>" class="sermone-quickview" data-sermone-quickview="<? the_ID() ?>">
-          <?= __( 'Quick View', 'sermone' ) ?>
-          <span class="__icon"><?= sermone_svg( 'diagonal_arrow_up_right' ) ?></span>
+          <?php echo __( 'Quick View', 'sermone' ) ?>
+          <span class="__icon"><?php echo sermone_svg( 'diagonal_arrow_up_right' ) ?></span>
         </a>
         <a href="<? the_permalink() ?>" class="sermone-readmore">
-          <?= __( 'Read More', 'sermone' ) ?>
-          <span class="__icon"><?= sermone_svg( 'diagonal_arrow_up_right' ) ?></span>
+          <?php echo __( 'Read More', 'sermone' ) ?>
+          <span class="__icon"><?php echo sermone_svg( 'diagonal_arrow_up_right' ) ?></span>
         </a>
         <? 
         /**

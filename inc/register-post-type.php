@@ -55,4 +55,4 @@ function sermone_register_sermon_cpt() {
   register_post_type( 'sermone', $args );
 }
 
-add_action( 'init', 'sermone_register_sermon_cpt' );
+add_action( 'init', 'sermone_register_sermon_cpt', 1 );

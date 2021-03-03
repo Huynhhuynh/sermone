@@ -9,10 +9,10 @@
 ?>
 <input 
   type="text" 
-  name="<?= $field_data[ 'name' ] ?>" 
-  <?= isset( $field_data[ 'classes' ] ) ? 'class="'. $field_data[ 'classes' ] .'"' : '' ?>
-  <?= isset( $field_data[ 'placeholder' ] ) ? 'placeholder="'. $field_data[ 'placeholder' ] .'"' : '' ?>
-  <?= isset( $field_data[ 'require' ] ) ? 'required' : '' ?>
-  <?= isset( $field_data[ 'id' ] ) ? 'id="'. $field_data[ 'id' ] .'"' : '' ?>
-  <?= isset( $field_data[ 'value' ] ) ? 'value="'. $field_data[ 'value' ] .'"' : '' ?>
+  name="<?php echo $field_data[ 'name' ] ?>" 
+  <?php echo isset( $field_data[ 'classes' ] ) ? 'class="'. $field_data[ 'classes' ] .'"' : '' ?>
+  <?php echo isset( $field_data[ 'placeholder' ] ) ? 'placeholder="'. $field_data[ 'placeholder' ] .'"' : '' ?>
+  <?php echo isset( $field_data[ 'require' ] ) ? 'required' : '' ?>
+  <?php echo isset( $field_data[ 'id' ] ) ? 'id="'. $field_data[ 'id' ] .'"' : '' ?>
+  <?php echo isset( $field_data[ 'value' ] ) ? 'value="'. $field_data[ 'value' ] .'"' : '' ?>
 >

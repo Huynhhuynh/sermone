@@ -26,6 +26,11 @@
 
 {
   /**
+   * Vendor
+   */
+  require( SERMONE_DIR . '/vendor/autoload.php' );
+
+  /**
    * ACF loaded 
    * 
    */
@@ -41,7 +46,19 @@
   require( SERMONE_DIR . '/inc/helpers.php' );
   require( SERMONE_DIR . '/inc/hooks.php' );
   require( SERMONE_DIR . '/inc/ajax.php' );
+  require( SERMONE_DIR . '/inc/options.php' );
   require( SERMONE_DIR . '/inc/register-post-type.php' );
   require( SERMONE_DIR . '/inc/register-tax.php' );
   require( SERMONE_DIR . '/inc/shortcode.php' );
+}
+
+{
+  /**
+   * Boot
+   */
+  function sermone_crb_boot() {
+    \Carbon_Fields\Carbon_Fields::boot();
+  }
+
+  add_action( 'plugins_loaded', 'sermone_crb_boot' );
 }
