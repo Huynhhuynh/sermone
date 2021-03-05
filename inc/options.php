@@ -42,7 +42,11 @@ function sermone_settings_general( $settings ) {
         'html5' => __( 'Browser Html 5', 'sermone' )
       ] )
       ->set_default_value( 'plyr' )
-      ->set_help_text( __( 'Select which player to use for playing Sermones.', 'sermone' ) )
+      ->set_help_text( __( 'Select which player to use for playing Sermones.', 'sermone' ) ),
+    Field::make( 'text', 'sermone_archive_page_slug', __( 'Archive Page Slug' ) )
+      ->set_default_value( 'sermone' )
+      ->set_help_text( __( 'This controls the page where sermones will be located, which includes single sermones.', 'sermone' ) )
+      ->set_required( true ),
   ] );
 
   $settings->add_tab( __( 'General Settings', 'sermone' ), $fields );
