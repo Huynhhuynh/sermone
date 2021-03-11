@@ -121,52 +121,81 @@ function sermone_hook_sermone_post_meta_settings( $settings ) {
     Field::make( 'text', 'sermone_main_bible_passage', __( 'Main Bible Passage', 'sermone' ) )
       ->set_help_text( __( 'Enter the Bible passage with the full book names, e.g. John 3:16-18
       Or multiple books like John 3:16-18, Luke 2:1-3', 'sermone' ) ),
-    Field::make( 'complex', 'sermone_audio' )
-      ->set_duplicate_groups_allowed( false )
-      ->add_fields( [
-        Field::make( 'select', 'audio_source', __( 'Audio Source', 'sermone' ) )
-          ->set_options( [
-            'embed_code' => __( 'Embed Code', 'sermone' ),
-            'audio_link' => __( 'Audio Link (Soundcloud)' , 'sermone' ),
-            'wp_media' => __( 'WP Media' , 'sermone' ),
-          ] )
-          ->set_default_value( 'wp_media' )
-          ->set_help_text( __( 'Choose type audio (default: WP Media)', 'sermone' ) ),
-        Field::make( 'textarea', 'embed_code', __( 'Embed Code', 'sermone' ) )
-          ->set_help_text( __( 'Enter embed code here!', 'sermone' ) )
-          ->set_conditional_logic( [
-            [
-              'field' => 'audio_source',
-              'value' => 'embed_code'
-            ]
-          ] ),
-        Field::make( 'oembed', 'audio_link', __( 'Audio Link (Soundcloud, etc.)', 'sermone' ) )
-          ->set_help_text( __( 'Enter audio link (Exam: https://mydomain.com/audio.mp3)', 'sermone' ) )
-          ->set_conditional_logic( [
-            [
-              'field' => 'audio_source',
-              'value' => 'audio_link'
-            ]
-          ] ),
-        Field::make( 'file', 'wp_media', __( 'Select Audio MP3', 'sermone' ) )
-          ->set_type( [ 'audio' ] )
-          ->set_help_text( __( 'Select audio MP3', 'sermone' ) )
-          ->set_conditional_logic( [
-            [
-              'field' => 'audio_source',
-              'value' => 'wp_media'
-            ]
-          ] ),
-        Field::make( 'text', 'mp3_duration', __( 'MP3 Duration', 'sermone' ) )
-          ->set_attribute( 'placeholder', __( '16:20 mins', 'sermone' ) )
+    Field::make( 'separator', 'sermone_separator_audio', __( 'Audio Settings' ) ),
+    Field::make( 'select', 'audio_source', __( 'Audio Source', 'sermone' ) )
+      ->set_options( [
+        'audio_embed_code' => __( 'Embed Code', 'sermone' ),
+        'audio_link' => __( 'Audio Link (Soundcloud)' , 'sermone' ),
+        'audio_wp_media' => __( 'WP Media' , 'sermone' ),
       ] )
-      ->set_default_value( [
+      ->set_default_value( 'audio_wp_media' )
+      ->set_help_text( __( 'Choose type audio (default: WP Media)', 'sermone' ) ),
+    Field::make( 'textarea', 'audio_embed_code', __( 'Audio Embed Code', 'sermone' ) )
+      ->set_help_text( __( 'Enter embed code here!', 'sermone' ) )
+      ->set_conditional_logic( [
         [
-          'audio_source' => 'wp_media'
+          'field' => 'audio_source',
+          'value' => 'audio_embed_code'
         ]
+      ] ),
+    Field::make( 'oembed', 'audio_link', __( 'Audio Link (Soundcloud, etc.)', 'sermone' ) )
+      ->set_help_text( __( 'Enter audio link (Exam: https://soundcloud.com/rapzilla/cutright-church-ft-dru-bex-chosen)', 'sermone' ) )
+      ->set_conditional_logic( [
+        [
+          'field' => 'audio_source',
+          'value' => 'audio_link'
+        ]
+      ] ),
+    Field::make( 'file', 'audio_wp_media', __( 'Select Audio MP3', 'sermone' ) )
+      ->set_type( [ 'audio' ] )
+      ->set_help_text( __( 'Select audio MP3', 'sermone' ) )
+      ->set_conditional_logic( [
+        [
+          'field' => 'audio_source',
+          'value' => 'audio_wp_media'
+        ]
+      ] ),
+    Field::make( 'text', 'mp3_duration', __( 'MP3 Duration', 'sermone' ) )
+      ->set_attribute( 'placeholder', __( '16:20 mins', 'sermone' ) ),
+    Field::make( 'separator', 'sermone_separator_video', __( 'Video Settings' ) ),
+    Field::make( 'select', 'video_source', __( 'Video Source', 'sermone' ) )
+      ->set_options( [
+        'video_embed_code' => __( 'Embed Code', 'sermone' ),
+        'video_link' => __( 'Video Link (Youtube, Vimeo, etc)' , 'sermone' ),
+        'video_wp_media' => __( 'WP Media' , 'sermone' ),
       ] )
-      ->set_header_template( __( 'Audio', 'sermone' ) ),
-    
+      ->set_default_value( 'video_wp_media' )
+      ->set_help_text( __( 'Choose type video (default: WP Media)', 'sermone' ) ),
+    Field::make( 'textarea', 'video_embed_code', __( 'Video Embed Code', 'sermone' ) )
+      ->set_help_text( __( 'Paste your embed code for Vimeo, Youtube, Facebook, or direct video file here', 'sermone' ) )
+      ->set_conditional_logic( [
+        [
+          'field' => 'video_source',
+          'value' => 'video_embed_code'
+        ]
+      ] ),
+    Field::make( 'oembed', 'video_link', __( 'Video Link (Youtube, Vimeo)', 'sermone' ) )
+      ->set_help_text( __( 'Paste your link for Vimeo, Youtube...', 'sermone' ) )
+      ->set_conditional_logic( [
+        [
+          'field' => 'video_source',
+          'value' => 'video_link'
+        ]
+      ] ),
+    Field::make( 'file', 'video_wp_media', __( 'Select Video MP4', 'sermone' ) )
+      ->set_type( [ 'video' ] )
+      ->set_help_text( __( 'Upload or select video from WP Media', 'sermone' ) )
+      ->set_conditional_logic( [
+        [
+          'field' => 'video_source',
+          'value' => 'video_wp_media'
+        ]
+      ] ),
+    Field::make( 'separator', 'sermone_separator_other', __( 'Other Settings' ) ),
+    Field::make( 'file', 'sermone_notes', __( 'Sermone Notes', 'sermone' ) )
+      ->set_help_text( __( 'Upload a pdf file', 'sermone' ) ),
+    Field::make( 'file', 'sermone_bulletin', __( 'Bulletin', 'sermone' ) )
+      ->set_help_text( __( 'Upload a pdf file', 'sermone' ) )
   ] );
 
   $settings->add_fields( $fields );
