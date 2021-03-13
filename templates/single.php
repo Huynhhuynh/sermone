@@ -39,7 +39,7 @@ get_header();
 
         <div class="sermone--date-and-share">
           <div class="date-preached" title="<?php echo __( 'Date preached', 'sermone' ) ?>">
-            <span class="__text"><?php echo __( 'Date preached', 'sermone' ) ?> <u><?php echo get_field( 'sermon_date_preached', get_the_ID() ) ?></u></span>
+            <span class="__text"><?php echo __( 'Date preached', 'sermone' ) ?> <u><?php echo sermone_get_field( 'sermon_date_preached', get_the_ID() ) ?></u></span>
           </div>
           <div class="sermone--share">
             <? sermone_share_post_html( get_the_ID() ) ?>

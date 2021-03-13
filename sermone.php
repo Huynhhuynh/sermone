@@ -29,12 +29,6 @@
    * Vendor
    */
   require( SERMONE_DIR . '/vendor/autoload.php' );
-
-  /**
-   * ACF loaded 
-   * 
-   */
-  require( SERMONE_DIR . 'acf-loaded.php' );
 }
 
 {

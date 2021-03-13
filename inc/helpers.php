@@ -105,12 +105,14 @@ function sermone_classes_hook( $classes, $hook_name = '' ) {
  * @param Int $post_id 
  * @return Html
  */
-function sermone_get_post_thumb_html( $post_id, $size = 'large' ) {
+function sermone_get_post_thumb_html( $post_id, $size = 'large' ) { 
   $thumb_tag = get_the_post_thumbnail( $post_id, $size, [ 'class' => 'sermone-post-thumbnail' ] );
   if( $thumb_tag ) { echo $thumb_tag; return; }
 
-  $global_thumb_default = get_field( 'sermone_image_default', 'option' );
-  $default = ! empty( $global_thumb_default ) ? $global_thumb_default[ 'sizes' ][ $size ] : SERMONE_URI . '/images/oh-no.jpg';
+  $default_image_id = sermone_get_field( 'sermone_image_default', 'option' );
+  $global_thumb_default = wp_get_attachment_image_src( $default_image_id, $size );
+
+  $default = ( $global_thumb_default !== false ) ? $global_thumb_default[0] : SERMONE_URI . '/images/oh-no.jpg';
   echo '<img src="'. $default .'" alt="'. get_the_title( $post_id ) .'" class="sermone-post-thumbnail" />';
 }
 
@@ -177,7 +179,7 @@ function sermone_get_list_preacher_html( $post_id ) {
  * Scripture
  */
 function sermone_get_scripture_by_sirmone_html( $post_id ) {
-  $scripture = get_field( 'sermone_main_bible_passage', get_the_ID() );
+  $scripture = sermone_get_field( 'sermone_main_bible_passage', get_the_ID() );
   if( empty( $scripture ) ) return; 
 
   $bible_root_url = 'https://www.biblegateway.com';
@@ -193,7 +195,7 @@ function sermone_get_scripture_by_sirmone_html( $post_id ) {
  * Share 
  */
 function sermone_share_post_html( $post_id ) {
-  $share = get_field( 'single_sharing', 'option' );
+  $share = sermone_get_field( 'single_sharing', 'option' );
   $share = $share === null ? true : $share;
   if( $share != true ) return;
 
@@ -286,9 +288,12 @@ function sermone_post_in_tax_html( $post_id ) {
  * @return Array
  */
 function sermone_get_video_item( $post_id ) {
-  $sermone_video = get_field( 'sermone_video', $post_id );
-  $source = $sermone_video[ 'video_source' ];
-  $data = $sermone_video[ $source ];
+  $source = sermone_get_field( 'video_source', $post_id );
+  $data = sermone_get_field( $source, $post_id );
+
+  if( 'video_link' == $source ) {
+    $data = wp_oembed_get( $data );
+  }
 
   return [
     'source' => $source,
@@ -303,15 +308,29 @@ function sermone_get_video_item( $post_id ) {
  * @return Array
  */
 function sermone_get_audio_item( $post_id ) {
-  $sermone_audio = get_field( 'sermone_audio', $post_id );
-  $source = $sermone_audio[ 'audio_source' ];
-  $data = $sermone_audio[ $source ];
+  $source = sermone_get_field( 'audio_source', $post_id );
+  $data = sermone_get_field( $source, $post_id );
+
+  if( 'audio_link' == $source ) {
+    $data = wp_oembed_get( $data );
+  }
 
   return [
     'source' => $source,
     'content' => $data,
-    'duration' => $sermone_audio[ 'mp3_duration' ]
+    'duration' => sermone_get_field( 'mp3_duration', $post_id )
   ];
+}
+
+/**
+ * Get file url by attacment id 
+ * 
+ * @param Int $attachment_id
+ * @return fileurl
+ */
+function sermone_get_media_file_by_id( $attachment_id = null ) {
+  if( empty( $attachment_id ) || $attachment_id == 0 ) return;
+  return get_attached_file( $attachment_id );
 }
 
 /**
@@ -340,7 +359,7 @@ function sermone_media_nav_data( $post_id ) {
       'name' => __( 'Download notes', 'sermone' ),
       'icon' => sermone_svg( 'download' ),
       'data' => [
-        'content' => get_field( 'sermone_notes', $post_id ),
+        'content' => sermone_get_media_file_by_id( sermone_get_field( 'sermone_notes', $post_id ) ),
       ]
     ],
     [
@@ -349,7 +368,7 @@ function sermone_media_nav_data( $post_id ) {
       'name' => __( 'Download bulletin', 'sermone' ),
       'icon' => sermone_svg( 'download' ),
       'data' => [
-        'content' => get_field( 'sermone_bulletin', $post_id ),
+        'content' => sermone_get_media_file_by_id( sermone_get_field( 'sermone_bulletin', $post_id ) ),
       ]
     ],
   ];
@@ -368,7 +387,7 @@ function sermone_media_nav_data( $post_id ) {
  * 
  */
 function sermone_archive_posts_classes() {
-  $sermone_archive_layout = get_field( 'sermone_archive_layout', 'option' );
+  $sermone_archive_layout = sermone_get_field( 'sermone_archive_layout', 'option' );
   $sermone_archive_layout_class = empty( $sermone_archive_layout ) ? 'sermone-archive-style-list' : 'sermone-archive-style-' . $sermone_archive_layout;
   return apply_filters( 
     'sermone_archive_posts_classes', 
@@ -664,7 +683,7 @@ function sermone_post_in_series_html( $post_id ) {
  * Enable favorite
  */
 function sermone_favorite_enable() {
-  $fav_enable = get_field( 'sermone_add_to_favorite', 'option' );
+  $fav_enable = sermone_get_field( 'sermone_add_to_favorite', 'option' );
   $fav_enable = $fav_enable == null ? false : $fav_enable;
   return apply_filters( 'sermone_hook_enable_favorite', $fav_enable );
 }
@@ -720,7 +739,7 @@ function sermone_user_add_to_favorite( $user_id = null, $sermone_id = null, $rem
  * @return Array
  */
 function sermone_get_favorite_by_user( $user_id = 0 ) {
-  $favorites = get_field( 'sermone_user_favorite', 'user_' . $user_id );
+  $favorites = sermone_get_field( 'sermone_user_favorite', 'user_' . $user_id );
   return empty( $favorites ) ? [] : $favorites;
 }
 

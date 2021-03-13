@@ -44,7 +44,7 @@ function sermone_ajax_add_to_favorite() {
         'message' => sprintf( 
           '%1$s <a href="%2$s">%3$s</a>', 
           __( 'Please login first to use this feature.', 'sermone' ),
-          get_field( 'sermone_user_login_url', 'option' ),
+          sermone_get_field( 'sermone_user_login_url', 'option' ),
           __( 'Login here.', 'sermone' ) ),
         'status' => false,
       ]

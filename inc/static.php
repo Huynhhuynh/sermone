@@ -23,7 +23,7 @@ add_action( 'wp_enqueue_scripts', 'sermone_enqueue_scripts' );
  */
 function sermone_style_inline() {
   ob_start();
-  $container_width = get_field( 'sermone_container_width', 'option' );
+  $container_width = sermone_get_field( 'sermone_container_width', 'option' );
   ?>
   .sermone-container { width: <?php echo $container_width ? $container_width : '1120px' ?>; }
   <?php

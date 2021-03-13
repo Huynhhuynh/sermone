@@ -44,7 +44,7 @@ function sermone_register_sermon_cpt() {
     'query_var' => true,
     'rewrite' => [ 'slug' => 'sermone' ],
     'capability_type' => 'post',
-    'has_archive' => get_field( 'sermone_archive_page_slug', 'option' ) || 'sermone',
+    'has_archive' => sermone_get_field( 'sermone_archive_page_slug', 'option' ) || 'sermone',
     'hierarchical' => false,
     'menu_position' => 26,
     'menu_icon' => 'data:image/svg+xml;base64,' . base64_encode( $icon ),
