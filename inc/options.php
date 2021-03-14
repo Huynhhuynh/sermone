@@ -25,11 +25,17 @@ function sermone_settings() {
   /**
    * Sermon'e post meta settings
    */
-  $sermone_post_meta_settings = Container::make( 'post_meta', __( 'Sermone Detail', 'sermone' ) )
+  $sermone_post_meta_settings = Container::make( 'post_meta', __( 'Sermon Detail', 'sermone' ) )
     ->where( 'post_type', '=', 'sermone' );
+
+  /**
+   * User settings 
+   */
+  $sermone_user_settings = Container::make( 'user_meta', __( 'Sermon Favorite', 'sermone' ) );
 
   do_action( 'sermone_hook_settings', $sermone_settings );
   do_action( 'sermone_hook_post_meta_settings', $sermone_post_meta_settings );
+  do_action( 'sermone_hook_user_settings', $sermone_user_settings );
 }
 
 add_action( 'carbon_fields_register_fields', 'sermone_settings' );
@@ -202,3 +208,16 @@ function sermone_hook_sermone_post_meta_settings( $settings ) {
 }
 
 add_action( 'sermone_hook_post_meta_settings', 'sermone_hook_sermone_post_meta_settings' );
+
+/**
+ * User favorite settingfs 
+ * 
+ * @param Object $settings
+ * 
+ * @return void
+ */
+function sermone_hook_user_favorite_settings( $settings ) {
+
+}
+
+add_action( 'sermone_hook_user_settings', 'sermone_hook_user_favorite_settings' );

@@ -756,7 +756,7 @@ function sermone_in_user_favorite( $sermone_id = 0, $user_id = null ) {
   } 
 
   if( $current_user_id == 0 ) return;
- 
+
   # Get favorite by user id
   $favorites = sermone_get_favorite_by_user( $current_user_id );
   
