@@ -217,7 +217,22 @@ add_action( 'sermone_hook_post_meta_settings', 'sermone_hook_sermone_post_meta_s
  * @return void
  */
 function sermone_hook_user_favorite_settings( $settings ) {
+  $fields = apply_filters( 'sermone_hook_user_favorite_options', [
+    Field::make( 'complex', 'sermone_user_favorite', __( 'Favorite', 'sermone' ) )
+      ->set_duplicate_groups_allowed( false )
+      ->set_max( 1 )
+      ->add_fields( [
+        Field::make( 'association', 'items' )
+          ->set_types( [
+            [
+              'type' => 'post',
+              'post_type' => 'sermone',
+            ]
+          ] )
+      ] )
+  ] );
 
+  $settings->add_fields( $fields );
 }
 
 add_action( 'sermone_hook_user_settings', 'sermone_hook_user_favorite_settings' );

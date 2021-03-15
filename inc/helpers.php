@@ -7,7 +7,7 @@
  * Get field
  * 
  * @param String $field_name 
- * @param String $type 
+ * @param $type 
  * 
  * @return 
  */
@@ -27,6 +27,34 @@ function sermone_get_field( $fiel_name = '', $type = 'option' ) {
     }
     
     return carbon_get_term_meta( $id, $fiel_name );
+  }
+}
+
+/**
+ * Set field
+ * 
+ * @param String $field_name 
+ * @param $value
+ * @param $type 
+ * 
+ * @return 
+ */
+function sermone_update_field( $fiel_name = '', $value = '', $type = 'option' ) {
+  if( is_numeric( $type ) ) {
+    return carbon_set_post_meta( $type, $fiel_name, $value );
+  } else if( 'option' == $type ) {
+    return carbon_set_theme_option( $fiel_name, $value );
+  } else {
+    $segments = explode( '_', $type );
+
+    $id = (int) implode( '_', array_slice( $segments, -1, 1 ) );
+    $_type = implode( '_', array_slice( $segments, 0, count( $segments ) - 1 ) );
+
+    if( 'user' == $_type ) {
+      return carbon_set_user_meta( $id, $fiel_name, $value );
+    }
+
+    return carbon_set_term_meta( $id, $fiel_name, $value );
   }
 }
 
@@ -726,8 +754,18 @@ function sermone_user_add_to_favorite( $user_id = null, $sermone_id = null, $rem
     array_push( $_favorites, $sermone_id );
   }
   
-  $updateFavorites = count( $_favorites ) ? array_map( function( $id ) { return [ 'item' => $id ]; }, $_favorites ) : []; 
-  update_field( 'sermone_user_favorite', $updateFavorites, 'user_' . $user_id );
+  $updateFavorites = count( $_favorites ) 
+    ? array_map( function( $id ) { 
+        return [
+          'value' => 'post:sermone:' . $id,
+          'type' => 'post',
+          'subtype' => 'sermone',
+          'id' => $id,
+        ]; 
+      }, $_favorites ) 
+    : []; 
+
+  sermone_update_field( 'sermone_user_favorite', [ [ 'items' => $updateFavorites ] ], 'user_' . $user_id );
 
   return $_favorites;
 }
@@ -740,7 +778,13 @@ function sermone_user_add_to_favorite( $user_id = null, $sermone_id = null, $rem
  */
 function sermone_get_favorite_by_user( $user_id = 0 ) {
   $favorites = sermone_get_field( 'sermone_user_favorite', 'user_' . $user_id );
-  return empty( $favorites ) ? [] : $favorites;
+  if( empty( $favorites ) || count( $favorites[ 0 ][ 'items' ] ) == 0 ) return [];
+
+  return array_map( function( $item ) {
+    return [
+      'item' => get_post( $item[ 'id' ] )
+    ];
+  }, $favorites[ 0 ][ 'items' ] );
 }
 
 /**
