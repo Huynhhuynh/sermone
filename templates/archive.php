@@ -24,7 +24,7 @@ get_header();
 ?>
 <div class="<?php echo sermone_classes_hook( 'sermone-archive-container', 'sermone_archive' ) ?>">
   <div class="sermone-container">
-    <? 
+    <?php 
     $query = sermone_get_posts_archive();
 
     /**

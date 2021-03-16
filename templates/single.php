@@ -18,7 +18,7 @@ get_header();
 
     <div class="sermone-header">
       <div class="sermone-thumb">
-        <? sermone_get_post_thumb_html( get_the_ID(), apply_filters( 'sermone_hook_single_image_preview_size', 'large' ) ) ?>
+        <?php sermone_get_post_thumb_html( get_the_ID(), apply_filters( 'sermone_hook_single_image_preview_size', 'large' ) ) ?>
       </div>
       <div class="sermone-detail">
         <div class="in-scripture">
@@ -26,12 +26,12 @@ get_header();
           <?php echo sermone_get_scripture_by_sirmone_html( get_the_ID() ) ?>
         </div>
         <div class="in-tax">
-          <? sermone_post_in_tax_html( get_the_ID() ) ?>
+          <?php sermone_post_in_tax_html( get_the_ID() ) ?>
         </div>
         <h2 class="post-title"><?php echo the_title() ?></h2>
         <div class="detail-meta">
           <div class="sermone-by">
-            <? sermone_get_list_preacher_html( get_the_ID() ) ?>
+            <?php sermone_get_list_preacher_html( get_the_ID() ) ?>
           </div>
         </div>
 
@@ -39,17 +39,17 @@ get_header();
 
         <div class="sermone--date-and-share">
           <div class="date-preached" title="<?php echo __( 'Date preached', 'sermone' ) ?>">
-            <span class="__text"><?php echo __( 'Date preached', 'sermone' ) ?> <u><?php echo sermone_get_field( 'sermon_date_preached', get_the_ID() ) ?></u></span>
+            <span class="__text"><?php echo __( 'Date preached', 'sermone' ) ?> <u><?php echo sermone_date_format( '', sermone_get_field( 'sermon_date_preached', get_the_ID() ) ) ?></u></span>
           </div>
           <div class="sermone--share">
-            <? sermone_share_post_html( get_the_ID() ) ?>
+            <?php sermone_share_post_html( get_the_ID() ) ?>
           </div>
         </div>
       </div>
     </div> <!-- .sermone-header -->
 
     <div class="sermone-content-summary">
-      <? 
+      <?php
       /**
        * sermone_single_before_content hook
        *
@@ -58,9 +58,9 @@ get_header();
       do_action( 'sermone_single_before_content' ) 
       ?>
       <div class="sermone-content">
-        <? the_content(); ?>
+        <?php the_content(); ?>
       </div>
-      <?
+      <?php
       /**
        * sermone_single_after_content hook
        *

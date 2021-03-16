@@ -29,12 +29,20 @@ function sermone_settings() {
     ->where( 'post_type', '=', 'sermone' );
 
   /**
+   * Preacher term meta settings
+   */
+  $sermone_preacher_meta_settings = Container::make( 'term_meta', __( 'Preacher Detail', 'sermone' ) )
+    ->where( 'term_taxonomy', '=', 'sermone_preacher' );
+
+
+  /**
    * User settings 
    */
   $sermone_user_settings = Container::make( 'user_meta', __( 'Sermon Favorite', 'sermone' ) );
 
   do_action( 'sermone_hook_settings', $sermone_settings );
   do_action( 'sermone_hook_post_meta_settings', $sermone_post_meta_settings );
+  do_action( 'sermone_hook_preacher_meta_settings', $sermone_preacher_meta_settings );
   do_action( 'sermone_hook_user_settings', $sermone_user_settings );
 }
 
@@ -121,9 +129,7 @@ add_action( 'sermone_hook_settings', 'sermone_settings_display', 12 );
  */
 function sermone_hook_sermone_post_meta_settings( $settings ) {
   $fields = apply_filters( 'sermone_hook_post_meta_options', [
-    Field::make( 'date', 'sermon_date_preached', __( 'Date Preached', 'sermone' ) )
-      ->set_storage_format( 'Y-m-d' )
-      ->set_input_format( 'Y-m-d', 'F j, Y' ),
+    Field::make( 'date', 'sermon_date_preached', __( 'Date Preached', 'sermone' ) ),
     Field::make( 'text', 'sermone_main_bible_passage', __( 'Main Bible Passage', 'sermone' ) )
       ->set_help_text( __( 'Enter the Bible passage with the full book names, e.g. John 3:16-18
       Or multiple books like John 3:16-18, Luke 2:1-3', 'sermone' ) ),
@@ -236,3 +242,27 @@ function sermone_hook_user_favorite_settings( $settings ) {
 }
 
 add_action( 'sermone_hook_user_settings', 'sermone_hook_user_favorite_settings' );
+
+/**
+ * Preacher term meta settingfs 
+ * 
+ * @param Object $settings
+ * 
+ * @return void
+ */
+function sermone_hook_preacher_meta_settings( $settings ) {
+
+  $fields = apply_filters( 'sermone_hook_preacher_meta_options', [
+    Field::make( 'image', 'preacher_avatar', __( 'Avatar', 'sermone' ) )
+      ->set_help_text( __( 'Select avatar for preacher', 'sermone' ) )
+      ->set_type( [ 'image' ] ),
+    Field::make( 'text', 'preacher_facebook', __( 'Facebook', 'sermone' ) ),
+    Field::make( 'text', 'preacher_twitter', __( 'Twitter', 'sermone' ) ),
+    Field::make( 'text', 'preacher_email', __( 'Email', 'sermone' ) ),
+    Field::make( 'text', 'preacher_phone', __( 'Phone', 'sermone' ) ),
+  ] );
+
+  $settings->add_fields( $fields );
+}
+
+add_action( 'sermone_hook_preacher_meta_settings', 'sermone_hook_preacher_meta_settings' );

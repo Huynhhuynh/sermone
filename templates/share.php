@@ -5,13 +5,13 @@
 
 ?>
 <ul class="sermone--share-container">
-  <?
+  <?php
   /**
    * sermone_social_item_start hook
    */ 
   do_action( 'sermone_social_item_start' ) 
   ?>
-  <? foreach( $share_data as $share_name => $item ) : ?>
+  <?php foreach( $share_data as $share_name => $item ) : ?>
   <li class="share-item __share-<?php echo $share_name ?>">
     <a 
       href="<?php echo $item[ 'link' ] ?>" 
@@ -22,8 +22,8 @@
       <span class="__icon"><?php echo $item[ 'icon' ] ?></span>
     </a>
   </li> <!-- .__share-<?php echo $share_name ?> -->
-  <? endforeach; ?>
-  <?
+  <?php endforeach; ?>
+  <?php
   /**
    * sermone_social_item_end hook 
    * 

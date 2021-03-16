@@ -206,8 +206,8 @@ function sermone_single_post_nav_html() {
   ?>
   <div class="sermone-single-post-nav-link">
     <ul>
-      <li><? previous_post_link( '%link', 'Previous: %title ' . $icon ) ?></li>
-      <li><? next_post_link( '%link', __( 'Next: %title ' . $icon ) ) ?></li>
+      <li><?php previous_post_link( '%link', 'Previous: %title ' . $icon ) ?></li>
+      <li><?php next_post_link( '%link', __( 'Next: %title ' . $icon ) ) ?></li>
     </ul>
   </div>
   <?php 
@@ -279,7 +279,7 @@ function sermone_social_item_favorite() {
       data-tippy-content="<?php echo __( 'Favorite', 'sermone' ) ?>"
       data-tippy-placement="bottom"
       title="<?php echo __( 'Favorite', 'sermone' ) ?>" 
-      data-sermone-fav=<? the_ID() ?>>
+      data-sermone-fav=<?php the_ID() ?>>
       <span class="__icon"><?php echo sermone_svg( 'star' ) ?></span>
       <span class="__icon __is-bold"><?php echo sermone_svg( 'star_bold' ) ?></span>
     </a>
@@ -298,9 +298,9 @@ function sermone_archive_loop_item_action_button_favorite() {
   $in_fav = sermone_in_user_favorite( get_the_ID() );
   ?>
   <a 
-    href="<? the_permalink() ?>" 
+    href="<?php the_permalink() ?>" 
     class="sermone-favorite <?php echo $in_fav ? '__in-fav' : '' ?>" 
-    data-sermone-fav=<? the_ID() ?>>
+    data-sermone-fav=<?php the_ID() ?>>
     <?php echo __( 'Favorite', 'sermone' ) ?>
     <span class="__icon"><?php echo sermone_svg( 'star' ) ?></span>
     <span class="__icon __is-bold"><?php echo sermone_svg( 'star_bold' ) ?></span>

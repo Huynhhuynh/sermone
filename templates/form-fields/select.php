@@ -14,9 +14,9 @@
   <?php echo isset( $field_data[ 'multiple' ] ) ? 'multiple' : '' ?> 
   <?php echo isset( $field_data[ 'require' ] ) ? 'required' : '' ?> 
 >
-  <? foreach( $field_data[ 'options' ] as $value => $label ) : 
+  <?php foreach( $field_data[ 'options' ] as $value => $label ) : 
     $selected = (isset( $field_data[ 'value' ] ) && $field_data[ 'value' ] === (string) $value) ? 'selected' : '';
   ?>
   <option value="<?php echo $value ?>" <?php echo $selected ?>><?php echo $label ?></option>
-  <? endforeach; ?>
+  <?php endforeach; ?>
 </select>

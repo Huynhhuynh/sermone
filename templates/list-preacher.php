@@ -5,7 +5,7 @@
 
 ?>
 <ul class="sermone--preacher-list">
-  <? foreach( $preachers as $index => $item ) : ?>
+  <?php foreach( $preachers as $index => $item ) : ?>
   <li class="preacher-item">
     <span class="__avatar">
       <img 
@@ -16,5 +16,5 @@
         data-tippy-placement="bottom" >
     </span>
   </li>
-  <? endforeach; ?>
+  <?php endforeach; ?>
 </ul>

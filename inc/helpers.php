@@ -153,10 +153,16 @@ function sermone_get_post_thumb_html( $post_id, $size = 'large' ) {
  */
 function sermone_get_preacher_avatar( $term_id ) {
   $default = apply_filters( 'sermone_preacher_avatar_default', SERMONE_URI . '/images/no-avatar.jpg' );
-  $preacher_avatar = get_field( 'preacher_avatar', 'sermone_preacher_' . $term_id );
+  $preacher_avatar = sermone_get_field( 'preacher_avatar', 'sermone_preacher_' . $term_id );
   $size = apply_filters( 'sermone_preacher_avatar_size', 'thumbnail' );
 
-  return $preacher_avatar ? $preacher_avatar[ 'sizes' ][ $size ] : $default;
+  if( $preacher_avatar ) {
+    $image_data = wp_get_attachment_image_src( $preacher_avatar, $size ); 
+
+    if( $image_data ) { return $image_data[ 0 ]; }
+    else { return $default; }
+
+  } else { return $default; }
 }
 
 /**
@@ -167,7 +173,7 @@ function sermone_get_preacher_avatar( $term_id ) {
  * @return Array or Null
  */
 function sermone_get_preacher_contact( $term_id ) {
-  return get_field( 'preacher_contact', 'sermone_preacher_' . $term_id );
+  return [];
 } 
 
 /**
@@ -720,7 +726,7 @@ function sermone_favorite_enable() {
  * Get media player
  */
 function sermone_media_player() {
-  $player = get_field( 'sermone_audio_video_player', 'options' );
+  $player = sermone_get_field( 'sermone_audio_video_player', 'options' );
   return $player ? $player : 'plyr';
 }
 
@@ -809,4 +815,14 @@ function sermone_in_user_favorite( $sermone_id = 0, $user_id = null ) {
 
   $fav_ids = array_map( function( $item ) { return (int) $item[ 'item' ]->ID; }, $favorites );
   return in_array( $sermone_id, $fav_ids );
+}
+
+/**
+ * 
+ */
+function sermone_date_format( $format = '', $date = '' ) {
+  if( empty( $date ) ) return;
+
+  $format = empty( $format ) ? get_option( 'date_format' ) : 'F j, Y';
+  return date( $format, strtotime( $date ) );
 }

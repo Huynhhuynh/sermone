@@ -6,7 +6,7 @@
 // echo '<pre>'; print_r( $nav_data ); echo '</pre>';
 ?>
 <ul class="sermone--media-nav-container">
-  <? foreach( $nav_data as $index => $item ) : ?> 
+  <?php foreach( $nav_data as $index => $item ) : ?> 
   <li class="media-item <?php echo isset( $item[ 'active' ] ) ? '__active' : '' ?>">
     <a 
       class="<?php echo empty( $item[ 'data' ][ 'content' ] ) ? '__item-disable' : '' ?>"
@@ -19,11 +19,11 @@
       <span class="__icon"><?php echo $item[ 'icon' ] ?></span> 
     </a>
   </li>
-  <? endforeach; ?>
+  <?php endforeach; ?>
 </ul> <!-- .sermone--media-nav-container -->
 
 <div class="sermone--media-tab-container">
-  <? foreach( $nav_data as $index => $item ) : if( $item[ 'type' ] != 'tab' ) continue; ?> 
+  <?php foreach( $nav_data as $index => $item ) : if( $item[ 'type' ] != 'tab' ) continue; ?> 
     <div class="__tab-item __tab-<?php echo $item[ 'id' ] ?> <?php echo isset( $item[ 'active' ] ) ? '__active' : '' ?>" data-tab-key="<?php echo $item[ 'id' ] ?>">
       <div 
         class="sermone--media-content-type" 
@@ -34,5 +34,5 @@
         <!-- Content render by javascript -->
       </div>
     </div>
-  <? endforeach; ?>
+  <?php endforeach; ?>
 </div> <!-- .sermone--media-tab-container -->
