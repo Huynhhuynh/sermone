@@ -17,7 +17,7 @@
     <div class="sermone-entry">
       <div class="sermone-info">
         <div class="more-info">
-          <?php echo __( 'on', 'sermone' ) ?> <u><?php echo sermone_get_field( 'sermon_date_preached', get_the_ID() ) ?></u> 
+          <?php echo __( 'on', 'sermone' ) ?> <u><?php echo sermone_date_format( '', sermone_get_field( 'sermon_date_preached', get_the_ID() ) ) ?></u> 
           <?php echo get_the_term_list( get_the_ID(), 'sermone_preacher', __( '— by ', 'sermone' ), ', ', '.' ) ?>
         </div>
         <div class="in-tax">

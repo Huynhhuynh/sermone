@@ -93,7 +93,7 @@ add_action( 'sermone_archive_top', 'sermone_filter_bar', 20 );
 function sermone_query_args_by_keywords( $args = [] ) {
 
   if( isset( $_GET[ 'keywords' ] ) && ! empty( $_GET[ 'keywords' ] ) ) {
-    $args[ 's' ] = trim( $_GET[ 'keywords' ] );
+    $args[ 's' ] = sanitize_text_field( $_GET[ 'keywords' ] );
   }
 
   return $args;
@@ -113,7 +113,7 @@ function sermone_query_args_by_tax_preachers( $args = [] ) {
     array_push( $tax_query, [
       'taxonomy' => 'sermone_preacher',
       'field' => 'slug',
-      'terms' => trim( $_GET[ 'preachers' ] ),
+      'terms' => sanitize_text_field( $_GET[ 'preachers' ] ),
     ] );
     $args[ 'tax_query' ] = $tax_query;
   }
@@ -135,7 +135,7 @@ function sermone_query_args_by_tax_series( $args = [] ) {
     array_push( $tax_query, [
       'taxonomy' => 'sermone_series',
       'field' => 'slug',
-      'terms' => trim( $_GET[ 'series' ] ),
+      'terms' => sanitize_text_field( $_GET[ 'series' ] ),
     ] );
     $args[ 'tax_query' ] = $tax_query;
   }
@@ -157,7 +157,7 @@ function sermone_query_args_by_tax_topics( $args = [] ) {
     array_push( $tax_query, [
       'taxonomy' => 'sermone_topics',
       'field' => 'slug',
-      'terms' => trim( $_GET[ 'topics' ] ),
+      'terms' => sanitize_text_field( $_GET[ 'topics' ] ),
     ] );
     $args[ 'tax_query' ] = $tax_query;
   }
@@ -179,7 +179,7 @@ function sermone_query_args_by_tax_books( $args = [] ) {
     array_push( $tax_query, [
       'taxonomy' => 'sermone_books',
       'field' => 'slug',
-      'terms' => trim( $_GET[ 'books' ] ),
+      'terms' => sanitize_text_field( $_GET[ 'books' ] ),
     ] );
     $args[ 'tax_query' ] = $tax_query;
   }

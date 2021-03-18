@@ -4,8 +4,6 @@
  * Plugin URI:        http://159.89.194.38:8383/
  * Description:       Sermon'e is designed to help churches easily publish sermons online. is a new beautiful, modern sermon plugin that integrates seamlessly with any WordPress theme.
  * Version:           1.0.0
- * Requires at least: 5.3
- * Requires PHP:      7.2
  * Author:            Beplus
  * Author URI:        https://bearsthemes.com/
  * License:           GPL v2 or later

@@ -483,14 +483,14 @@ function sermone_filter_bar_html() {
       'field_type' => 'text',
       'placeholder' => __( '...' ),
       'classes' => 'item-field-keywords',
-      'value' => isset( $_GET[ 'keywords' ] ) ? $_GET[ 'keywords' ] : '',
+      'value' => isset( $_GET[ 'keywords' ] ) ? esc_html( $_GET[ 'keywords' ] ) : '',
     ],
     [
       'name' => 'preachers',
       'label' => __( 'Select Preachers', 'sermone' ),
       'field_type' => 'select',
       'options' => sermone_list_term_options_filter_form( 'sermone_preacher', [ '' => __( 'All Preachers', 'sermone' ) ] ),
-      'value' => isset( $_GET[ 'preachers' ] ) ? $_GET[ 'preachers' ] : '',
+      'value' => isset( $_GET[ 'preachers' ] ) ? esc_html( $_GET[ 'preachers' ] ) : '',
       'classes' => 'item-field-preachers',
     ],
     [
@@ -498,7 +498,7 @@ function sermone_filter_bar_html() {
       'label' => __( 'Select Series', 'sermone' ),
       'field_type' => 'select',
       'options' => sermone_list_term_options_filter_form( 'sermone_series', [ '' => __( 'All Series', 'sermone' ) ] ),
-      'value' => isset( $_GET[ 'series' ] ) ? $_GET[ 'series' ] : '',
+      'value' => isset( $_GET[ 'series' ] ) ? esc_html( $_GET[ 'series' ] ) : '',
       'classes' => 'item-field-series',
     ],
     [
@@ -506,7 +506,7 @@ function sermone_filter_bar_html() {
       'label' => __( 'Select Topics', 'sermone' ),
       'field_type' => 'select',
       'options' => sermone_list_term_options_filter_form( 'sermone_topics', [ '' => __( 'All Topics', 'sermone' ) ] ),
-      'value' => isset( $_GET[ 'topics' ] ) ? $_GET[ 'topics' ] : '',
+      'value' => isset( $_GET[ 'topics' ] ) ? esc_html( $_GET[ 'topics' ] ) : '',
       'classes' => 'item-field-topics',
     ],
     [
@@ -514,7 +514,7 @@ function sermone_filter_bar_html() {
       'label' => __( 'Select Books', 'sermone' ),
       'field_type' => 'select',
       'options' => sermone_list_term_options_filter_form( 'sermone_books', [ '' => __( 'All Books', 'sermone' ) ] ),
-      'value' => isset( $_GET[ 'books' ] ) ? $_GET[ 'books' ] : '',
+      'value' => isset( $_GET[ 'books' ] ) ? esc_html( $_GET[ 'books' ] ) : '',
       'classes' => 'item-field-books',
     ],
   ]; 
