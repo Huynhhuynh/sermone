@@ -5,7 +5,7 @@ namespace Carbon_Fields\Field;
 /**
  * Oembed field class.
  */
-class OEmbed_Field extends Field {
+class Oembed_Field extends Field {
 
 	/**
 	 * Enqueue scripts and styles in admin
