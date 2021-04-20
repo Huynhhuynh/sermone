@@ -150,7 +150,7 @@ function sermone_hook_sermone_post_meta_settings( $settings ) {
           'value' => 'audio_embed_code'
         ]
       ] ),
-    Field::make_oembed( 'audio_link', __( 'Audio Link (Soundcloud, etc.)', 'sermone' ) )
+    Field::make( 'oembed', 'audio_link', __( 'Audio Link (Soundcloud, etc.)', 'sermone' ) )
       ->set_help_text( __( 'Enter audio link (Exam: https://soundcloud.com/rapzilla/cutright-church-ft-dru-bex-chosen)', 'sermone' ) )
       ->set_conditional_logic( [
         [
@@ -186,7 +186,7 @@ function sermone_hook_sermone_post_meta_settings( $settings ) {
           'value' => 'video_embed_code'
         ]
       ] ),
-    Field::make_oembed( 'video_link', __( 'Video Link (Youtube, Vimeo)', 'sermone' ) )
+    Field::make( 'oembed', 'video_link', __( 'Video Link (Youtube, Vimeo)', 'sermone' ) )
       ->set_help_text( __( 'Paste your link for Vimeo, Youtube...', 'sermone' ) )
       ->set_conditional_logic( [
         [
