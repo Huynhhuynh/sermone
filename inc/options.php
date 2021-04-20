@@ -150,7 +150,7 @@ function sermone_hook_sermone_post_meta_settings( $settings ) {
           'value' => 'audio_embed_code'
         ]
       ] ),
-    Field::make( 'oembed', 'audio_link', __( 'Audio Link (Soundcloud, etc.)', 'sermone' ) )
+    Field::make( 'text', 'audio_link', __( 'Audio Link (Soundcloud, etc.)', 'sermone' ) )
       ->set_help_text( __( 'Enter audio link (Exam: https://soundcloud.com/rapzilla/cutright-church-ft-dru-bex-chosen)', 'sermone' ) )
       ->set_conditional_logic( [
         [
@@ -158,6 +158,14 @@ function sermone_hook_sermone_post_meta_settings( $settings ) {
           'value' => 'audio_link'
         ]
       ] ),
+    // Field::make( 'oembed', 'audio_link', __( 'Audio Link (Soundcloud, etc.)', 'sermone' ) )
+    //   ->set_help_text( __( 'Enter audio link (Exam: https://soundcloud.com/rapzilla/cutright-church-ft-dru-bex-chosen)', 'sermone' ) )
+    //   ->set_conditional_logic( [
+    //     [
+    //       'field' => 'audio_source',
+    //       'value' => 'audio_link'
+    //     ]
+    //   ] ),
     Field::make( 'file', 'audio_wp_media', __( 'Select Audio MP3', 'sermone' ) )
       ->set_type( [ 'audio' ] )
       ->set_help_text( __( 'Select audio MP3', 'sermone' ) )
@@ -186,14 +194,22 @@ function sermone_hook_sermone_post_meta_settings( $settings ) {
           'value' => 'video_embed_code'
         ]
       ] ),
-    Field::make( 'oembed', 'video_link', __( 'Video Link (Youtube, Vimeo)', 'sermone' ) )
-      ->set_help_text( __( 'Paste your link for Vimeo, Youtube...', 'sermone' ) )
+    Field::make( 'text', 'video_link', __( 'Video Link (Youtube, Vimeo)', 'sermone' ) )
+      ->set_help_text( __( 'aste your link for Vimeo, Youtube...', 'sermone' ) )
       ->set_conditional_logic( [
         [
           'field' => 'video_source',
           'value' => 'video_link'
         ]
       ] ),
+    // Field::make( 'oembed', 'video_link', __( 'Video Link (Youtube, Vimeo)', 'sermone' ) )
+    //   ->set_help_text( __( 'Paste your link for Vimeo, Youtube...', 'sermone' ) )
+    //   ->set_conditional_logic( [
+    //     [
+    //       'field' => 'video_source',
+    //       'value' => 'video_link'
+    //     ]
+    //   ] ),
     Field::make( 'file', 'video_wp_media', __( 'Select Video MP4', 'sermone' ) )
       ->set_type( [ 'video' ] )
       ->set_help_text( __( 'Upload or select video from WP Media', 'sermone' ) )
