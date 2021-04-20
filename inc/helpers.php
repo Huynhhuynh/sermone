@@ -325,10 +325,16 @@ function sermone_get_video_item( $post_id ) {
   $source = sermone_get_field( 'video_source', $post_id );
   $data = sermone_get_field( $source, $post_id );
 
-  if( 'video_link' == $source ) {
-    $data = wp_oembed_get( $data );
+  switch( trim( $source ) ) {
+    case 'video_link':
+      $data = wp_oembed_get( $data );
+      break;
+    
+    case 'video_wp_media':
+      $data = wp_get_attachment_url( $data );
+      break;
   }
-
+  
   return [
     'source' => $source,
     'content' => $data
@@ -345,8 +351,14 @@ function sermone_get_audio_item( $post_id ) {
   $source = sermone_get_field( 'audio_source', $post_id );
   $data = sermone_get_field( $source, $post_id );
 
-  if( 'audio_link' == $source ) {
-    $data = wp_oembed_get( $data );
+  switch( trim( $source ) ) {
+    case 'audio_link':
+      $data = wp_oembed_get( $data );
+      break;
+    
+    case 'audio_wp_media':
+      $data = wp_get_attachment_url( $data );
+      break;
   }
 
   return [
@@ -364,7 +376,7 @@ function sermone_get_audio_item( $post_id ) {
  */
 function sermone_get_media_file_by_id( $attachment_id = null ) {
   if( empty( $attachment_id ) || $attachment_id == 0 ) return;
-  return get_attached_file( $attachment_id );
+  return wp_get_attachment_url( $attachment_id );
 }
 
 /**
