@@ -52,5 +52,5 @@
     \Carbon_Fields\Carbon_Fields::boot();
   }
 
-  add_action( 'plugins_loaded', 'sermone_crb_boot' );
+  add_action( 'after_setup_theme', 'sermone_crb_boot' );
 }
