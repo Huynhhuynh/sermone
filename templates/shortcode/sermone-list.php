@@ -7,11 +7,11 @@
  */
 
 ?>
-<div class="sermone-list-container <?= $atts[ 'classes' ] ?>">
-  <? if( ! empty( $atts[ 'heading_text' ] ) ) : ?>
-  <h4 class="sermone-heading"><?= $atts[ 'heading_text' ] ?></h4>
-  <? endif; ?>
-  <? if ( $query->have_posts() ) :
+<div class="sermone-list-container <?php echo $atts[ 'classes' ] ?>">
+  <?php if( ! empty( $atts[ 'heading_text' ] ) ) : ?>
+  <h4 class="sermone-heading"><?php echo $atts[ 'heading_text' ] ?></h4>
+  <?php endif; ?>
+  <?php if ( $query->have_posts() ) :
     $sermone_posts_classes = 'sermone-archive-style-' . $atts[ 'layout' ];
     echo '<div id="sermone-post-list" class="'. $sermone_posts_classes .'">';
     while ( $query->have_posts() ) : $query->the_post(); 
@@ -26,4 +26,4 @@
   endif; ?>
 </div> <!-- .sermone-favorite-container -->
 
-<? wp_reset_query();
+<?php wp_reset_query();

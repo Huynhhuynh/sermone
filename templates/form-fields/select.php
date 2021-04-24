@@ -8,15 +8,15 @@
 
 ?>
 <select 
-  name="<?= $field_data[ 'name' ] ?>" 
-  <?= isset( $field_data[ 'id' ] ) ? 'id="'. $field_data[ 'id' ] .'"' : '' ?> 
-  <?= isset( $field_data[ 'classes' ] ) ? 'class="'. $field_data[ 'classes' ] .'"' : '' ?> 
-  <?= isset( $field_data[ 'multiple' ] ) ? 'multiple' : '' ?> 
-  <?= isset( $field_data[ 'require' ] ) ? 'required' : '' ?> 
+  name="<?php echo $field_data[ 'name' ] ?>" 
+  <?php echo isset( $field_data[ 'id' ] ) ? 'id="'. $field_data[ 'id' ] .'"' : '' ?> 
+  <?php echo isset( $field_data[ 'classes' ] ) ? 'class="'. $field_data[ 'classes' ] .'"' : '' ?> 
+  <?php echo isset( $field_data[ 'multiple' ] ) ? 'multiple' : '' ?> 
+  <?php echo isset( $field_data[ 'require' ] ) ? 'required' : '' ?> 
 >
-  <? foreach( $field_data[ 'options' ] as $value => $label ) : 
+  <?php foreach( $field_data[ 'options' ] as $value => $label ) : 
     $selected = (isset( $field_data[ 'value' ] ) && $field_data[ 'value' ] === (string) $value) ? 'selected' : '';
   ?>
-  <option value="<?= $value ?>" <?= $selected ?>><?= $label ?></option>
-  <? endforeach; ?>
+  <option value="<?php echo $value ?>" <?php echo $selected ?>><?php echo $label ?></option>
+  <?php endforeach; ?>
 </select>

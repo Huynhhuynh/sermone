@@ -7,10 +7,24 @@
  */
 
 get_header();
+// echo '<pre>'; print_r( sermone_get_field( 'sermone_user_favorite', 'user_1' ) ); echo '<pre>';
+// sermone_update_field( 'sermone_user_favorite', [
+//   [
+//     'items' => [
+//       [
+//         'value' => 'post:sermone:191',
+//         'type' => 'post',
+//         'subtype' => 'sermone',
+//         'id' => 191
+//       ]
+//     ]
+//   ]
+// ], 'user_1' );
+// print_r( sermone_get_favorite_by_user( 1 ) );
 ?>
-<div class="<?= sermone_classes_hook( 'sermone-archive-container', 'sermone_archive' ) ?>">
+<div class="<?php echo sermone_classes_hook( 'sermone-archive-container', 'sermone_archive' ) ?>">
   <div class="sermone-container">
-    <? 
+    <?php 
     $query = sermone_get_posts_archive();
 
     /**

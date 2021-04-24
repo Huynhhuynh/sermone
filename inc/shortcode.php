@@ -25,7 +25,7 @@ function sermone_shortcode_user_favorite( $atts = [], $content = '' ) {
   if( $atts[ 'user' ] == 0 ) return sprintf( 
     '<p>%s <a href="%s">%s</a></p>', 
     __( 'Please login to see your list favorite.', 'sermone' ),
-    get_field( 'sermone_user_login_url', 'option' ), 
+    sermone_get_field( 'sermone_user_login_url', 'option' ), 
     __( 'Login here!' ) );
   
   $fav = sermone_get_favorite_by_user( $atts[ 'user' ] );

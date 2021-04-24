@@ -77,7 +77,7 @@ add_action( 'sermone_archive_top', 'sermone_archive_heading_template', 16 );
  * Sermone filter bar 
  */
 function sermone_filter_bar() {
-  $sermone_archive_filtering = get_field( 'sermone_archive_filtering', 'option' ); 
+  $sermone_archive_filtering = sermone_get_field( 'sermone_archive_filtering', 'option' ); 
   $sermone_archive_filtering = $sermone_archive_filtering === null ? true : $sermone_archive_filtering;
   $filter_enable = apply_filters( 'sermone_hook_archive_filter_enable', $sermone_archive_filtering );
 
@@ -93,7 +93,7 @@ add_action( 'sermone_archive_top', 'sermone_filter_bar', 20 );
 function sermone_query_args_by_keywords( $args = [] ) {
 
   if( isset( $_GET[ 'keywords' ] ) && ! empty( $_GET[ 'keywords' ] ) ) {
-    $args[ 's' ] = trim( $_GET[ 'keywords' ] );
+    $args[ 's' ] = sanitize_text_field( $_GET[ 'keywords' ] );
   }
 
   return $args;
@@ -113,7 +113,7 @@ function sermone_query_args_by_tax_preachers( $args = [] ) {
     array_push( $tax_query, [
       'taxonomy' => 'sermone_preacher',
       'field' => 'slug',
-      'terms' => trim( $_GET[ 'preachers' ] ),
+      'terms' => sanitize_text_field( $_GET[ 'preachers' ] ),
     ] );
     $args[ 'tax_query' ] = $tax_query;
   }
@@ -135,7 +135,7 @@ function sermone_query_args_by_tax_series( $args = [] ) {
     array_push( $tax_query, [
       'taxonomy' => 'sermone_series',
       'field' => 'slug',
-      'terms' => trim( $_GET[ 'series' ] ),
+      'terms' => sanitize_text_field( $_GET[ 'series' ] ),
     ] );
     $args[ 'tax_query' ] = $tax_query;
   }
@@ -157,7 +157,7 @@ function sermone_query_args_by_tax_topics( $args = [] ) {
     array_push( $tax_query, [
       'taxonomy' => 'sermone_topics',
       'field' => 'slug',
-      'terms' => trim( $_GET[ 'topics' ] ),
+      'terms' => sanitize_text_field( $_GET[ 'topics' ] ),
     ] );
     $args[ 'tax_query' ] = $tax_query;
   }
@@ -179,7 +179,7 @@ function sermone_query_args_by_tax_books( $args = [] ) {
     array_push( $tax_query, [
       'taxonomy' => 'sermone_books',
       'field' => 'slug',
-      'terms' => trim( $_GET[ 'books' ] ),
+      'terms' => sanitize_text_field( $_GET[ 'books' ] ),
     ] );
     $args[ 'tax_query' ] = $tax_query;
   }
@@ -206,8 +206,8 @@ function sermone_single_post_nav_html() {
   ?>
   <div class="sermone-single-post-nav-link">
     <ul>
-      <li><? previous_post_link( '%link', 'Previous: %title ' . $icon ) ?></li>
-      <li><? next_post_link( '%link', __( 'Next: %title ' . $icon ) ) ?></li>
+      <li><?php previous_post_link( '%link', 'Previous: %title ' . $icon ) ?></li>
+      <li><?php next_post_link( '%link', __( 'Next: %title ' . $icon ) ) ?></li>
     </ul>
   </div>
   <?php 
@@ -274,14 +274,14 @@ function sermone_social_item_favorite() {
   ?>
   <li class="sermone--bookmark-item">
     <a 
-      class="<?= $in_fav ? '__in-fav' : '' ?>"
+      class="<?php echo $in_fav ? '__in-fav' : '' ?>"
       href="#" 
-      data-tippy-content="<?= __( 'Favorite', 'sermone' ) ?>"
+      data-tippy-content="<?php echo __( 'Favorite', 'sermone' ) ?>"
       data-tippy-placement="bottom"
-      title="<?= __( 'Favorite', 'sermone' ) ?>" 
-      data-sermone-fav=<? the_ID() ?>>
-      <span class="__icon"><?= sermone_svg( 'star' ) ?></span>
-      <span class="__icon __is-bold"><?= sermone_svg( 'star_bold' ) ?></span>
+      title="<?php echo __( 'Favorite', 'sermone' ) ?>" 
+      data-sermone-fav=<?php the_ID() ?>>
+      <span class="__icon"><?php echo sermone_svg( 'star' ) ?></span>
+      <span class="__icon __is-bold"><?php echo sermone_svg( 'star_bold' ) ?></span>
     </a>
   </li>
   <?php 
@@ -298,12 +298,12 @@ function sermone_archive_loop_item_action_button_favorite() {
   $in_fav = sermone_in_user_favorite( get_the_ID() );
   ?>
   <a 
-    href="<? the_permalink() ?>" 
-    class="sermone-favorite <?= $in_fav ? '__in-fav' : '' ?>" 
-    data-sermone-fav=<? the_ID() ?>>
-    <?= __( 'Favorite', 'sermone' ) ?>
-    <span class="__icon"><?= sermone_svg( 'star' ) ?></span>
-    <span class="__icon __is-bold"><?= sermone_svg( 'star_bold' ) ?></span>
+    href="<?php the_permalink() ?>" 
+    class="sermone-favorite <?php echo $in_fav ? '__in-fav' : '' ?>" 
+    data-sermone-fav=<?php the_ID() ?>>
+    <?php echo __( 'Favorite', 'sermone' ) ?>
+    <span class="__icon"><?php echo sermone_svg( 'star' ) ?></span>
+    <span class="__icon __is-bold"><?php echo sermone_svg( 'star_bold' ) ?></span>
   </a>
   <?php 
 }

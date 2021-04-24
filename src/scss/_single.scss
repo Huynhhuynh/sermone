@@ -201,7 +201,9 @@
       border-width: 1px 0 1px 1px;
       display: flex;
       justify-content: space-between;
+      align-items: center;
       flex-wrap: wrap;
+      box-sizing: border-box;
       font-size: 14px;
       line-height: 18px;
       text-decoration: none;
@@ -219,6 +221,7 @@
 
         > span.__icon {
           margin-bottom: 6px;
+          line-height: 0;
         }
       }
 
@@ -309,7 +312,7 @@
 
         &.__is-render {
 
-          &[data-media-source=wp_media] {
+          &[data-media-source=video_wp_media] {
             padding-bottom: 0;
           }
         }
@@ -324,7 +327,7 @@
 
         &.__is-render {
 
-          &[data-media-source=wp_media] {
+          &[data-media-source=audio_wp_media] {
             padding-bottom: 0;
             min-height: auto;
             background: transparent;

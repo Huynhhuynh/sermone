@@ -6,33 +6,33 @@
 // echo '<pre>'; print_r( $nav_data ); echo '</pre>';
 ?>
 <ul class="sermone--media-nav-container">
-  <? foreach( $nav_data as $index => $item ) : ?> 
-  <li class="media-item <?= isset( $item[ 'active' ] ) ? '__active' : '' ?>">
+  <?php foreach( $nav_data as $index => $item ) : ?> 
+  <li class="media-item <?php echo isset( $item[ 'active' ] ) ? '__active' : '' ?>">
     <a 
-      class="<?= empty( $item[ 'data' ][ 'content' ] ) ? '__item-disable' : '' ?>"
-      href="<?= in_array( $item[ 'type' ], [ 'download', 'link' ] ) ? $item[ 'data' ][ 'content' ] : '#' ?>" 
-      title="<?= $item[ 'name' ] ?>" 
-      data-nav-type="<?= $item[ 'type' ] ?>" 
-      data-nav-key="<?= $item[ 'id' ] ?>" 
-      <?= ( $item[ 'type' ] == 'download' ) ? 'download="'. $item[ 'name' ] .'"' : '' ?>>
-      <span class="__name"><?= $item[ 'name' ] ?></span>
-      <span class="__icon"><?= $item[ 'icon' ] ?></span> 
+      class="<?php echo empty( $item[ 'data' ][ 'content' ] ) ? '__item-disable' : '' ?>"
+      href="<?php echo in_array( $item[ 'type' ], [ 'download', 'link' ] ) ? $item[ 'data' ][ 'content' ] : '#' ?>" 
+      title="<?php echo $item[ 'name' ] ?>" 
+      data-nav-type="<?php echo $item[ 'type' ] ?>" 
+      data-nav-key="<?php echo $item[ 'id' ] ?>" 
+      <?php echo ( $item[ 'type' ] == 'download' ) ? 'download="'. $item[ 'name' ] .'"' : '' ?>>
+      <span class="__name"><?php echo $item[ 'name' ] ?></span>
+      <span class="__icon"><?php echo $item[ 'icon' ] ?></span> 
     </a>
   </li>
-  <? endforeach; ?>
+  <?php endforeach; ?>
 </ul> <!-- .sermone--media-nav-container -->
 
 <div class="sermone--media-tab-container">
-  <? foreach( $nav_data as $index => $item ) : if( $item[ 'type' ] != 'tab' ) continue; ?> 
-    <div class="__tab-item __tab-<?= $item[ 'id' ] ?> <?= isset( $item[ 'active' ] ) ? '__active' : '' ?>" data-tab-key="<?= $item[ 'id' ] ?>">
+  <?php foreach( $nav_data as $index => $item ) : if( $item[ 'type' ] != 'tab' ) continue; ?> 
+    <div class="__tab-item __tab-<?php echo $item[ 'id' ] ?> <?php echo isset( $item[ 'active' ] ) ? '__active' : '' ?>" data-tab-key="<?php echo $item[ 'id' ] ?>">
       <div 
         class="sermone--media-content-type" 
-        data-media-type="<?= $item[ 'id' ] ?>"
-        data-media-player="<?= sermone_media_player() ?>"
-        data-media-source="<?= $item[ 'data' ][ 'source' ] ?>" 
-        data-media-content='<?= $item[ 'data' ][ 'content' ] ?>'>
+        data-media-type="<?php echo $item[ 'id' ] ?>"
+        data-media-player="<?php echo sermone_media_player() ?>"
+        data-media-source="<?php echo $item[ 'data' ][ 'source' ] ?>" 
+        data-media-content='<?php echo $item[ 'data' ][ 'content' ] ?>'>
         <!-- Content render by javascript -->
       </div>
     </div>
-  <? endforeach; ?>
+  <?php endforeach; ?>
 </div> <!-- .sermone--media-tab-container -->

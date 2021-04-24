@@ -6,9 +6,10 @@ export const NavMediaContentRender = ( $el ) => {
   let MediaPlayer = $el.data( 'media-player' )
   let MediaSource = $el.data( 'media-source' )
   let Content = $el.data( 'media-content' )
-
+  
   switch ( MediaSource ) {
-    case 'wp_media':
+    case 'video_wp_media':
+    case 'audio_wp_media':
       
       switch( MediaType ) {
         case 'sermone-video':
