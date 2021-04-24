@@ -325,10 +325,16 @@ function sermone_get_video_item( $post_id ) {
   $source = sermone_get_field( 'video_source', $post_id );
   $data = sermone_get_field( $source, $post_id );
 
-  if( 'video_link' == $source ) {
-    $data = wp_oembed_get( $data );
+  switch( trim( $source ) ) {
+    case 'video_link':
+      $data = wp_oembed_get( $data );
+      break;
+    
+    case 'video_wp_media':
+      $data = wp_get_attachment_url( $data );
+      break;
   }
-
+  
   return [
     'source' => $source,
     'content' => $data
@@ -345,8 +351,14 @@ function sermone_get_audio_item( $post_id ) {
   $source = sermone_get_field( 'audio_source', $post_id );
   $data = sermone_get_field( $source, $post_id );
 
-  if( 'audio_link' == $source ) {
-    $data = wp_oembed_get( $data );
+  switch( trim( $source ) ) {
+    case 'audio_link':
+      $data = wp_oembed_get( $data );
+      break;
+    
+    case 'audio_wp_media':
+      $data = wp_get_attachment_url( $data );
+      break;
   }
 
   return [
@@ -364,7 +376,7 @@ function sermone_get_audio_item( $post_id ) {
  */
 function sermone_get_media_file_by_id( $attachment_id = null ) {
   if( empty( $attachment_id ) || $attachment_id == 0 ) return;
-  return get_attached_file( $attachment_id );
+  return wp_get_attachment_url( $attachment_id );
 }
 
 /**
@@ -483,14 +495,14 @@ function sermone_filter_bar_html() {
       'field_type' => 'text',
       'placeholder' => __( '...' ),
       'classes' => 'item-field-keywords',
-      'value' => isset( $_GET[ 'keywords' ] ) ? esc_html( $_GET[ 'keywords' ] ) : '',
+      'value' => isset( $_GET[ 'keywords' ] ) ? sanitize_text_field( $_GET[ 'keywords' ] ) : '',
     ],
     [
       'name' => 'preachers',
       'label' => __( 'Select Preachers', 'sermone' ),
       'field_type' => 'select',
       'options' => sermone_list_term_options_filter_form( 'sermone_preacher', [ '' => __( 'All Preachers', 'sermone' ) ] ),
-      'value' => isset( $_GET[ 'preachers' ] ) ? esc_html( $_GET[ 'preachers' ] ) : '',
+      'value' => isset( $_GET[ 'preachers' ] ) ? sanitize_text_field( $_GET[ 'preachers' ] ) : '',
       'classes' => 'item-field-preachers',
     ],
     [
@@ -498,7 +510,7 @@ function sermone_filter_bar_html() {
       'label' => __( 'Select Series', 'sermone' ),
       'field_type' => 'select',
       'options' => sermone_list_term_options_filter_form( 'sermone_series', [ '' => __( 'All Series', 'sermone' ) ] ),
-      'value' => isset( $_GET[ 'series' ] ) ? esc_html( $_GET[ 'series' ] ) : '',
+      'value' => isset( $_GET[ 'series' ] ) ? sanitize_text_field( $_GET[ 'series' ] ) : '',
       'classes' => 'item-field-series',
     ],
     [
@@ -506,7 +518,7 @@ function sermone_filter_bar_html() {
       'label' => __( 'Select Topics', 'sermone' ),
       'field_type' => 'select',
       'options' => sermone_list_term_options_filter_form( 'sermone_topics', [ '' => __( 'All Topics', 'sermone' ) ] ),
-      'value' => isset( $_GET[ 'topics' ] ) ? esc_html( $_GET[ 'topics' ] ) : '',
+      'value' => isset( $_GET[ 'topics' ] ) ? sanitize_text_field( $_GET[ 'topics' ] ) : '',
       'classes' => 'item-field-topics',
     ],
     [
@@ -514,7 +526,7 @@ function sermone_filter_bar_html() {
       'label' => __( 'Select Books', 'sermone' ),
       'field_type' => 'select',
       'options' => sermone_list_term_options_filter_form( 'sermone_books', [ '' => __( 'All Books', 'sermone' ) ] ),
-      'value' => isset( $_GET[ 'books' ] ) ? esc_html( $_GET[ 'books' ] ) : '',
+      'value' => isset( $_GET[ 'books' ] ) ? sanitize_text_field( $_GET[ 'books' ] ) : '',
       'classes' => 'item-field-books',
     ],
   ]; 

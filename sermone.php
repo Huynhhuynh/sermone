@@ -1,6 +1,6 @@
 <?php 
 /**
- * Plugin Name:       Sermon'e - Sermons online
+ * Plugin Name:       Sermon'e - Sermons Management
  * Plugin URI:        http://159.89.194.38:8383/
  * Description:       Sermon'e is designed to help churches easily publish sermons online. is a new beautiful, modern sermon plugin that integrates seamlessly with any WordPress theme.
  * Version:           1.0.0
@@ -52,5 +52,5 @@
     \Carbon_Fields\Carbon_Fields::boot();
   }
 
-  add_action( 'plugins_loaded', 'sermone_crb_boot' );
+  add_action( 'after_setup_theme', 'sermone_crb_boot' );
 }
